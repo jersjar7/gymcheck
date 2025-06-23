@@ -1,65 +1,75 @@
 {
-  "currentDate": "2025-08-22",
-  "currentMonth": "august-2025",
+  "currentDate": "2025-06-25",
+  "currentMonth": "june-2025",
   "activePlans": {
     "workout": {
       "fileName": "june-2025-twice-daily.json",
       "fullPath": "plans/2025/workouts/june-2025-twice-daily.json",
       "planType": "twice-daily",
-      "startDate": "2025-08-01",
-      "endDate": "2025-08-31",
+      "startDate": "2025-06-23",
+      "endDate": "2025-06-30",
       "status": "active",
-      "daysRemaining": 9
+      "daysRemaining": 5
     },
     "nutrition": {
-      "fileName": "june-2025-twice-daily.json",
+      "fileName": "june-2025-lean-gains.json",
       "fullPath": "plans/2025/nutrition/june-2025-lean-gains.json",
       "planType": "lean-gains",
-      "startDate": "2025-08-01", 
-      "endDate": "2025-08-31",
+      "startDate": "2025-06-23", 
+      "endDate": "2025-06-30",
       "status": "active",
-      "daysRemaining": 9
+      "daysRemaining": 5
     }
   },
   "upcomingPlans": {
     "workout": {
-      "fileName": "july-2025-once-daily.json",
-      "fullPath": "plans/2025/workouts/july-2025-once-daily.json",
-      "planType": "once-daily",
-      "startDate": "2025-09-01",
-      "endDate": "2025-09-30",
+      "fileName": "july-2025-twice-daily.json",
+      "fullPath": "plans/2025/workouts/july-2025-twice-daily.json",
+      "planType": "twice-daily",
+      "startDate": "2025-07-01",
+      "endDate": "2025-07-31",
       "status": "scheduled",
       "autoActivate": true,
-      "reason": "School semester starts - switch to once daily schedule"
+      "reason": "Continue summer twice-daily schedule for full month"
     },
     "nutrition": {
-      "fileName": "july-2025-maintenance.json",
-      "fullPath": "plans/2025/nutrition/july-2025-maintenance.json", 
-      "planType": "maintenance",
-      "startDate": "2025-09-01",
-      "endDate": "2025-09-30",
+      "fileName": "july-2025-lean-gains.json",
+      "fullPath": "plans/2025/nutrition/july-2025-lean-gains.json", 
+      "planType": "lean-gains",
+      "startDate": "2025-07-01",
+      "endDate": "2025-07-31",
       "status": "scheduled",
       "autoActivate": true,
-      "reason": "Maintain weight during academic stress"
+      "reason": "Continue lean gains approach through summer"
     }
   },
   "planHistory": [
     {
-      "month": "july-2025",
-      "workout": "july-2025-twice-daily.json",
-      "nutrition": "july-2025-lean-gains.json",
+      "month": "may-2025",
+      "workout": "may-2025-transition.json",
+      "nutrition": "may-2025-transition.json",
       "status": "completed"
     }
   ],
   "planSchedule": {
     "2025": {
+      "june": {
+        "workout": "twice-daily",
+        "nutrition": "lean-gains",
+        "notes": "Summer schedule introduction - partial month"
+      },
+      "july": {
+        "workout": "twice-daily", 
+        "nutrition": "lean-gains",
+        "notes": "Full summer schedule - maximum training volume"
+      },
       "august": {
         "workout": "twice-daily",
         "nutrition": "lean-gains",
-        "notes": "Summer schedule - maximum training volume"
+        "notes": "Peak summer conditioning"
       },
       "september": {
-        "workout": "once-daily", 
+        "workout": "once-daily",
         "nutrition": "maintenance",
         "notes": "School starts - adapt to academic schedule"
       },
@@ -125,7 +135,7 @@
     }
   },
   "systemSettings": {
-    "lastUpdated": "2025-08-22",
+    "lastUpdated": "2025-06-25",
     "autoUpdateDaysRemaining": true,
     "timezonePlan": "America/Denver",
     "planSwitchTime": "00:01"
