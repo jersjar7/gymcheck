@@ -165,7 +165,7 @@ function setupEventListeners() {
         fileInput.addEventListener('change', handleFileSelect);
     }
     
-    // Water tracking - FIXED: Changed from setupWaterTracking to setupHydrationTracking
+    // Water tracking
     setupHydrationTracking();
     
     // Notes saving
