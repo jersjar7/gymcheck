@@ -3,8 +3,8 @@
   "currentMonth": "august-2025",
   "activePlans": {
     "workout": {
-      "fileName": "august-2025-twice-daily.json",
-      "fullPath": "plans/2025/workouts/august-2025-twice-daily.json",
+      "fileName": "june-2025-twice-daily.json",
+      "fullPath": "plans/2025/workouts/june-2025-twice-daily.json",
       "planType": "twice-daily",
       "startDate": "2025-08-01",
       "endDate": "2025-08-31",
@@ -12,8 +12,8 @@
       "daysRemaining": 9
     },
     "nutrition": {
-      "fileName": "august-2025-lean-gains.json",
-      "fullPath": "plans/2025/nutrition/august-2025-lean-gains.json",
+      "fileName": "june-2025-twice-daily.json",
+      "fullPath": "plans/2025/nutrition/june-2025-lean-gains.json",
       "planType": "lean-gains",
       "startDate": "2025-08-01", 
       "endDate": "2025-08-31",
@@ -23,8 +23,8 @@
   },
   "upcomingPlans": {
     "workout": {
-      "fileName": "september-2025-once-daily.json",
-      "fullPath": "plans/2025/workouts/september-2025-once-daily.json",
+      "fileName": "july-2025-once-daily.json",
+      "fullPath": "plans/2025/workouts/july-2025-once-daily.json",
       "planType": "once-daily",
       "startDate": "2025-09-01",
       "endDate": "2025-09-30",
@@ -33,8 +33,8 @@
       "reason": "School semester starts - switch to once daily schedule"
     },
     "nutrition": {
-      "fileName": "september-2025-maintenance.json",
-      "fullPath": "plans/2025/nutrition/september-2025-maintenance.json", 
+      "fileName": "july-2025-maintenance.json",
+      "fullPath": "plans/2025/nutrition/july-2025-maintenance.json", 
       "planType": "maintenance",
       "startDate": "2025-09-01",
       "endDate": "2025-09-30",
