@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerson's Exercise Routine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">💪</span>
+                    <span class="logo-text">Jerson's Exercise Routine</span>
+                </div>
+                <nav>
+                    <ul class="nav-list">
+                        <li><a href="#today" class="nav-link active" data-section="today">Today</a></li>
+                        <li><a href="#week" class="nav-link" data-section="week">Week View</a></li>
+                        <li><a href="#nutrition" class="nav-link" data-section="nutrition">Nutrition</a></li>
+                        <li><a href="#progress" class="nav-link" data-section="progress">Progress</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- TODAY SECTION -->
+            <section id="today" class="section active">
+                <div class="today-header">
+                    <h1 class="section-title">Today's Plan</h1>
+                    <div class="date-display">
+                        <span class="current-date"></span>
+                        <span class="week-info"></span>
+                    </div>
+                </div>
+
+                <div class="today-grid">
+                    <div class="workout-card">
+                        <h2 class="card-title">
+                            <span class="card-icon">🏋️</span>
+                            <span class="workout-type"></span>
+                        </h2>
+                        
+                        <div class="exercise-list">
+                            <!-- Exercises will be populated from JSON -->
+                        </div>
+
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="nutrition-card">
+                        <h2 class="card-title">
+                            <span class="card-icon">🥗</span>
+                            <span>Nutrition Goals</span>
+                        </h2>
+                        
+                        <div class="nutrition-targets">
+                            <!-- Nutrition data will be populated from JSON -->
+                        </div>
+
+                        <div class="hydration-section">
+                            <div class="hydration-title">💧 Hydration Goal</div>
+                            <div class="hydration-goal">
+                                <span class="hydration-target"></span>
+                                <div class="water-glasses">
+                                    <!-- Water tracking glasses will be generated -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-section">
+                    <h2 class="section-title">📝 Today's Notes</h2>
+                    <textarea class="notes-input" placeholder="How did today's workout feel? Any adjustments needed? Sleep quality? Energy levels?"></textarea>
+                    <button class="save-notes-btn">Save Notes</button>
+                </div>
+            </section>
+
+            <!-- WEEK VIEW SECTION -->
+            <section id="week" class="section">
+                <div class="week-header">
+                    <div class="week-info">
+                        <h1 class="section-title">Week Overview</h1>
+                        <div class="week-dates"></div>
+                    </div>
+                    <div class="week-nav">
+                        <button class="nav-btn" id="prevWeek">← Previous Week</button>
+                        <button class="nav-btn" id="nextWeek">Next Week →</button>
+                    </div>
+                </div>
+
+                <div class="week-progress">
+                    <div class="progress-title">📊 Week Progress</div>
+                    <div class="progress-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="workoutsCompleted"></div>
+                            <div class="stat-label">Workouts Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="nutritionAdherence"></div>
+                            <div class="stat-label">Nutrition Goals Met</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="avgCalories"></div>
+                            <div class="stat-label">Avg Daily Calories</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="avgSleep"></div>
+                            <div class="stat-label">Avg Sleep Hours</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="days-grid">
+                    <!-- Daily cards will be populated from JSON -->
+                </div>
+            </section>
+
+            <!-- NUTRITION SECTION -->
+            <section id="nutrition" class="section">
+                <h1 class="section-title">🥗 Nutrition Plan</h1>
+                
+                <div class="plan-header">
+                    <div class="plan-info">
+                        <h2 class="plan-name"></h2>
+                        <div class="plan-details"></div>
+                    </div>
+                    <div class="plan-actions">
+                        <button class="btn btn-secondary">Switch Plan</button>
+                        <button class="btn btn-primary">Edit Plan</button>
+                    </div>
+                </div>
+
+                <div class="nutrition-grid">
+                    <div class="macros-card">
+                        <h2 class="card-title">📊 Daily Macronutrient Targets</h2>
+                        <div class="macro-list">
+                            <!-- Macro targets will be populated from JSON -->
+                        </div>
+                    </div>
+
+                    <div class="meals-card">
+                        <h2 class="card-title">🍽️ Daily Meal Plan</h2>
+                        <div class="meal-list">
+                            <!-- Meals will be populated from JSON -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="supplements-section">
+                    <h3 class="card-title">💊 Daily Supplements</h3>
+                    <div class="supplements-grid">
+                        <!-- Supplements will be populated from JSON -->
+                    </div>
+                </div>
+
+                <div class="nutrition-notes">
+                    <div class="notes-title">📝 Nutrition Notes & Guidelines</div>
+                    <div class="notes-content">
+                        <!-- Guidelines will be populated from JSON -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROGRESS SECTION -->
+            <section id="progress" class="section">
+                <h1 class="section-title">📈 Progress Tracking</h1>
+                
+                <button class="add-data-btn">+ Add Today's Data</button>
+
+                <div class="progress-overview">
+                    <div class="stat-card weight">
+                        <div class="stat-value" id="currentWeight"></div>
+                        <div class="stat-label">Current Weight (lbs)</div>
+                        <div class="stat-change" id="weightChange"></div>
+                    </div>
+                    <div class="stat-card strength">
+                        <div class="stat-value" id="benchMax"></div>
+                        <div class="stat-label">Bench Press Max (lbs)</div>
+                        <div class="stat-change" id="strengthChange"></div>
+                    </div>
+                    <div class="stat-card consistency">
+                        <div class="stat-value" id="workoutAdherence"></div>
+                        <div class="stat-label">Workout Adherence</div>
+                        <div class="stat-change" id="consistencyChange"></div>
+                    </div>
+                    <div class="stat-card nutrition">
+                        <div class="stat-value" id="nutritionGoals"></div>
+                        <div class="stat-label">Nutrition Goals Met</div>
+                        <div class="stat-change" id="nutritionChange"></div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-title">📊 Weight Progress</div>
+                        <div class="chart-placeholder weight-chart">
+                            <div class="chart-content">Weight Trend Chart</div>
+                            <div class="chart-data">
+                                <!-- Chart data will be populated -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-title">💪 Strength Progress</div>
+                        <div class="chart-placeholder strength-chart">
+                            <div class="chart-content">Lift Performance Chart</div>
+                            <div class="chart-data">
+                                <!-- Chart data will be populated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="goals-section">
+                    <div class="goals-title">🎯 Current Goals</div>
+                    <div class="goals-list">
+                        <!-- Goals will be populated from JSON -->
+                    </div>
+                </div>
+
+                <div class="measurements-grid">
+                    <div class="measurements-card">
+                        <div class="card-title">📏 Body Measurements</div>
+                        <div class="measurements-list">
+                            <!-- Measurements will be populated -->
+                        </div>
+                    </div>
+
+                    <div class="measurements-card">
+                        <div class="card-title">🏋️ Lift Records</div>
+                        <div class="records-list">
+                            <!-- Records will be populated -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="photos-section">
+                    <div class="card-title">📸 Progress Photos</div>
+                    <div class="photos-grid">
+                        <!-- Progress photos will be populated -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ADMIN SECTION -->
+    <div class="admin-divider"></div>
+    
+    <section class="admin-section">
+        <div class="admin-header">
+            🔧 PLAN MANAGEMENT - JERSON'S EXERCISE ROUTINE
+        </div>
+        
+        <div class="locked-content" id="lockedContent">
+            <form class="password-form" id="passwordForm">
+                <h3>Enter password to manage workout plans</h3>
+                <input 
+                    type="password" 
+                    class="password-input" 
+                    placeholder="Enter password..."
+                    id="passwordInput"
+                    autocomplete="off"
+                >
+                <button type="submit" class="unlock-btn">🔓 Unlock Admin Panel</button>
+                <div class="password-hint">
+                    Password protects plan management functions
+                </div>
+            </form>
+        </div>
+
+        <div class="unlocked-content" id="unlockedContent">
+            <div class="admin-grid">
+                <div class="status-card">
+                    <div class="status-title">📊 Current Plan Status</div>
+                    <div class="status-list">
+                        <!-- Current plan status will be populated -->
+                    </div>
+                </div>
+
+                <div class="status-card">
+                    <div class="status-title">🗓️ Next Plan Info</div>
+                    <div class="status-list">
+                        <!-- Next plan info will be populated -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <div class="upload-title">📁 Upload New Monthly Plan</div>
+                
+                <div class="template-section">
+                    <div class="template-title">📋 JSON Templates:</div>
+                    <div class="template-links">
+                        <a href="#" class="template-link" data-template="twice-daily">Download: Twice Daily Template</a>
+                        <a href="#" class="template-link" data-template="once-daily">Download: Once Daily Template</a>
+                        <a href="#" class="template-link" data-template="current">View: Current Plan JSON</a>
+                    </div>
+                </div>
+
+                <div class="upload-tabs">
+                    <button class="tab-btn active" data-tab="file">📁 Upload File</button>
+                    <button class="tab-btn" data-tab="paste">📝 Paste JSON</button>
+                </div>
+
+                <div class="tab-content active" id="fileTab">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📁</div>
+                        <div class="upload-text">Drop your JSON plan file here or click to browse</div>
+                        <div class="upload-hint">Supports: .json files only</div>
+                        <input type="file" id="fileInput" accept=".json" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="pasteTab">
+                    <textarea 
+                        class="json-textarea" 
+                        placeholder="Paste your JSON plan here..."
+                        id="jsonTextarea"
+                    ></textarea>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="validateBtn">✅ Validate JSON</button>
+                    <button class="btn btn-secondary" id="previewBtn">👁️ Preview Plan</button>
+                    <button class="btn btn-primary" id="saveBtn">💾 Save & Activate Plan</button>
+                </div>
+            </div>
+
+            <div class="admin-footer">
+                <div class="admin-info">
+                    🏫 Jerson's Exercise Routine • Last updated: <span id="lastUpdated"></span>
+                </div>
+                <button class="btn btn-danger" id="lockBtn">🔒 Lock Admin Panel</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Jerson's Exercise Routine. Built for consistency, designed for results.</p>
+                <p class="motto">One day at a time. 💪</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

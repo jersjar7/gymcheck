@@ -1,0 +1,1621 @@
+{
+    "planInfo": {
+        "fileName": "july-2025-twice-daily.json",
+        "month": "July 2025",
+        "startDate": "2025-07-01",
+        "endDate": "2025-07-31",
+        "planType": "Twice Daily - Summer Schedule (Full Month)",
+        "location": "Jerson's Exercise Routine",
+        "restDays": [
+            "sunday"
+        ],
+        "monthlyGoals": {
+            "primary": "Maximize summer fat loss while building strength and endurance",
+            "secondary": [
+                "Progressive overload in morning strength sessions",
+                "Improve cardiovascular efficiency with varied cardio",
+                "Achieve consistent twice-daily routine mastery",
+                "Enhance muscle definition and reduce body fat"
+            ],
+            "specificTargets": [
+                "Reduce body fat by 2-3% by month end",
+                "Increase all major lift weights by 10-15 lbs",
+                "Complete 26 twice-daily sessions (100% adherence)",
+                "Improve 30-minute cardio endurance significantly",
+                "Achieve visible improvement in muscle definition"
+            ]
+        }
+    },
+    "schedule": {
+        "workoutsPerDay": 2,
+        "workoutTimes": [
+            "morning",
+            "afternoon"
+        ],
+        "morningFocus": "Progressive Strength Training",
+        "afternoonFocus": "Fat-Burning Cardio Variety",
+        "estimatedDuration": {
+            "morning": "50-65 minutes",
+            "afternoon": "35-50 minutes"
+        }
+    },
+    "weeks": {
+        "week1": {
+            "weekNumber": 1,
+            "weekFocus": "Building on June Foundation",
+            "days": {
+                "day1": {
+                    "date": "2025-07-01",
+                    "dayType": "workout",
+                    "dayName": "Tuesday",
+                    "morning": {
+                        "workoutType": "Upper Body Power",
+                        "exercises": [
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Increase weight from June baseline"
+                            },
+                            {
+                                "name": "Lat Pulldown",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Focus on progressive overload"
+                            },
+                            {
+                                "name": "Incline Chest Press",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Upper chest development"
+                            },
+                            {
+                                "name": "Cable Row",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Squeeze and hold contraction"
+                            },
+                            {
+                                "name": "Shoulder Press Machine",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Build pressing strength"
+                            },
+                            {
+                                "name": "Tricep Extension Machine",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "Keep elbows locked"
+                            },
+                            {
+                                "name": "Bicep Curl Machine",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "Control the negative"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "HIIT Fat Burn",
+                        "primaryExercise": "Treadmill Intervals",
+                        "duration": "35 minutes",
+                        "intensity": "High Intensity Intervals",
+                        "structure": "5 min warmup, 25 min intervals (30s sprint/90s walk), 5 min cooldown",
+                        "notes": "Start July with intensity for maximum fat burn"
+                    }
+                },
+                "day2": {
+                    "date": "2025-07-02",
+                    "dayType": "workout",
+                    "dayName": "Wednesday",
+                    "morning": {
+                        "workoutType": "Lower Body Strength",
+                        "exercises": [
+                            {
+                                "name": "Leg Press Machine",
+                                "sets": 4,
+                                "reps": "10-12",
+                                "notes": "Progressive overload from June"
+                            },
+                            {
+                                "name": "Romanian Deadlift Machine",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Hip hinge strength pattern"
+                            },
+                            {
+                                "name": "Leg Curl Machine",
+                                "sets": 4,
+                                "reps": "10-12",
+                                "notes": "Hamstring strength focus"
+                            },
+                            {
+                                "name": "Leg Extension Machine",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "Quad isolation"
+                            },
+                            {
+                                "name": "Calf Raise Machine",
+                                "sets": 4,
+                                "reps": "15-20",
+                                "notes": "Full range, pause at top"
+                            },
+                            {
+                                "name": "Walking Lunges",
+                                "sets": 3,
+                                "reps": "10 each leg",
+                                "notes": "Functional leg strength"
+                            },
+                            {
+                                "name": "Plank Variations",
+                                "sets": 3,
+                                "reps": "45-60 seconds",
+                                "notes": "Core stability progression"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Steady State Fat Burn",
+                        "primaryExercise": "Elliptical",
+                        "duration": "40 minutes",
+                        "intensity": "Moderate (65-75% max HR)",
+                        "structure": "5 min warmup, 30 min steady zone, 5 min cooldown",
+                        "notes": "Lower impact after leg day, fat burning zone"
+                    }
+                },
+                "day3": {
+                    "date": "2025-07-03",
+                    "dayType": "workout",
+                    "dayName": "Thursday",
+                    "morning": {
+                        "workoutType": "Push Emphasis",
+                        "exercises": [
+                            {
+                                "name": "Incline Chest Press",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Upper chest power"
+                            },
+                            {
+                                "name": "Shoulder Press Machine",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Overhead pressing strength"
+                            },
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Additional chest volume"
+                            },
+                            {
+                                "name": "Lateral Raise Machine",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "Side delt isolation"
+                            },
+                            {
+                                "name": "Chest Fly Machine",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "Chest isolation"
+                            },
+                            {
+                                "name": "Tricep Dips Machine",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Tricep compound movement"
+                            },
+                            {
+                                "name": "Cable Tricep Pushdown",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "Tricep finisher"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Mixed Cardio",
+                        "primaryExercise": "Bike + Elliptical Combo",
+                        "duration": "40 minutes",
+                        "intensity": "Moderate with variety",
+                        "structure": "20 min bike moderate, 20 min elliptical moderate",
+                        "notes": "Variety to prevent adaptation and boredom"
+                    }
+                },
+                "day4": {
+                    "date": "2025-07-04",
+                    "dayType": "workout",
+                    "dayName": "Friday",
+                    "morning": {
+                        "workoutType": "Pull Emphasis",
+                        "exercises": [
+                            {
+                                "name": "Lat Pulldown Wide Grip",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Lat width development"
+                            },
+                            {
+                                "name": "Cable Row",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Middle trap strength"
+                            },
+                            {
+                                "name": "Lat Pulldown Close Grip",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Lower lat focus"
+                            },
+                            {
+                                "name": "Reverse Fly Machine",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "Rear delt activation"
+                            },
+                            {
+                                "name": "Cable Row High",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "Upper trap focus"
+                            },
+                            {
+                                "name": "Bicep Curl Machine",
+                                "sets": 4,
+                                "reps": "10-12",
+                                "notes": "Peak contraction"
+                            },
+                            {
+                                "name": "Hammer Curl Machine",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "Bicep variety"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Holiday HIIT",
+                        "primaryExercise": "July 4th Challenge",
+                        "duration": "30 minutes",
+                        "intensity": "High intensity celebration",
+                        "structure": "5 min warmup, 20 min intervals (45s hard/15s rest), 5 min cooldown",
+                        "notes": "Independence Day challenge workout"
+                    }
+                },
+                "day5": {
+                    "date": "2025-07-05",
+                    "dayType": "workout",
+                    "dayName": "Saturday",
+                    "morning": {
+                        "workoutType": "Full Body Power",
+                        "exercises": [
+                            {
+                                "name": "Leg Press",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Explosive concentric"
+                            },
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Power pressing"
+                            },
+                            {
+                                "name": "Lat Pulldown",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Powerful pulling"
+                            },
+                            {
+                                "name": "Leg Curl",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Hamstring power"
+                            },
+                            {
+                                "name": "Shoulder Press",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Overhead power"
+                            },
+                            {
+                                "name": "Romanian Deadlift Machine",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Hip power"
+                            },
+                            {
+                                "name": "Core Power Circuit",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "Mountain climbers, burpees, plank ups"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Weekend Endurance",
+                        "primaryExercise": "Long Steady Cardio",
+                        "duration": "45 minutes",
+                        "intensity": "Moderate endurance pace",
+                        "structure": "Choice of treadmill, bike, or elliptical for extended session",
+                        "notes": "Build cardiovascular base with longer session"
+                    }
+                },
+                "day6": {
+                    "date": "2025-07-06",
+                    "dayType": "rest",
+                    "dayName": "Sunday",
+                    "morning": {
+                        "activity": "Complete Rest",
+                        "notes": "Recovery day - meal prep and planning"
+                    },
+                    "afternoon": {
+                        "activity": "Optional Light Activity",
+                        "notes": "Light walk, stretching, or complete rest"
+                    }
+                }
+            }
+        },
+        "week2": {
+            "weekNumber": 2,
+            "weekFocus": "Intensity Increase and Progressive Overload",
+            "days": {
+                "day7": {
+                    "date": "2025-07-07",
+                    "dayType": "workout",
+                    "dayName": "Monday",
+                    "morning": {
+                        "workoutType": "Upper Body Hypertrophy",
+                        "exercises": [
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Increase weight by 10-15 lbs from week 1"
+                            },
+                            {
+                                "name": "Lat Pulldown",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Heavier weight, focus on strength"
+                            },
+                            {
+                                "name": "Incline Chest Press",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Add one extra set from week 1"
+                            },
+                            {
+                                "name": "Cable Row",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Increase weight, slower negative"
+                            },
+                            {
+                                "name": "Shoulder Press Machine",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Progressive overload focus"
+                            },
+                            {
+                                "name": "Tricep Extension Machine",
+                                "sets": 4,
+                                "reps": "10-12",
+                                "notes": "Add extra set, increase weight"
+                            },
+                            {
+                                "name": "Bicep Curl Machine",
+                                "sets": 4,
+                                "reps": "10-12",
+                                "notes": "Focus on peak contraction"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Advanced HIIT",
+                        "primaryExercise": "Treadmill Sprint Intervals",
+                        "duration": "40 minutes",
+                        "intensity": "High Intensity",
+                        "structure": "5 min warmup, 30 min intervals (45s sprint/75s walk), 5 min cooldown",
+                        "notes": "Increased intensity and duration from week 1"
+                    }
+                },
+                "day8": {
+                    "date": "2025-07-08",
+                    "dayType": "workout",
+                    "dayName": "Tuesday",
+                    "morning": {
+                        "workoutType": "Lower Body Power",
+                        "exercises": [
+                            {
+                                "name": "Leg Press Machine",
+                                "sets": 5,
+                                "reps": "6-8",
+                                "notes": "Heavy weight, explosive movement"
+                            },
+                            {
+                                "name": "Romanian Deadlift Machine",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Increase weight significantly"
+                            },
+                            {
+                                "name": "Leg Curl Machine",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Progressive overload focus"
+                            },
+                            {
+                                "name": "Leg Extension Machine",
+                                "sets": 4,
+                                "reps": "10-12",
+                                "notes": "Add extra set from week 1"
+                            },
+                            {
+                                "name": "Calf Raise Machine",
+                                "sets": 4,
+                                "reps": "12-15",
+                                "notes": "Heavier weight, pause at top"
+                            },
+                            {
+                                "name": "Bulgarian Split Squats",
+                                "sets": 3,
+                                "reps": "8 each leg",
+                                "notes": "Progression from walking lunges"
+                            },
+                            {
+                                "name": "Russian Twists",
+                                "sets": 4,
+                                "reps": "20 each side",
+                                "notes": "Add weight if available"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Fat Burn Zone",
+                        "primaryExercise": "Elliptical Steady State",
+                        "duration": "45 minutes",
+                        "intensity": "Moderate-High (70-80% max HR)",
+                        "structure": "5 min warmup, 35 min steady zone, 5 min cooldown",
+                        "notes": "Longer duration for enhanced fat burning"
+                    }
+                },
+                "day9": {
+                    "date": "2025-07-09",
+                    "dayType": "workout",
+                    "dayName": "Wednesday",
+                    "morning": {
+                        "workoutType": "Push Power Focus",
+                        "exercises": [
+                            {
+                                "name": "Incline Chest Press",
+                                "sets": 5,
+                                "reps": "5-7",
+                                "notes": "Heavy weight, low reps for power"
+                            },
+                            {
+                                "name": "Shoulder Press Machine",
+                                "sets": 5,
+                                "reps": "5-7",
+                                "notes": "Maximum pressing strength"
+                            },
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Secondary pressing movement"
+                            },
+                            {
+                                "name": "Lateral Raise Machine",
+                                "sets": 4,
+                                "reps": "10-12",
+                                "notes": "Increase weight from week 1"
+                            },
+                            {
+                                "name": "Chest Fly Machine",
+                                "sets": 4,
+                                "reps": "10-12",
+                                "notes": "Deep stretch, controlled"
+                            },
+                            {
+                                "name": "Tricep Dips Machine",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Add weight if possible"
+                            },
+                            {
+                                "name": "Diamond Push-ups",
+                                "sets": 3,
+                                "reps": "8-12",
+                                "notes": "Bodyweight tricep finisher"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Metabolic Circuit",
+                        "primaryExercise": "Bike + Elliptical + Treadmill",
+                        "duration": "45 minutes",
+                        "intensity": "Variable High",
+                        "structure": "15 min each machine at challenging pace",
+                        "notes": "Circuit training for metabolic boost"
+                    }
+                },
+                "day10": {
+                    "date": "2025-07-10",
+                    "dayType": "workout",
+                    "dayName": "Thursday",
+                    "morning": {
+                        "workoutType": "Pull Power Focus",
+                        "exercises": [
+                            {
+                                "name": "Lat Pulldown Wide Grip",
+                                "sets": 5,
+                                "reps": "5-7",
+                                "notes": "Heavy weight, power pulling"
+                            },
+                            {
+                                "name": "Cable Row",
+                                "sets": 5,
+                                "reps": "5-7",
+                                "notes": "Maximum rowing strength"
+                            },
+                            {
+                                "name": "Lat Pulldown Close Grip",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Secondary pulling movement"
+                            },
+                            {
+                                "name": "Reverse Fly Machine",
+                                "sets": 4,
+                                "reps": "10-12",
+                                "notes": "Rear delt strength"
+                            },
+                            {
+                                "name": "Cable Row High",
+                                "sets": 4,
+                                "reps": "10-12",
+                                "notes": "Upper trap focus"
+                            },
+                            {
+                                "name": "Bicep Curl Machine",
+                                "sets": 5,
+                                "reps": "8-10",
+                                "notes": "Heavier weight than week 1"
+                            },
+                            {
+                                "name": "Hammer Curl Machine",
+                                "sets": 4,
+                                "reps": "10-12",
+                                "notes": "Bicep variety and strength"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Power Intervals",
+                        "primaryExercise": "Bike Power Intervals",
+                        "duration": "35 minutes",
+                        "intensity": "Very High",
+                        "structure": "5 min warmup, 25 min (1 min all-out/2 min recovery), 5 min cooldown",
+                        "notes": "Maximum power output intervals"
+                    }
+                },
+                "day11": {
+                    "date": "2025-07-11",
+                    "dayType": "workout",
+                    "dayName": "Friday",
+                    "morning": {
+                        "workoutType": "Full Body Strength",
+                        "exercises": [
+                            {
+                                "name": "Leg Press",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Heavy compound movement"
+                            },
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Upper body power"
+                            },
+                            {
+                                "name": "Lat Pulldown",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Pulling strength"
+                            },
+                            {
+                                "name": "Leg Curl",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Hamstring strength"
+                            },
+                            {
+                                "name": "Shoulder Press",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Overhead pressing"
+                            },
+                            {
+                                "name": "Romanian Deadlift Machine",
+                                "sets": 3,
+                                "reps": "6-8",
+                                "notes": "Hip hinge strength"
+                            },
+                            {
+                                "name": "Plank Hold",
+                                "sets": 4,
+                                "reps": "60-90 seconds",
+                                "notes": "Core endurance progression"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Endurance Challenge",
+                        "primaryExercise": "Treadmill Endurance",
+                        "duration": "50 minutes",
+                        "intensity": "Moderate",
+                        "structure": "Progressive distance/time challenge",
+                        "notes": "Test cardiovascular improvements"
+                    }
+                },
+                "day12": {
+                    "date": "2025-07-12",
+                    "dayType": "workout",
+                    "dayName": "Saturday",
+                    "morning": {
+                        "workoutType": "Volume Training",
+                        "exercises": [
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 5,
+                                "reps": "10-12",
+                                "notes": "Higher volume, moderate weight"
+                            },
+                            {
+                                "name": "Leg Press",
+                                "sets": 5,
+                                "reps": "12-15",
+                                "notes": "Leg volume training"
+                            },
+                            {
+                                "name": "Lat Pulldown",
+                                "sets": 5,
+                                "reps": "10-12",
+                                "notes": "Back volume work"
+                            },
+                            {
+                                "name": "Leg Extension",
+                                "sets": 4,
+                                "reps": "15-20",
+                                "notes": "High rep quad work"
+                            },
+                            {
+                                "name": "Shoulder Press",
+                                "sets": 4,
+                                "reps": "12-15",
+                                "notes": "Shoulder endurance"
+                            },
+                            {
+                                "name": "Cable Row",
+                                "sets": 4,
+                                "reps": "12-15",
+                                "notes": "Back endurance"
+                            },
+                            {
+                                "name": "Circuit Finish",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "Burpees, mountain climbers, jumping jacks"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Weekend Warrior",
+                        "primaryExercise": "Mixed Cardio Marathon",
+                        "duration": "60 minutes",
+                        "intensity": "Moderate",
+                        "structure": "20 min each: elliptical, bike, treadmill",
+                        "notes": "Longest cardio session of the week"
+                    }
+                },
+                "day13": {
+                    "date": "2025-07-13",
+                    "dayType": "rest",
+                    "dayName": "Sunday",
+                    "morning": {
+                        "activity": "Active Recovery",
+                        "notes": "Light stretching, meal prep, recovery focus"
+                    },
+                    "afternoon": {
+                        "activity": "Optional Walk",
+                        "notes": "30-minute easy walk if feeling energized"
+                    }
+                }
+            }
+        },
+        "week3": {
+            "weekNumber": 3,
+            "weekFocus": "Peak Performance and Strength Testing",
+            "days": {
+                "day14": {
+                    "date": "2025-07-14",
+                    "dayType": "workout",
+                    "dayName": "Monday",
+                    "morning": {
+                        "workoutType": "Upper Body Strength Test",
+                        "exercises": [
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 5,
+                                "reps": "3-5",
+                                "notes": "Test maximum strength - new PR attempt"
+                            },
+                            {
+                                "name": "Lat Pulldown",
+                                "sets": 5,
+                                "reps": "3-5",
+                                "notes": "Maximum pulling strength test"
+                            },
+                            {
+                                "name": "Incline Chest Press",
+                                "sets": 4,
+                                "reps": "5-6",
+                                "notes": "Secondary strength test"
+                            },
+                            {
+                                "name": "Cable Row",
+                                "sets": 4,
+                                "reps": "5-6",
+                                "notes": "Row strength assessment"
+                            },
+                            {
+                                "name": "Shoulder Press Machine",
+                                "sets": 4,
+                                "reps": "5-6",
+                                "notes": "Overhead pressing strength"
+                            },
+                            {
+                                "name": "Weighted Tricep Dips",
+                                "sets": 3,
+                                "reps": "6-8",
+                                "notes": "Add weight if available"
+                            },
+                            {
+                                "name": "Weighted Bicep Curls",
+                                "sets": 3,
+                                "reps": "6-8",
+                                "notes": "Peak bicep strength"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "VO2 Max Challenge",
+                        "primaryExercise": "Treadmill VO2 Test",
+                        "duration": "30 minutes",
+                        "intensity": "Maximum",
+                        "structure": "5 min warmup, 20 min progressive speed increases, 5 min cooldown",
+                        "notes": "Test cardiovascular peak performance"
+                    }
+                },
+                "day15": {
+                    "date": "2025-07-15",
+                    "dayType": "workout",
+                    "dayName": "Tuesday",
+                    "morning": {
+                        "workoutType": "Lower Body Strength Test",
+                        "exercises": [
+                            {
+                                "name": "Leg Press Machine",
+                                "sets": 6,
+                                "reps": "3-5",
+                                "notes": "Maximum leg strength test - go for PR"
+                            },
+                            {
+                                "name": "Romanian Deadlift Machine",
+                                "sets": 5,
+                                "reps": "3-5",
+                                "notes": "Hip hinge strength maximum"
+                            },
+                            {
+                                "name": "Leg Curl Machine",
+                                "sets": 4,
+                                "reps": "5-6",
+                                "notes": "Hamstring strength peak"
+                            },
+                            {
+                                "name": "Leg Extension Machine",
+                                "sets": 4,
+                                "reps": "5-6",
+                                "notes": "Quad strength test"
+                            },
+                            {
+                                "name": "Calf Raise Machine",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Maximum calf weight"
+                            },
+                            {
+                                "name": "Single Leg Press",
+                                "sets": 3,
+                                "reps": "5 each leg",
+                                "notes": "Unilateral strength test"
+                            },
+                            {
+                                "name": "Weighted Plank",
+                                "sets": 3,
+                                "reps": "45-60 seconds",
+                                "notes": "Add weight plate if possible"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Lactate Threshold",
+                        "primaryExercise": "Elliptical Threshold Test",
+                        "duration": "40 minutes",
+                        "intensity": "Threshold pace",
+                        "structure": "10 min build, 20 min threshold, 10 min cooldown",
+                        "notes": "Find sustainable high-intensity pace"
+                    }
+                },
+                "day16": {
+                    "date": "2025-07-16",
+                    "dayType": "workout",
+                    "dayName": "Wednesday",
+                    "morning": {
+                        "workoutType": "Push Power Peak",
+                        "exercises": [
+                            {
+                                "name": "Incline Chest Press",
+                                "sets": 6,
+                                "reps": "2-4",
+                                "notes": "Maximum incline pressing strength"
+                            },
+                            {
+                                "name": "Shoulder Press Machine",
+                                "sets": 6,
+                                "reps": "2-4",
+                                "notes": "Peak overhead pressing power"
+                            },
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 4,
+                                "reps": "4-6",
+                                "notes": "Secondary pressing strength"
+                            },
+                            {
+                                "name": "Lateral Raise Machine",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Maximum lateral strength"
+                            },
+                            {
+                                "name": "Chest Fly Machine",
+                                "sets": 3,
+                                "reps": "6-8",
+                                "notes": "Chest isolation strength"
+                            },
+                            {
+                                "name": "Close Grip Chest Press",
+                                "sets": 3,
+                                "reps": "5-7",
+                                "notes": "Tricep-focused pressing"
+                            },
+                            {
+                                "name": "Tricep Extension Machine",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Tricep isolation max"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Speed Intervals",
+                        "primaryExercise": "Treadmill Speed Work",
+                        "duration": "35 minutes",
+                        "intensity": "Maximum speed intervals",
+                        "structure": "5 min warmup, 25 min (15s max sprint/45s walk), 5 min cooldown",
+                        "notes": "Test maximum running speed"
+                    }
+                },
+                "day17": {
+                    "date": "2025-07-17",
+                    "dayType": "workout",
+                    "dayName": "Thursday",
+                    "morning": {
+                        "workoutType": "Pull Power Peak",
+                        "exercises": [
+                            {
+                                "name": "Lat Pulldown Wide Grip",
+                                "sets": 6,
+                                "reps": "2-4",
+                                "notes": "Maximum lat pulling strength"
+                            },
+                            {
+                                "name": "Cable Row",
+                                "sets": 6,
+                                "reps": "2-4",
+                                "notes": "Peak rowing strength"
+                            },
+                            {
+                                "name": "Lat Pulldown Close Grip",
+                                "sets": 4,
+                                "reps": "4-6",
+                                "notes": "Secondary pulling movement"
+                            },
+                            {
+                                "name": "Reverse Fly Machine",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Rear delt maximum"
+                            },
+                            {
+                                "name": "Cable Row High",
+                                "sets": 3,
+                                "reps": "6-8",
+                                "notes": "Upper trap strength"
+                            },
+                            {
+                                "name": "Bicep Curl Machine",
+                                "sets": 4,
+                                "reps": "5-7",
+                                "notes": "Peak bicep strength"
+                            },
+                            {
+                                "name": "Hammer Curl Machine",
+                                "sets": 3,
+                                "reps": "6-8",
+                                "notes": "Maximum hammer strength"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Power Endurance",
+                        "primaryExercise": "Bike Power Test",
+                        "duration": "30 minutes",
+                        "intensity": "Maximum sustainable power",
+                        "structure": "5 min warmup, 20 min power test, 5 min cooldown",
+                        "notes": "Find maximum 20-minute power output"
+                    }
+                },
+                "day18": {
+                    "date": "2025-07-18",
+                    "dayType": "workout",
+                    "dayName": "Friday",
+                    "morning": {
+                        "workoutType": "Full Body Power Test",
+                        "exercises": [
+                            {
+                                "name": "Leg Press",
+                                "sets": 4,
+                                "reps": "3-5",
+                                "notes": "Explosive leg power"
+                            },
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 4,
+                                "reps": "3-5",
+                                "notes": "Upper body power"
+                            },
+                            {
+                                "name": "Lat Pulldown",
+                                "sets": 4,
+                                "reps": "3-5",
+                                "notes": "Pulling power"
+                            },
+                            {
+                                "name": "Romanian Deadlift Machine",
+                                "sets": 3,
+                                "reps": "4-6",
+                                "notes": "Hip power development"
+                            },
+                            {
+                                "name": "Shoulder Press",
+                                "sets": 3,
+                                "reps": "4-6",
+                                "notes": "Overhead power"
+                            },
+                            {
+                                "name": "Jump Squats",
+                                "sets": 4,
+                                "reps": "5-8",
+                                "notes": "Explosive bodyweight power"
+                            },
+                            {
+                                "name": "Medicine Ball Slams",
+                                "sets": 4,
+                                "reps": "6-10",
+                                "notes": "Full body explosive power"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Peak Challenge",
+                        "primaryExercise": "All-Out Time Trial",
+                        "duration": "25 minutes",
+                        "intensity": "Maximum effort",
+                        "structure": "5 min warmup, 15 min time trial, 5 min cooldown",
+                        "notes": "Personal best distance/time challenge"
+                    }
+                },
+                "day19": {
+                    "date": "2025-07-19",
+                    "dayType": "workout",
+                    "dayName": "Saturday",
+                    "morning": {
+                        "workoutType": "Strength Assessment Circuit",
+                        "exercises": [
+                            {
+                                "name": "Max Rep Test - Chest Press",
+                                "sets": 3,
+                                "reps": "AMRAP",
+                                "notes": "As many reps as possible at 70% max"
+                            },
+                            {
+                                "name": "Max Rep Test - Leg Press",
+                                "sets": 3,
+                                "reps": "AMRAP",
+                                "notes": "Endurance strength test"
+                            },
+                            {
+                                "name": "Max Rep Test - Lat Pulldown",
+                                "sets": 3,
+                                "reps": "AMRAP",
+                                "notes": "Pulling endurance"
+                            },
+                            {
+                                "name": "Max Push-ups",
+                                "sets": 2,
+                                "reps": "To failure",
+                                "notes": "Bodyweight upper body test"
+                            },
+                            {
+                                "name": "Max Bodyweight Squats",
+                                "sets": 2,
+                                "reps": "To failure",
+                                "notes": "Lower body endurance test"
+                            },
+                            {
+                                "name": "Max Plank Hold",
+                                "sets": 2,
+                                "reps": "Time to failure",
+                                "notes": "Core endurance peak test"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Peak Week Challenge",
+                        "primaryExercise": "Ultimate Cardio Test",
+                        "duration": "45 minutes",
+                        "intensity": "Variable maximum",
+                        "structure": "15 min each machine at personal best pace",
+                        "notes": "Showcase all cardio improvements"
+                    }
+                },
+                "day20": {
+                    "date": "2025-07-20",
+                    "dayType": "rest",
+                    "dayName": "Sunday",
+                    "morning": {
+                        "activity": "Recovery and Assessment",
+                        "notes": "Review week 3 strength gains, prepare for week 4"
+                    },
+                    "afternoon": {
+                        "activity": "Light Movement",
+                        "notes": "Gentle stretching or easy walk"
+                    }
+                }
+            }
+        },
+        "week4": {
+            "weekNumber": 4,
+            "weekFocus": "Volume and Definition",
+            "days": {
+                "day21": {
+                    "date": "2025-07-21",
+                    "dayType": "workout",
+                    "dayName": "Monday",
+                    "morning": {
+                        "workoutType": "Upper Body Volume",
+                        "exercises": [
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 6,
+                                "reps": "12-15",
+                                "notes": "High volume, moderate weight, focus on pump"
+                            },
+                            {
+                                "name": "Incline Chest Press",
+                                "sets": 5,
+                                "reps": "12-15",
+                                "notes": "Upper chest volume work"
+                            },
+                            {
+                                "name": "Chest Fly Machine",
+                                "sets": 4,
+                                "reps": "15-20",
+                                "notes": "Chest isolation volume"
+                            },
+                            {
+                                "name": "Lat Pulldown Wide",
+                                "sets": 6,
+                                "reps": "12-15",
+                                "notes": "Back width volume"
+                            },
+                            {
+                                "name": "Cable Row",
+                                "sets": 5,
+                                "reps": "12-15",
+                                "notes": "Back thickness volume"
+                            },
+                            {
+                                "name": "Shoulder Press Machine",
+                                "sets": 5,
+                                "reps": "15-20",
+                                "notes": "Shoulder volume and definition"
+                            },
+                            {
+                                "name": "Lateral Raise Machine",
+                                "sets": 4,
+                                "reps": "15-20",
+                                "notes": "Side delt definition"
+                            },
+                            {
+                                "name": "Tricep Extension Superset",
+                                "sets": 4,
+                                "reps": "15 + 15",
+                                "notes": "Machine + cable pushdowns back-to-back"
+                            },
+                            {
+                                "name": "Bicep Curl Superset",
+                                "sets": 4,
+                                "reps": "15 + 15",
+                                "notes": "Regular + hammer curls back-to-back"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Fat Burn Volume",
+                        "primaryExercise": "Steady State Long",
+                        "duration": "50 minutes",
+                        "intensity": "Moderate (65-75% max HR)",
+                        "structure": "Extended fat burning session",
+                        "notes": "Volume cardio for definition phase"
+                    }
+                },
+                "day22": {
+                    "date": "2025-07-22",
+                    "dayType": "workout",
+                    "dayName": "Tuesday",
+                    "morning": {
+                        "workoutType": "Lower Body Volume",
+                        "exercises": [
+                            {
+                                "name": "Leg Press Machine",
+                                "sets": 6,
+                                "reps": "15-20",
+                                "notes": "High volume leg work"
+                            },
+                            {
+                                "name": "Leg Extension Machine",
+                                "sets": 5,
+                                "reps": "15-20",
+                                "notes": "Quad definition focus"
+                            },
+                            {
+                                "name": "Leg Curl Machine",
+                                "sets": 5,
+                                "reps": "15-20",
+                                "notes": "Hamstring definition"
+                            },
+                            {
+                                "name": "Romanian Deadlift Machine",
+                                "sets": 4,
+                                "reps": "12-15",
+                                "notes": "Hamstring and glute volume"
+                            },
+                            {
+                                "name": "Walking Lunges",
+                                "sets": 4,
+                                "reps": "15 each leg",
+                                "notes": "Functional leg volume"
+                            },
+                            {
+                                "name": "Bulgarian Split Squats",
+                                "sets": 4,
+                                "reps": "12 each leg",
+                                "notes": "Unilateral leg definition"
+                            },
+                            {
+                                "name": "Calf Raise Machine",
+                                "sets": 6,
+                                "reps": "20-25",
+                                "notes": "High volume calf work"
+                            },
+                            {
+                                "name": "Core Volume Circuit",
+                                "sets": 4,
+                                "reps": "20 each",
+                                "notes": "Plank, bicycle crunches, Russian twists, leg raises"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "HIIT Definition",
+                        "primaryExercise": "Elliptical HIIT",
+                        "duration": "40 minutes",
+                        "intensity": "High intensity intervals",
+                        "structure": "5 min warmup, 30 min (1 min hard/1 min easy), 5 min cooldown",
+                        "notes": "HIIT for muscle definition"
+                    }
+                },
+                "day23": {
+                    "date": "2025-07-23",
+                    "dayType": "workout",
+                    "dayName": "Wednesday",
+                    "morning": {
+                        "workoutType": "Push Volume Specialization",
+                        "exercises": [
+                            {
+                                "name": "Incline Chest Press",
+                                "sets": 6,
+                                "reps": "12-15",
+                                "notes": "Upper chest volume focus"
+                            },
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 5,
+                                "reps": "12-15",
+                                "notes": "Mid chest volume"
+                            },
+                            {
+                                "name": "Decline Chest Press",
+                                "sets": 4,
+                                "reps": "12-15",
+                                "notes": "Lower chest if available"
+                            },
+                            {
+                                "name": "Chest Fly Machine",
+                                "sets": 5,
+                                "reps": "15-20",
+                                "notes": "Chest isolation volume"
+                            },
+                            {
+                                "name": "Shoulder Press Machine",
+                                "sets": 6,
+                                "reps": "15-20",
+                                "notes": "Shoulder volume"
+                            },
+                            {
+                                "name": "Lateral Raise Machine",
+                                "sets": 5,
+                                "reps": "15-20",
+                                "notes": "Side delt specialization"
+                            },
+                            {
+                                "name": "Rear Delt Fly",
+                                "sets": 4,
+                                "reps": "15-20",
+                                "notes": "Rear delt volume"
+                            },
+                            {
+                                "name": "Tricep Giant Set",
+                                "sets": 3,
+                                "reps": "12+12+12",
+                                "notes": "Extension + dips + pushdowns"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Metabolic Circuit",
+                        "primaryExercise": "High Intensity Circuit",
+                        "duration": "35 minutes",
+                        "intensity": "Very high",
+                        "structure": "Multiple machine circuit with minimal rest",
+                        "notes": "Metabolic boost for definition"
+                    }
+                },
+                "day24": {
+                    "date": "2025-07-24",
+                    "dayType": "workout",
+                    "dayName": "Thursday",
+                    "morning": {
+                        "workoutType": "Pull Volume Specialization",
+                        "exercises": [
+                            {
+                                "name": "Lat Pulldown Wide Grip",
+                                "sets": 6,
+                                "reps": "12-15",
+                                "notes": "Lat width volume"
+                            },
+                            {
+                                "name": "Lat Pulldown Close Grip",
+                                "sets": 5,
+                                "reps": "12-15",
+                                "notes": "Lower lat focus"
+                            },
+                            {
+                                "name": "Cable Row Low",
+                                "sets": 5,
+                                "reps": "12-15",
+                                "notes": "Mid trap volume"
+                            },
+                            {
+                                "name": "Cable Row High",
+                                "sets": 4,
+                                "reps": "12-15",
+                                "notes": "Upper trap focus"
+                            },
+                            {
+                                "name": "Reverse Fly Machine",
+                                "sets": 5,
+                                "reps": "15-20",
+                                "notes": "Rear delt volume"
+                            },
+                            {
+                                "name": "Straight Arm Pulldown",
+                                "sets": 4,
+                                "reps": "15-20",
+                                "notes": "Lat isolation if available"
+                            },
+                            {
+                                "name": "Bicep Curl Machine",
+                                "sets": 6,
+                                "reps": "12-15",
+                                "notes": "Bicep volume work"
+                            },
+                            {
+                                "name": "Hammer Curl Machine",
+                                "sets": 4,
+                                "reps": "12-15",
+                                "notes": "Bicep variety volume"
+                            },
+                            {
+                                "name": "Cable Curl Variations",
+                                "sets": 3,
+                                "reps": "15-20",
+                                "notes": "High rep bicep finisher"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Endurance Builder",
+                        "primaryExercise": "Long Steady Cardio",
+                        "duration": "55 minutes",
+                        "intensity": "Moderate",
+                        "structure": "Longest cardio session for endurance",
+                        "notes": "Peak endurance building"
+                    }
+                },
+                "day25": {
+                    "date": "2025-07-25",
+                    "dayType": "workout",
+                    "dayName": "Friday",
+                    "morning": {
+                        "workoutType": "Full Body Volume Circuit",
+                        "exercises": [
+                            {
+                                "name": "Circuit Round 1",
+                                "sets": 4,
+                                "reps": "15 each",
+                                "notes": "Chest press → Leg press → Lat pulldown → Leg curl"
+                            },
+                            {
+                                "name": "Circuit Round 2",
+                                "sets": 4,
+                                "reps": "15 each",
+                                "notes": "Shoulder press → Leg extension → Cable row → Calf raise"
+                            },
+                            {
+                                "name": "Circuit Round 3",
+                                "sets": 4,
+                                "reps": "15 each",
+                                "notes": "Chest fly → Lunges → Bicep curl → Tricep extension"
+                            },
+                            {
+                                "name": "Finisher Circuit",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "Push-ups → Squats → Plank → Mountain climbers"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Mixed Volume Day",
+                        "primaryExercise": "Triple Cardio Challenge",
+                        "duration": "45 minutes",
+                        "intensity": "Moderate to high",
+                        "structure": "15 min treadmill + 15 min bike + 15 min elliptical",
+                        "notes": "Volume and variety combination"
+                    }
+                },
+                "day26": {
+                    "date": "2025-07-26",
+                    "dayType": "workout",
+                    "dayName": "Saturday",
+                    "morning": {
+                        "workoutType": "Definition Finisher",
+                        "exercises": [
+                            {
+                                "name": "High Rep Chest Press",
+                                "sets": 5,
+                                "reps": "20-25",
+                                "notes": "Ultra high rep for definition"
+                            },
+                            {
+                                "name": "High Rep Leg Press",
+                                "sets": 5,
+                                "reps": "25-30",
+                                "notes": "Maximum leg volume"
+                            },
+                            {
+                                "name": "High Rep Lat Pulldown",
+                                "sets": 5,
+                                "reps": "20-25",
+                                "notes": "Back definition focus"
+                            },
+                            {
+                                "name": "High Rep Shoulder Press",
+                                "sets": 4,
+                                "reps": "20-25",
+                                "notes": "Shoulder definition"
+                            },
+                            {
+                                "name": "Superset Arms",
+                                "sets": 5,
+                                "reps": "20+20",
+                                "notes": "Bicep curl + tricep extension"
+                            },
+                            {
+                                "name": "Core Definition Circuit",
+                                "sets": 5,
+                                "reps": "25 each",
+                                "notes": "All core exercises for definition"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "July Finale",
+                        "primaryExercise": "Grand Finale Cardio",
+                        "duration": "60 minutes",
+                        "intensity": "Celebratory pace",
+                        "structure": "Choose your favorite cardio for longest session",
+                        "notes": "Celebrate month completion with epic cardio"
+                    }
+                },
+                "day27": {
+                    "date": "2025-07-27",
+                    "dayType": "rest",
+                    "dayName": "Sunday",
+                    "morning": {
+                        "activity": "Week 4 Recovery",
+                        "notes": "Complete rest, meal prep, month assessment preparation"
+                    },
+                    "afternoon": {
+                        "activity": "Month Reflection",
+                        "notes": "Review July progress, plan for August transition"
+                    }
+                }
+            }
+        },
+        "week5": {
+            "weekNumber": 5,
+            "weekFocus": "Month Completion and Assessment",
+            "days": {
+                "day28": {
+                    "date": "2025-07-28",
+                    "dayType": "workout",
+                    "dayName": "Monday",
+                    "morning": {
+                        "workoutType": "Strength Assessment Baseline",
+                        "exercises": [
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 4,
+                                "reps": "5-8",
+                                "notes": "Record final strength numbers for July comparison"
+                            },
+                            {
+                                "name": "Lat Pulldown",
+                                "sets": 4,
+                                "reps": "5-8",
+                                "notes": "Measure pulling strength improvement"
+                            },
+                            {
+                                "name": "Leg Press Machine",
+                                "sets": 4,
+                                "reps": "5-8",
+                                "notes": "Document leg strength gains"
+                            },
+                            {
+                                "name": "Shoulder Press Machine",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Overhead pressing assessment"
+                            },
+                            {
+                                "name": "Cable Row",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Rowing strength measurement"
+                            },
+                            {
+                                "name": "Romanian Deadlift Machine",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Hip hinge strength test"
+                            }
+                        ]
+                    },
+                    "afternoon": {
+                        "cardioType": "Cardio Assessment",
+                        "primaryExercise": "Endurance Baseline Test",
+                        "duration": "30 minutes",
+                        "intensity": "Steady challenging pace",
+                        "structure": "Compare to June 23rd baseline performance",
+                        "notes": "Document cardiovascular improvements over the month"
+                    }
+                },
+                "day29": {
+                    "date": "2025-07-29",
+                    "dayType": "workout",
+                    "dayName": "Tuesday",
+                    "morning": {
+                        "workoutType": "Strength Assessment",
+                        "notes": "Test all major lifts for progress measurement"
+                    },
+                    "afternoon": {
+                        "cardioType": "Endurance Test",
+                        "notes": "Test cardiovascular improvements"
+                    }
+                },
+                "day30": {
+                    "date": "2025-07-30",
+                    "dayType": "workout",
+                    "dayName": "Wednesday",
+                    "morning": {
+                        "workoutType": "July Finisher",
+                        "notes": "Celebrate month completion with favorite exercises"
+                    },
+                    "afternoon": {
+                        "cardioType": "Victory Lap",
+                        "notes": "Enjoyable cardio session to finish the month"
+                    }
+                },
+                "day31": {
+                    "date": "2025-07-31",
+                    "dayType": "workout",
+                    "dayName": "Thursday",
+                    "morning": {
+                        "workoutType": "Transition Prep",
+                        "notes": "Last twice-daily session, prepare for August"
+                    },
+                    "afternoon": {
+                        "cardioType": "Summer Finale",
+                        "notes": "Final afternoon cardio of summer schedule"
+                    }
+                }
+            }
+        }
+    },
+    "progressionNotes": {
+        "week1": "Build on June foundation, increase weights 5-10 lbs",
+        "week2": "Progressive overload, add sets or reps to major exercises",
+        "week3": "Peak intensity, test strength limits safely",
+        "week4": "Higher volume for definition, focus on muscle fatigue",
+        "week5": "Assessment and transition preparation"
+    },
+    "monthlyReminders": [
+        "Take progress photos July 1st and compare to June 23rd",
+        "Track weight changes weekly",
+        "Measure body fat percentage mid-month",
+        "Record strength improvements in major lifts",
+        "Note energy levels and recovery between sessions",
+        "Prepare for August twice-daily continuation",
+        "Assess twice-daily schedule sustainability"
+    ]
+}

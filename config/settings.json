@@ -1,0 +1,67 @@
+{
+  "user": {
+    "name": "Jerson",
+    "gymName": "Jerson's Exercise Routine",
+    "location": "Provo, Utah",
+    "timezone": "America/Denver"
+  },
+  "preferences": {
+    "startWeekOn": "monday",
+    "preferredWorkoutTime": "morning",
+    "workoutDuration": {
+      "onceDailyMin": 45,
+      "onceDailyMax": 60,
+      "twiceDailyMorning": 45,
+      "twiceDailyAfternoon": 30
+    },
+    "measurementUnits": {
+      "weight": "lbs",
+      "height": "ft-in",
+      "distance": "miles",
+      "bodyMeasurements": "inches"
+    }
+  },
+  "display": {
+    "theme": "dark",
+    "style": "minimal",
+    "colorScheme": {
+      "avoidColors": ["purple", "blue"],
+      "preferredAccents": ["green", "orange", "red", "yellow"]
+    },
+    "showMotivationalContent": false,
+    "showBuiltInReminders": false,
+    "progressStatsDisplay": "minimal"
+  },
+  "security": {
+    "adminPassword": "onedayatatime",
+    "sessionTimeout": 30
+  },
+  "functionality": {
+    "autoSwitchPlans": true,
+    "showUpcomingWorkouts": true,
+    "enableProgressTracking": true,
+    "enablePhotoTracking": true,
+    "compactMode": true
+  },
+  "workoutDefaults": {
+    "restTimeBetweenSets": "90 seconds",
+    "warmupDuration": "5 minutes",
+    "cooldownDuration": "5 minutes",
+    "defaultSets": 3,
+    "defaultReps": "10-12"
+  },
+  "nutritionDefaults": {
+    "mealsPerDay": 6,
+    "hydrationGoal": 3.5,
+    "hydrationUnit": "liters",
+    "showMacroPercentages": true,
+    "showCalorieBreakdown": true
+  },
+  "dataSettings": {
+    "autoSaveProgress": true,
+    "backupFrequency": "weekly",
+    "dataRetention": "unlimited"
+  },
+  "version": "1.0",
+  "lastUpdated": "2025-08-22"
+}

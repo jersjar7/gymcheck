@@ -1,0 +1,133 @@
+{
+  "currentDate": "2025-08-22",
+  "currentMonth": "august-2025",
+  "activePlans": {
+    "workout": {
+      "fileName": "august-2025-twice-daily.json",
+      "fullPath": "plans/2025/workouts/august-2025-twice-daily.json",
+      "planType": "twice-daily",
+      "startDate": "2025-08-01",
+      "endDate": "2025-08-31",
+      "status": "active",
+      "daysRemaining": 9
+    },
+    "nutrition": {
+      "fileName": "august-2025-lean-gains.json",
+      "fullPath": "plans/2025/nutrition/august-2025-lean-gains.json",
+      "planType": "lean-gains",
+      "startDate": "2025-08-01", 
+      "endDate": "2025-08-31",
+      "status": "active",
+      "daysRemaining": 9
+    }
+  },
+  "upcomingPlans": {
+    "workout": {
+      "fileName": "september-2025-once-daily.json",
+      "fullPath": "plans/2025/workouts/september-2025-once-daily.json",
+      "planType": "once-daily",
+      "startDate": "2025-09-01",
+      "endDate": "2025-09-30",
+      "status": "scheduled",
+      "autoActivate": true,
+      "reason": "School semester starts - switch to once daily schedule"
+    },
+    "nutrition": {
+      "fileName": "september-2025-maintenance.json",
+      "fullPath": "plans/2025/nutrition/september-2025-maintenance.json", 
+      "planType": "maintenance",
+      "startDate": "2025-09-01",
+      "endDate": "2025-09-30",
+      "status": "scheduled",
+      "autoActivate": true,
+      "reason": "Maintain weight during academic stress"
+    }
+  },
+  "planHistory": [
+    {
+      "month": "july-2025",
+      "workout": "july-2025-twice-daily.json",
+      "nutrition": "july-2025-lean-gains.json",
+      "status": "completed"
+    }
+  ],
+  "planSchedule": {
+    "2025": {
+      "august": {
+        "workout": "twice-daily",
+        "nutrition": "lean-gains",
+        "notes": "Summer schedule - maximum training volume"
+      },
+      "september": {
+        "workout": "once-daily", 
+        "nutrition": "maintenance",
+        "notes": "School starts - adapt to academic schedule"
+      },
+      "october": {
+        "workout": "once-daily",
+        "nutrition": "lean-gains",
+        "notes": "Settled into school routine - resume fat loss"
+      },
+      "november": {
+        "workout": "once-daily",
+        "nutrition": "lean-gains", 
+        "notes": "Continue lean gains through semester"
+      },
+      "december": {
+        "workout": "once-daily",
+        "nutrition": "maintenance",
+        "notes": "Finals period - maintain current progress"
+      }
+    },
+    "2026": {
+      "january": {
+        "workout": "once-daily",
+        "nutrition": "muscle-building",
+        "notes": "New year - focus on strength gains"
+      },
+      "february": {
+        "workout": "once-daily", 
+        "nutrition": "muscle-building",
+        "notes": "Continue building phase"
+      },
+      "march": {
+        "workout": "once-daily",
+        "nutrition": "lean-gains",
+        "notes": "Cut for spring break"
+      },
+      "april": {
+        "workout": "once-daily",
+        "nutrition": "lean-gains", 
+        "notes": "Continue cut through semester end"
+      },
+      "may": {
+        "workout": "twice-daily",
+        "nutrition": "muscle-building",
+        "notes": "Summer break returns - volume increase"
+      }
+    }
+  },
+  "autoSwitching": {
+    "enabled": true,
+    "checkDaily": true,
+    "notificationDays": 7,
+    "warningMessage": "New plans needed for next month"
+  },
+  "planReminders": {
+    "createNewPlans": {
+      "daysBeforeMonth": 7,
+      "enabled": false,
+      "message": "Time to create next month's plans"
+    },
+    "planValidation": {
+      "enabled": true,
+      "checkBeforeActivation": true
+    }
+  },
+  "systemSettings": {
+    "lastUpdated": "2025-08-22",
+    "autoUpdateDaysRemaining": true,
+    "timezonePlan": "America/Denver",
+    "planSwitchTime": "00:01"
+  }
+}
