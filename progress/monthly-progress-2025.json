@@ -1,0 +1,166 @@
+{
+  "year": 2025,
+  "lastUpdated": "2025-06-25",
+  "months": {
+    "june": {
+      "startDate": "2025-06-23",
+      "endDate": "2025-06-30",
+      "workoutPlan": "june-2025-twice-daily.json",
+      "nutritionPlan": "june-2025-lean-gains.json",
+      "measurements": {
+        "startWeight": 175.2,
+        "currentWeight": 174.8,
+        "targetWeight": 170.0,
+        "bodyFatStart": 16.5,
+        "bodyFatCurrent": 16.2,
+        "targetBodyFat": 12.0
+      },
+      "strength": {
+        "chestPress": {
+          "startMax": 190,
+          "currentMax": 195,
+          "targetMax": 205
+        },
+        "latPulldown": {
+          "startMax": 150,
+          "currentMax": 155,
+          "targetMax": 165
+        },
+        "legPress": {
+          "startMax": 360,
+          "currentMax": 370,
+          "targetMax": 385
+        },
+        "shoulderPress": {
+          "startMax": 125,
+          "currentMax": 130,
+          "targetMax": 135
+        }
+      },
+      "workoutStats": {
+        "totalWorkouts": 6,
+        "completedWorkouts": 4,
+        "adherencePercentage": 67,
+        "avgWorkoutDuration": 52,
+        "missedWorkouts": 2
+      },
+      "nutritionStats": {
+        "adherencePercentage": 78,
+        "avgDailyCalories": 2380,
+        "targetCalories": 2350,
+        "proteinAverage": 175,
+        "hydrationGoalsMet": 5
+      },
+      "goals": [
+        {
+          "goal": "Complete all twice-daily sessions",
+          "target": 8,
+          "current": 4,
+          "percentage": 50
+        },
+        {
+          "goal": "Establish consistent timing",
+          "target": 100,
+          "current": 85,
+          "percentage": 85
+        },
+        {
+          "goal": "Learn proper form on all exercises",
+          "target": 100,
+          "current": 90,
+          "percentage": 90
+        }
+      ],
+      "notes": [
+        "Getting used to twice-daily schedule",
+        "Morning workouts feel great",
+        "Need to improve afternoon cardio consistency",
+        "Meal timing still being dialed in"
+      ]
+    },
+    "july": {
+      "startDate": "2025-07-01",
+      "endDate": "2025-07-31",
+      "workoutPlan": "july-2025-twice-daily.json",
+      "nutritionPlan": "july-2025-lean-gains.json",
+      "status": "upcoming",
+      "goals": [
+        {
+          "goal": "Complete 26 twice-daily sessions",
+          "target": 26,
+          "current": 0,
+          "percentage": 0
+        },
+        {
+          "goal": "Reduce body fat by 3-4%",
+          "target": 4,
+          "current": 0,
+          "percentage": 0
+        },
+        {
+          "goal": "Increase major lifts by 10-15 lbs",
+          "target": 15,
+          "current": 0,
+          "percentage": 0
+        }
+      ]
+    }
+  },
+  "yearlyGoals": {
+    "weightLoss": {
+      "startWeight": 175.2,
+      "targetWeight": 165.0,
+      "currentWeight": 174.8,
+      "progress": 0.4
+    },
+    "bodyFat": {
+      "startBodyFat": 16.5,
+      "targetBodyFat": 10.0,
+      "currentBodyFat": 16.2,
+      "progress": 0.3
+    },
+    "strength": {
+      "chestPressGoal": 225,
+      "legPressGoal": 450,
+      "pulldownGoal": 180,
+      "shoulderPressGoal": 150
+    },
+    "consistency": {
+      "targetAdherence": 90,
+      "currentAdherence": 78,
+      "workoutStreak": 3
+    }
+  },
+  "progressPhotos": {
+    "june": {
+      "startDate": "2025-06-23",
+      "photos": [
+        {
+          "type": "front",
+          "filename": "june-23-front.jpg",
+          "date": "2025-06-23"
+        },
+        {
+          "type": "side",
+          "filename": "june-23-side.jpg", 
+          "date": "2025-06-23"
+        },
+        {
+          "type": "back",
+          "filename": "june-23-back.jpg",
+          "date": "2025-06-23"
+        }
+      ]
+    }
+  },
+  "settings": {
+    "trackingFrequency": "daily",
+    "measurementUnits": "imperial",
+    "autoCalculateProgress": true,
+    "reminderSettings": {
+      "weeklyWeighIn": true,
+      "monthlyPhotos": true,
+      "strengthTests": true
+    }
+  }
+}
