@@ -400,7 +400,9 @@ export class TodayNavigation {
         const specialNoteText = document.getElementById('specialNoteText');
 
         if (dayNumberEl) {
-            dayNumberEl.textContent = `${this.currentDayIndex + 1}`;
+            // FIX: Use the same logic as the navigation indicator
+            const dayNumberWithinPlan = this.calculateDayNumberWithinPlan(dayData);
+            dayNumberEl.textContent = `${dayNumberWithinPlan}`;
         }
 
         if (weekNumberEl) {
@@ -415,6 +417,22 @@ export class TodayNavigation {
                 specialNoteEl.style.display = 'none';
             }
         }
+    }
+
+    // Make sure this method exists (it should already be there from the previous fix)
+    static calculateDayNumberWithinPlan(dayData) {
+        if (!dayData?.planInfo?.startDate) {
+            // Fallback to global index if no plan info
+            return this.currentDayIndex + 1;
+        }
+
+        // Calculate days since the start of this specific plan
+        const planStartDate = new Date(dayData.planInfo.startDate + 'T00:00:00');
+        const currentViewDate = new Date(this.currentViewDate + 'T00:00:00');
+        const diffTime = currentViewDate - planStartDate;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+        return Math.max(1, diffDays);
     }
 
     static updateDayTypeStyling(dayData) {
