@@ -4,6 +4,7 @@ let activePlans = {};
 let currentWorkoutPlan = {};
 let currentSection = 'today';
 let progressData = {};
+let isHalfMonthSystem = false;
 
 // ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', async function() {
@@ -12,6 +13,11 @@ document.addEventListener('DOMContentLoaded', async function() {
         setupEventListeners();
         updateCurrentDateTime();
         setInterval(updateCurrentDateTime, 60000); // Update every minute
+        
+        // Check for half-month switching daily
+        if (isHalfMonthSystem) {
+            setInterval(checkHalfMonthSwitch, 24 * 60 * 60 * 1000); // Check daily
+        }
     } catch (error) {
         console.error('Failed to initialize app:', error);
         showErrorMessage('Failed to load application data. Please refresh the page.');
@@ -24,6 +30,15 @@ async function initializeApp() {
         currentSettings = await loadJSON('config/settings.json');
         activePlans = await loadJSON('config/active-plans.json');
         
+        // Detect if we're using half-month system
+        isHalfMonthSystem = currentSettings.planStructure?.type === 'half-month' || 
+                          activePlans.systemType === 'half-month';
+        
+        // Auto-switch plans if needed
+        if (isHalfMonthSystem) {
+            await checkAndSwitchPlans();
+        }
+        
         // Load active workout plan
         if (activePlans.activePlans?.workout?.fullPath) {
             currentWorkoutPlan = await loadJSON(activePlans.activePlans.workout.fullPath);
@@ -33,7 +48,6 @@ async function initializeApp() {
         try {
             progressData = await loadJSON('progress/monthly-progress-2025.json');
         } catch (error) {
-            // Progress data doesn't exist yet, that's okay
             progressData = initializeProgressData();
         }
         
@@ -46,6 +60,103 @@ async function initializeApp() {
     } catch (error) {
         console.error('Error initializing app:', error);
         throw error;
+    }
+}
+
+// ===== HALF-MONTH SYSTEM FUNCTIONS =====
+async function checkAndSwitchPlans() {
+    const today = getCurrentDate();
+    const currentPlan = activePlans.activePlans?.workout;
+    
+    if (!currentPlan) return;
+    
+    // Check if we need to switch from Part 1 to Part 2
+    if (today > currentPlan.endDate) {
+        const nextPlan = activePlans.upcomingPlans?.workout;
+        if (nextPlan && nextPlan.autoActivate) {
+            await switchToNextPlan();
+        }
+    }
+    
+    // Check if it's time to switch to Part 2 (day 16 of month)
+    const dayOfMonth = parseInt(today.split('-')[2]);
+    if (currentPlan.part === 1 && dayOfMonth >= 16) {
+        const nextPlan = activePlans.upcomingPlans?.workout;
+        if (nextPlan && nextPlan.part === 2) {
+            await switchToNextPlan();
+        }
+    }
+}
+
+async function switchToNextPlan() {
+    try {
+        console.log('Switching to next half-month plan...');
+        
+        // Move current plan to history
+        if (!activePlans.planHistory) {
+            activePlans.planHistory = [];
+        }
+        
+        const currentPlan = activePlans.activePlans.workout;
+        activePlans.planHistory.push({
+            ...currentPlan,
+            status: 'completed',
+            completedDate: getCurrentDate()
+        });
+        
+        // Move upcoming plan to active
+        const nextPlan = activePlans.upcomingPlans.workout;
+        activePlans.activePlans.workout = {
+            ...nextPlan,
+            status: 'active',
+            daysRemaining: calculateDaysRemaining(nextPlan.startDate, nextPlan.endDate)
+        };
+        
+        // Clear upcoming (will be set when next plan is uploaded)
+        activePlans.upcomingPlans = {};
+        
+        // Update current date and month
+        activePlans.currentDate = getCurrentDate();
+        activePlans.currentMonth = getHalfMonthKey(getCurrentDate());
+        
+        // Reload the new workout plan
+        if (activePlans.activePlans?.workout?.fullPath) {
+            currentWorkoutPlan = await loadJSON(activePlans.activePlans.workout.fullPath);
+        }
+        
+        showSuccessMessage('Successfully switched to Part 2 of the month!');
+        
+        // Refresh all sections
+        populateTodaySection();
+        populateWeekViewSection();
+        populateAdminSection();
+        
+    } catch (error) {
+        console.error('Error switching plans:', error);
+        showErrorMessage('Failed to switch to next plan automatically.');
+    }
+}
+
+function getHalfMonthKey(dateString) {
+    const date = new Date(dateString + 'T00:00:00');
+    const year = date.getFullYear();
+    const month = date.toLocaleDateString('en-US', { month: 'long' }).toLowerCase();
+    const dayOfMonth = date.getDate();
+    const part = dayOfMonth <= 15 ? 'part1' : 'part2';
+    
+    return `${month}-${year}-${part}`;
+}
+
+function calculateDaysRemaining(startDate, endDate) {
+    const today = new Date(getCurrentDate() + 'T00:00:00');
+    const end = new Date(endDate + 'T00:00:00');
+    const diffTime = end - today;
+    return Math.max(0, Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
+}
+
+function checkHalfMonthSwitch() {
+    if (isHalfMonthSystem) {
+        checkAndSwitchPlans();
     }
 }
 
@@ -91,7 +202,6 @@ function getTodaysDayNumber() {
     return Math.max(1, diffDays);
 }
 
-// NEW: Function to find day data by searching through actual JSON structure
 function findTodaysDayData() {
     const today = getCurrentDate();
     
@@ -221,7 +331,9 @@ function updateCurrentDateTime() {
         if (todayData) {
             const dayNumber = getTodaysDayNumber();
             const { week, day } = getWeekAndDay(dayNumber);
-            weekInfoElement.textContent = `Week ${todayData.weekNumber}, Day ${dayNumber}`;
+            const partInfo = isHalfMonthSystem ? 
+                ` (Part ${activePlans.activePlans?.workout?.part || 1})` : '';
+            weekInfoElement.textContent = `Week ${todayData.weekNumber}, Day ${dayNumber}${partInfo}`;
         }
     }
 }
@@ -233,93 +345,58 @@ function populateTodaySection() {
 }
 
 function populateTodaysWorkout() {
-    if (!currentWorkoutPlan.weeks) {
-        console.log('No workout plan weeks available');
-        return;
-    }
+    if (!currentWorkoutPlan.weeks) return;
     
-    // Use the new function to find today's data
     const todayData = findTodaysDayData();
     
     if (!todayData) {
         console.log('No workout data found for today');
-        // Show a message in the workout area
-        const workoutTypeElement = document.querySelector('.workout-type');
-        const exerciseList = document.querySelector('.exercise-list');
-        if (workoutTypeElement) workoutTypeElement.textContent = 'No workout scheduled';
-        if (exerciseList) exerciseList.innerHTML = '<div style="text-align: center; color: #94a3b8; padding: 2rem;">No workout found for this date</div>';
         return;
     }
     
     const dayData = todayData.dayData;
-    console.log('Processing day data:', dayData); // Debug log
     
-    // Update workout type - FIXED: Make sure the element exists and gets updated
+    // Update workout type
     const workoutTypeElement = document.querySelector('.workout-type');
     if (workoutTypeElement) {
         if (dayData.dayType === 'rest') {
             workoutTypeElement.textContent = 'Rest Day';
-            console.log('Set workout type to: Rest Day');
         } else {
-            // Handle different workout structures - FIXED: Added more fallbacks
             const workoutType = dayData.workout?.workoutType || 
                               dayData.morning?.workoutType || 
                               'Daily Workout';
             workoutTypeElement.textContent = workoutType;
-            console.log('Set workout type to:', workoutType);
         }
-    } else {
-        console.error('Could not find .workout-type element');
+        
+        // Add special note if it exists
+        if (dayData.specialNote) {
+            workoutTypeElement.textContent += ` - ${dayData.specialNote}`;
+        }
     }
     
-    // Populate exercises - FIXED: Better error handling and structure detection
+    // Populate exercises
     const exerciseList = document.querySelector('.exercise-list');
-    if (exerciseList) {
-        if (dayData.dayType === 'workout') {
-            exerciseList.innerHTML = ''; // Clear existing content
-            let exercisesAdded = 0;
-            
-            // FIXED: Try multiple data structures in order of preference
-            let exercises = null;
-            let source = '';
-            
-            // Try new single workout structure first
-            if (dayData.workout?.exercises && Array.isArray(dayData.workout.exercises)) {
-                exercises = dayData.workout.exercises;
-                source = 'workout';
-            }
-            // Try legacy morning structure
-            else if (dayData.morning?.exercises && Array.isArray(dayData.morning.exercises)) {
-                exercises = dayData.morning.exercises;
-                source = 'morning';
-            }
-            // Try afternoon structure as fallback
-            else if (dayData.afternoon?.exercises && Array.isArray(dayData.afternoon.exercises)) {
-                exercises = dayData.afternoon.exercises;
-                source = 'afternoon';
-            }
-            
-            console.log(`Found exercises in '${source}' structure:`, exercises);
-            
-            if (exercises && exercises.length > 0) {
-                exercises.forEach((exercise, index) => {
-                    const exerciseElement = createExerciseElement(exercise, `${source}-${index}`);
-                    exerciseList.appendChild(exerciseElement);
-                    exercisesAdded++;
-                });
-                console.log(`Added ${exercisesAdded} exercises to the list`);
-            } else {
-                // No exercises found - show a message
-                exerciseList.innerHTML = `
-                    <div style="text-align: center; color: #94a3b8; padding: 2rem;">
-                        <p>Workout scheduled but no exercises found.</p>
-                        <p style="font-size: 0.875rem; margin-top: 0.5rem;">Check the JSON structure for this date.</p>
-                    </div>
-                `;
-                console.warn('No exercises found in any structure for this workout day');
-            }
-        } else {
-            // Rest day content
+    if (exerciseList && dayData.dayType !== 'rest') {
+        exerciseList.innerHTML = '';
+        
+        // Handle different workout structures
+        let exercises = [];
+        if (dayData.workout?.exercises) {
+            exercises = dayData.workout.exercises;
+        } else if (dayData.morning?.exercises) {
+            exercises = dayData.morning.exercises;
+        }
+        
+        exercises.forEach((exercise, index) => {
+            const exerciseElement = createExerciseElement(exercise, `workout-${index}`);
+            exerciseList.appendChild(exerciseElement);
+        });
+    }
+        
+    // Rest day content
+    if (dayData.dayType === 'rest') {
+        const exerciseList = document.querySelector('.exercise-list');
+        if (exerciseList) {
             exerciseList.innerHTML = `
                 <div class="rest-day-content">
                     <div class="rest-message">
@@ -329,69 +406,23 @@ function populateTodaysWorkout() {
                     </div>
                 </div>
             `;
-            console.log('Displayed rest day content');
         }
-    } else {
-        console.error('Could not find .exercise-list element');
     }
     
-    // Always update progress after populating
     updateWorkoutProgress();
 }
 
-// Enhanced createExerciseElement function with better error handling
 function createExerciseElement(exercise, id) {
-    if (!exercise || !exercise.name) {
-        console.warn('Invalid exercise data:', exercise);
-        return document.createElement('div'); // Return empty div to prevent errors
-    }
-    
     const exerciseElement = document.createElement('div');
     exerciseElement.className = 'exercise-item';
-    
-    // Handle missing sets/reps gracefully
-    const sets = exercise.sets || '3';
-    const reps = exercise.reps || '10-12';
-    const notes = exercise.notes ? ` - ${exercise.notes}` : '';
-    
     exerciseElement.innerHTML = `
         <input type="checkbox" class="exercise-checkbox" data-exercise="${id}">
         <div class="exercise-details">
             <div class="exercise-name">${exercise.name}</div>
-            <div class="exercise-specs">${sets} sets × ${reps}${notes}</div>
+            <div class="exercise-specs">${exercise.sets} sets × ${exercise.reps}</div>
         </div>
     `;
-    
-    console.log(`Created exercise element: ${exercise.name}`);
     return exerciseElement;
-}
-
-// Also add this debug function to help troubleshoot
-function debugTodaysWorkout() {
-    console.log('=== DEBUG TODAY\'S WORKOUT ===');
-    
-    const todayData = findTodaysDayData();
-    if (!todayData) {
-        console.log('❌ No data found for today');
-        return;
-    }
-    
-    console.log('✅ Found today\'s data:', todayData);
-    
-    const dayData = todayData.dayData;
-    console.log('Day type:', dayData.dayType);
-    console.log('Day name:', dayData.dayName);
-    
-    // Check all possible exercise locations
-    console.log('Checking exercise structures:');
-    console.log('  dayData.workout?.exercises:', dayData.workout?.exercises?.length || 'not found');
-    console.log('  dayData.morning?.exercises:', dayData.morning?.exercises?.length || 'not found');
-    console.log('  dayData.afternoon?.exercises:', dayData.afternoon?.exercises?.length || 'not found');
-    
-    // Check DOM elements
-    console.log('DOM elements:');
-    console.log('  .workout-type element:', document.querySelector('.workout-type') ? 'found' : 'NOT FOUND');
-    console.log('  .exercise-list element:', document.querySelector('.exercise-list') ? 'found' : 'NOT FOUND');
 }
 
 function setupCardioTracking() {
@@ -416,12 +447,13 @@ function populateWeekHeader() {
     if (weekDates && activePlans.activePlans?.workout) {
         const startDate = activePlans.activePlans.workout.startDate;
         const endDate = activePlans.activePlans.workout.endDate;
-        weekDates.textContent = `${formatDate(startDate)} - ${formatDate(endDate)}`;
+        const partInfo = isHalfMonthSystem ? 
+            ` - Part ${activePlans.activePlans.workout.part}` : '';
+        weekDates.textContent = `${formatDate(startDate)} - ${formatDate(endDate)}${partInfo}`;
     }
 }
 
 function populateWeekProgress() {
-    // This will be enhanced when we add progress tracking
     document.getElementById('workoutsCompleted').textContent = '4/5';
     document.getElementById('cardioCompleted').textContent = '5/5';
     document.getElementById('weeklyAdherence').textContent = '90%';
@@ -434,7 +466,6 @@ function populateWeekDays() {
     
     daysGrid.innerHTML = '';
     
-    // Find current week based on today's data
     const todayData = findTodaysDayData();
     const currentWeek = todayData ? todayData.weekNumber : 1;
     const weekKey = `week${currentWeek}`;
@@ -501,13 +532,10 @@ function createWorkoutSummary(dayData) {
     
     let summary = '';
     
-    // Handle single daily workout
     if (dayData.workout?.exercises) {
         const exerciseCount = dayData.workout.exercises.length;
         summary = `${exerciseCount} exercises + Cardio`;
-    }
-    // Handle legacy morning exercises
-    else if (dayData.morning?.exercises) {
+    } else if (dayData.morning?.exercises) {
         const exerciseCount = dayData.morning.exercises.length;
         summary = `${exerciseCount} exercises + Cardio`;
     }
@@ -524,7 +552,6 @@ function populateProgressSection() {
 }
 
 function populateProgressOverview() {
-    // Placeholder data - will be enhanced with real progress tracking
     document.getElementById('currentWeight').textContent = '178.2';
     document.getElementById('weightChange').textContent = '+2.8 lbs this month';
     document.getElementById('weightChange').className = 'stat-change positive';
@@ -546,7 +573,6 @@ function populateGoals() {
     const goalsList = document.querySelector('.goals-list');
     if (!goalsList) return;
     
-    // Extract goals from current workout plan
     const goals = currentWorkoutPlan.planInfo?.monthlyGoals?.specificTargets || [];
     
     goalsList.innerHTML = '';
@@ -596,12 +622,12 @@ function populateMeasurements() {
     if (recordsList) {
         recordsList.innerHTML = `
             <div class="measurement-item">
-                <div class="measurement-name">Bench Press</div>
-                <div class="measurement-value">205 lbs (+15)</div>
-            </div>
-            <div class="measurement-item">
                 <div class="measurement-name">Leg Press</div>
                 <div class="measurement-value">385 lbs (+25)</div>
+            </div>
+            <div class="measurement-item">
+                <div class="measurement-name">Chest Press</div>
+                <div class="measurement-value">205 lbs (+15)</div>
             </div>
             <div class="measurement-item">
                 <div class="measurement-name">Lat Pulldown</div>
@@ -619,21 +645,23 @@ function populateProgressPhotos() {
     const photosGrid = document.querySelector('.photos-grid');
     if (!photosGrid) return;
     
+    const currentPart = activePlans.activePlans?.workout?.part || 1;
+    
     photosGrid.innerHTML = `
         <div class="photo-placeholder">
             <div>📷</div>
             <div>Front View</div>
-            <div class="photo-date">June 23, 2025</div>
+            <div class="photo-date">July Part ${currentPart} Start</div>
         </div>
         <div class="photo-placeholder">
             <div>📷</div>
             <div>Side View</div>
-            <div class="photo-date">June 23, 2025</div>
+            <div class="photo-date">July Part ${currentPart} Start</div>
         </div>
         <div class="photo-placeholder">
             <div>📷</div>
             <div>Back View</div>
-            <div class="photo-date">June 23, 2025</div>
+            <div class="photo-date">July Part ${currentPart} Start</div>
         </div>
         <div class="photo-placeholder">
             <div>📷</div>
@@ -650,8 +678,7 @@ function populateAdminSection() {
 }
 
 function updateAdminStatus() {
-    // Populate current plan status
-    // This will be filled when admin is unlocked
+    // Will be filled when admin is unlocked
 }
 
 function updateLastUpdated() {
@@ -687,7 +714,6 @@ function lockAdminPanel() {
 }
 
 function populateAdminStatus() {
-    // Populate current plan status in admin panel
     const statusCards = document.querySelectorAll('.status-card .status-list');
     
     if (statusCards[0] && activePlans.activePlans?.workout) {
@@ -699,7 +725,7 @@ function populateAdminStatus() {
             </div>
             <div class="status-item">
                 <div class="status-label">Plan Type:</div>
-                <div class="status-value">${workout.planType}</div>
+                <div class="status-value">${workout.planType} - Part ${workout.part}</div>
             </div>
             <div class="status-item">
                 <div class="status-label">End Date:</div>
@@ -712,26 +738,49 @@ function populateAdminStatus() {
         `;
     }
     
-    if (statusCards[1] && activePlans.upcomingPlans?.workout) {
-        const upcoming = activePlans.upcomingPlans.workout;
+    if (statusCards[1]) {
+        const nextPart = getNextPartInfo();
         statusCards[1].innerHTML = `
             <div class="status-item">
-                <div class="status-label">Next Plan:</div>
-                <div class="status-value status-warning">${upcoming.fileName}</div>
-            </div>
-            <div class="status-item">
-                <div class="status-label">Plan Type:</div>
-                <div class="status-value">${upcoming.planType}</div>
+                <div class="status-label">Next Part:</div>
+                <div class="status-value status-warning">${nextPart.name}</div>
             </div>
             <div class="status-item">
                 <div class="status-label">Start Date:</div>
-                <div class="status-value">${formatDate(upcoming.startDate)}</div>
+                <div class="status-value">${nextPart.startDate}</div>
             </div>
             <div class="status-item">
                 <div class="status-label">Status:</div>
-                <div class="status-value status-warning">Scheduled</div>
+                <div class="status-value ${nextPart.statusClass}">${nextPart.status}</div>
+            </div>
+            <div class="status-item">
+                <div class="status-label">Auto-Switch:</div>
+                <div class="status-value status-active">${nextPart.autoSwitch ? 'Enabled' : 'Disabled'}</div>
             </div>
         `;
+    }
+}
+
+function getNextPartInfo() {
+    const upcoming = activePlans.upcomingPlans?.workout;
+    const currentPart = activePlans.activePlans?.workout?.part || 1;
+    
+    if (upcoming) {
+        return {
+            name: upcoming.fileName,
+            startDate: formatDate(upcoming.startDate),
+            status: 'Scheduled',
+            statusClass: 'status-warning',
+            autoSwitch: upcoming.autoActivate
+        };
+    } else {
+        return {
+            name: `July Part ${currentPart + 1} (Not Created)`,
+            startDate: currentPart === 1 ? 'July 16, 2025' : 'August 1, 2025',
+            status: 'Needs Creation',
+            statusClass: 'status-warning',
+            autoSwitch: false
+        };
     }
 }
 
@@ -788,7 +837,6 @@ function handleFileUpload(file) {
 
 // ===== WORKOUT AND CARDIO TRACKING =====
 function setupWorkoutTracking() {
-    // Exercise tracking
     document.addEventListener('change', (e) => {
         if (e.target.classList.contains('exercise-checkbox')) {
             updateWorkoutProgress();

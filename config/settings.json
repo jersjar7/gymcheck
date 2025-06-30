@@ -9,8 +9,8 @@
     "startWeekOn": "monday",
     "preferredWorkoutTime": "morning",
     "workoutDuration": {
-      "targetMin": 45,
-      "targetMax": 75
+      "targetMin": 50,
+      "targetMax": 65
     },
     "measurementUnits": {
       "weight": "lbs",
@@ -18,6 +18,13 @@
       "distance": "miles",
       "bodyMeasurements": "inches"
     }
+  },
+  "planStructure": {
+    "type": "half-month",
+    "cycleDays": 15,
+    "autoSwitchHalfMonth": true,
+    "planParts": 2,
+    "switchDayOfMonth": 16
   },
   "display": {
     "theme": "dark",
@@ -36,6 +43,7 @@
   },
   "functionality": {
     "autoSwitchPlans": true,
+    "halfMonthSwitching": true,
     "showUpcomingWorkouts": true,
     "enableProgressTracking": true,
     "enablePhotoTracking": true,
@@ -63,6 +71,14 @@
     "backupFrequency": "weekly",
     "dataRetention": "unlimited"
   },
-  "version": "2.0",
-  "lastUpdated": "2025-08-22"
+  "notifications": {
+    "halfMonthSwitching": {
+      "enabled": true,
+      "daysBefore": 3,
+      "message": "New training phase starts in {days} days"
+    }
+  },
+  "version": "2.1",
+  "lastUpdated": "2025-06-30",
+  "systemType": "half-month-general"
 }

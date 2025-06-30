@@ -1,0 +1,633 @@
+{
+    "planInfo": {
+        "fileName": "july-2025-part1.json",
+        "month": "July 2025 - Part 1",
+        "startDate": "2025-07-01",
+        "endDate": "2025-07-15",
+        "planType": "Half-Month Training",
+        "location": "Jerson's Exercise Routine",
+        "restDays": ["sunday"],
+        "trainingFocus": "Soccer Performance Preparation",
+        "monthlyGoals": {
+            "primary": "Build explosive power and endurance for soccer games",
+            "secondary": [
+                "Increase leg strength for sprint power",
+                "Improve cardiovascular endurance", 
+                "Enhance core stability",
+                "Maintain upper body strength"
+            ],
+            "specificTargets": [
+                "Increase leg press by 20+ lbs",
+                "Improve 30-minute cardio pace",
+                "Complete all planned workouts",
+                "Peak performance for games on July 9 & 11"
+            ]
+        }
+    },
+    "schedule": {
+        "workoutsPerDay": 1,
+        "workoutTimes": ["morning"],
+        "workoutFocus": "Strength Training",
+        "estimatedDuration": {
+            "morning": "50-65 minutes"
+        }
+    },
+    "weeks": {
+        "week1": {
+            "weekNumber": 1,
+            "weekFocus": "Power Foundation Building",
+            "days": {
+                "day1": {
+                    "date": "2025-07-01",
+                    "dayType": "workout",
+                    "dayName": "Tuesday",
+                    "workout": {
+                        "workoutType": "Lower Body Power",
+                        "exercises": [
+                            {
+                                "name": "Leg Press Machine",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Explosive concentric, control negative"
+                            },
+                            {
+                                "name": "Romanian Deadlift Machine", 
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Hip hinge strength"
+                            },
+                            {
+                                "name": "Leg Extension Machine",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Quad strength"
+                            },
+                            {
+                                "name": "Leg Curl Machine",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Hamstring balance"
+                            },
+                            {
+                                "name": "Calf Raise Machine",
+                                "sets": 4,
+                                "reps": "12-15",
+                                "notes": "Explosive push-off power"
+                            },
+                            {
+                                "name": "Walking Lunges",
+                                "sets": 3,
+                                "reps": "10 each leg",
+                                "notes": "Functional leg strength"
+                            },
+                            {
+                                "name": "Core Circuit",
+                                "sets": 3,
+                                "reps": "45 seconds each",
+                                "notes": "Plank + Russian twists + bicycle crunches"
+                            }
+                        ]
+                    }
+                },
+                "day2": {
+                    "date": "2025-07-02",
+                    "dayType": "workout",
+                    "dayName": "Wednesday",
+                    "workout": {
+                        "workoutType": "Upper Body + Core",
+                        "exercises": [
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Upper body strength"
+                            },
+                            {
+                                "name": "Lat Pulldown",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Back strength"
+                            },
+                            {
+                                "name": "Shoulder Press Machine",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Shoulder stability"
+                            },
+                            {
+                                "name": "Cable Row",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Posterior chain"
+                            },
+                            {
+                                "name": "Core Stability Circuit",
+                                "sets": 4,
+                                "reps": "15 each side",
+                                "notes": "Russian twists + oblique crunches + side planks"
+                            },
+                            {
+                                "name": "Single Leg Balance",
+                                "sets": 3,
+                                "reps": "30 seconds each leg",
+                                "notes": "Stability training"
+                            }
+                        ]
+                    }
+                },
+                "day3": {
+                    "date": "2025-07-03",
+                    "dayType": "workout",
+                    "dayName": "Thursday",
+                    "workout": {
+                        "workoutType": "Explosive Power Training",
+                        "exercises": [
+                            {
+                                "name": "Jump Squats",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Explosive power development"
+                            },
+                            {
+                                "name": "Leg Press Machine",
+                                "sets": 4,
+                                "reps": "8-10",
+                                "notes": "Power focus"
+                            },
+                            {
+                                "name": "Step-ups",
+                                "sets": 3,
+                                "reps": "8 each leg",
+                                "notes": "Unilateral power"
+                            },
+                            {
+                                "name": "Lateral Lunges", 
+                                "sets": 3,
+                                "reps": "8 each leg",
+                                "notes": "Multi-directional movement"
+                            },
+                            {
+                                "name": "Calf Raise Machine",
+                                "sets": 4,
+                                "reps": "10-12",
+                                "notes": "Explosive calf strength"
+                            },
+                            {
+                                "name": "Core Power Circuit",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "Mountain climbers + burpees + jumping jacks"
+                            }
+                        ]
+                    }
+                },
+                "day4": {
+                    "date": "2025-07-04",
+                    "dayType": "workout",
+                    "dayName": "Friday", 
+                    "workout": {
+                        "workoutType": "Full Body Power",
+                        "exercises": [
+                            {
+                                "name": "Leg Press",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Power development"
+                            },
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Upper body power"
+                            },
+                            {
+                                "name": "Lat Pulldown",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Pulling strength"
+                            },
+                            {
+                                "name": "Romanian Deadlift Machine",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Hip power"
+                            },
+                            {
+                                "name": "Shoulder Press",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Overhead power"
+                            },
+                            {
+                                "name": "Power Finisher Circuit",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "Burpees + jumping jacks + high knees"
+                            }
+                        ]
+                    }
+                },
+                "day5": {
+                    "date": "2025-07-05",
+                    "dayType": "workout",
+                    "dayName": "Saturday",
+                    "workout": {
+                        "workoutType": "Conditioning & Recovery",
+                        "exercises": [
+                            {
+                                "name": "Leg Curl Machine",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "Hamstring endurance"
+                            },
+                            {
+                                "name": "Leg Extension Machine",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "Quad endurance"
+                            },
+                            {
+                                "name": "Calf Raise Machine",
+                                "sets": 3,
+                                "reps": "15-20",
+                                "notes": "Calf endurance"
+                            },
+                            {
+                                "name": "Glute Bridge",
+                                "sets": 3,
+                                "reps": "15-20",
+                                "notes": "Glute activation"
+                            },
+                            {
+                                "name": "Core Stability Circuit",
+                                "sets": 3,
+                                "reps": "45 seconds each",
+                                "notes": "Plank variations + side planks"
+                            },
+                            {
+                                "name": "Mobility Stretches",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "Hip flexors + hamstrings + calves"
+                            }
+                        ]
+                    }
+                },
+                "day6": {
+                    "date": "2025-07-06",
+                    "dayType": "rest",
+                    "dayName": "Sunday",
+                    "activity": "Complete Rest",
+                    "notes": "Recovery day - light stretching, meal prep"
+                }
+            }
+        },
+        "week2": {
+            "weekNumber": 2,
+            "weekFocus": "Peak Performance Week",
+            "days": {
+                "day7": {
+                    "date": "2025-07-07",
+                    "dayType": "workout",
+                    "dayName": "Monday",
+                    "workout": {
+                        "workoutType": "Lower Body Strength",
+                        "exercises": [
+                            {
+                                "name": "Leg Press Machine",
+                                "sets": 4,
+                                "reps": "5-7",
+                                "notes": "Heavy strength work - increase weight"
+                            },
+                            {
+                                "name": "Romanian Deadlift Machine",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Maximum hamstring strength"
+                            },
+                            {
+                                "name": "Box Step-ups",
+                                "sets": 3,
+                                "reps": "6 each leg",
+                                "notes": "Explosive unilateral work"
+                            },
+                            {
+                                "name": "Leg Extension Machine",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Quad strength"
+                            },
+                            {
+                                "name": "Single Leg Calf Raises",
+                                "sets": 3,
+                                "reps": "8 each leg",
+                                "notes": "Unilateral calf power"
+                            },
+                            {
+                                "name": "Core Power Circuit",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "Explosive core movements"
+                            }
+                        ]
+                    }
+                },
+                "day8": {
+                    "date": "2025-07-08",
+                    "dayType": "workout",
+                    "dayName": "Tuesday",
+                    "workout": {
+                        "workoutType": "Active Recovery & Mobility",
+                        "exercises": [
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Light maintenance work"
+                            },
+                            {
+                                "name": "Lat Pulldown",
+                                "sets": 3,
+                                "reps": "10-12",
+                                "notes": "Upper body maintenance"
+                            },
+                            {
+                                "name": "Leg Curl Machine",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "Light activation"
+                            },
+                            {
+                                "name": "Dynamic Movement Prep",
+                                "sets": 3,
+                                "reps": "10 each direction",
+                                "notes": "Leg swings + arm circles + torso twists"
+                            },
+                            {
+                                "name": "Movement Preparation",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "High knees + butt kicks + side shuffles"
+                            },
+                            {
+                                "name": "Core Stability",
+                                "sets": 3,
+                                "reps": "45 seconds",
+                                "notes": "Static holds for stability"
+                            }
+                        ]
+                    }
+                },
+                "day9": {
+                    "date": "2025-07-09",
+                    "dayType": "light",
+                    "dayName": "Wednesday",
+                    "specialNote": "Soccer game at 7:10 pm",
+                    "workout": {
+                        "workoutType": "Light Activation",
+                        "exercises": [
+                            {
+                                "name": "Dynamic Warm-up",
+                                "sets": 2,
+                                "reps": "5 minutes",
+                                "notes": "Light movement activation"
+                            },
+                            {
+                                "name": "Leg Swings",
+                                "sets": 2,
+                                "reps": "10 each direction",
+                                "notes": "Hip mobility"
+                            },
+                            {
+                                "name": "Light Bodyweight Squats",
+                                "sets": 2,
+                                "reps": "10-15",
+                                "notes": "Activation without fatigue"
+                            },
+                            {
+                                "name": "Core Activation",
+                                "sets": 2,
+                                "reps": "30 seconds",
+                                "notes": "Light core prep"
+                            }
+                        ]
+                    }
+                },
+                "day10": {
+                    "date": "2025-07-10",
+                    "dayType": "recovery",
+                    "dayName": "Thursday",
+                    "specialNote": "Post-game recovery",
+                    "workout": {
+                        "workoutType": "Recovery & Mobility",
+                        "exercises": [
+                            {
+                                "name": "Light Leg Press",
+                                "sets": 3,
+                                "reps": "12-15",
+                                "notes": "50% normal weight - blood flow"
+                            },
+                            {
+                                "name": "Leg Curl Machine",
+                                "sets": 3,
+                                "reps": "15-20",
+                                "notes": "Light recovery movement"
+                            },
+                            {
+                                "name": "Calf Raise Machine",
+                                "sets": 3,
+                                "reps": "15-20",
+                                "notes": "Light calf work"
+                            },
+                            {
+                                "name": "Hip Mobility Stretches",
+                                "sets": 3,
+                                "reps": "45 seconds each",
+                                "notes": "Deep hip stretching"
+                            },
+                            {
+                                "name": "Core Recovery",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "Gentle core activation"
+                            },
+                            {
+                                "name": "Full Body Stretching",
+                                "sets": 3,
+                                "reps": "1 minute each area",
+                                "notes": "Complete recovery stretches"
+                            }
+                        ]
+                    }
+                },
+                "day11": {
+                    "date": "2025-07-11",
+                    "dayType": "light",
+                    "dayName": "Friday",
+                    "specialNote": "Soccer game at 8:05 pm",
+                    "workout": {
+                        "workoutType": "Pre-Game Activation",
+                        "exercises": [
+                            {
+                                "name": "Dynamic Warm-up",
+                                "sets": 2,
+                                "reps": "5 minutes",
+                                "notes": "Activation routine"
+                            },
+                            {
+                                "name": "Movement Prep Circuit",
+                                "sets": 2,
+                                "reps": "30 seconds each",
+                                "notes": "Light squats + lunges + leg swings"
+                            },
+                            {
+                                "name": "Core Stability",
+                                "sets": 2,
+                                "reps": "30 seconds",
+                                "notes": "Stability preparation"
+                            },
+                            {
+                                "name": "Light Movement Flow",
+                                "sets": 2,
+                                "reps": "30 seconds each",
+                                "notes": "High knees + butt kicks + side steps"
+                            }
+                        ]
+                    }
+                },
+                "day12": {
+                    "date": "2025-07-12",
+                    "dayType": "recovery",
+                    "dayName": "Saturday",
+                    "specialNote": "Weekend recovery",
+                    "workout": {
+                        "workoutType": "Full Recovery Session",
+                        "exercises": [
+                            {
+                                "name": "Complete Stretching Routine",
+                                "sets": 3,
+                                "reps": "45 seconds each",
+                                "notes": "Full body stretching"
+                            },
+                            {
+                                "name": "Light Leg Extensions",
+                                "sets": 3,
+                                "reps": "15-20",
+                                "notes": "Blood flow promotion"
+                            },
+                            {
+                                "name": "Light Leg Curls",
+                                "sets": 3,
+                                "reps": "15-20",
+                                "notes": "Gentle hamstring work"
+                            },
+                            {
+                                "name": "Gentle Core Work",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "Easy core movements"
+                            },
+                            {
+                                "name": "Mobility Circuit",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "Hip + ankle + shoulder mobility"
+                            }
+                        ]
+                    }
+                },
+                "day13": {
+                    "date": "2025-07-13",
+                    "dayType": "rest",
+                    "dayName": "Sunday",
+                    "activity": "Complete Rest",
+                    "notes": "Full recovery - meal prep and planning"
+                },
+                "day14": {
+                    "date": "2025-07-14",
+                    "dayType": "workout",
+                    "dayName": "Monday",
+                    "workout": {
+                        "workoutType": "Strength Assessment",
+                        "exercises": [
+                            {
+                                "name": "Leg Press Machine",
+                                "sets": 4,
+                                "reps": "6-8",
+                                "notes": "Test strength gains from Part 1"
+                            },
+                            {
+                                "name": "Romanian Deadlift Machine",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Hamstring strength check"
+                            },
+                            {
+                                "name": "Chest Press Machine",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Upper body assessment"
+                            },
+                            {
+                                "name": "Lat Pulldown",
+                                "sets": 3,
+                                "reps": "8-10",
+                                "notes": "Back strength test"
+                            },
+                            {
+                                "name": "Core Endurance Test",
+                                "sets": 3,
+                                "reps": "45 seconds",
+                                "notes": "Test core improvements"
+                            },
+                            {
+                                "name": "Movement Quality Check",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "Assess movement patterns"
+                            }
+                        ]
+                    }
+                },
+                "day15": {
+                    "date": "2025-07-15",
+                    "dayType": "transition",
+                    "dayName": "Tuesday",
+                    "workout": {
+                        "workoutType": "Part 1 Completion",
+                        "exercises": [
+                            {
+                                "name": "Full Body Circuit",
+                                "sets": 3,
+                                "reps": "10 each exercise",
+                                "notes": "Squats + push-ups + planks + lunges"
+                            },
+                            {
+                                "name": "Movement Skills",
+                                "sets": 3,
+                                "reps": "30 seconds each",
+                                "notes": "Practice movement patterns"
+                            },
+                            {
+                                "name": "Core Finisher",
+                                "sets": 3,
+                                "reps": "45 seconds",
+                                "notes": "Strong finish to Part 1"
+                            },
+                            {
+                                "name": "Flexibility Focus",
+                                "sets": 3,
+                                "reps": "1 minute each",
+                                "notes": "Prepare for Part 2"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "progressionNotes": {
+        "week1": "Build power and strength foundation",
+        "week2": "Peak performance for mid-month activities, assess progress"
+    }
+}

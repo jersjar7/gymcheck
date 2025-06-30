@@ -1,0 +1,312 @@
+{
+    "planInfo": {
+        "fileName": "[month]-[year]-part[1or2].json",
+        "month": "[Month Year] - Part [1 or 2]",
+        "startDate": "YYYY-MM-DD",
+        "endDate": "YYYY-MM-DD",
+        "planType": "Half-Month Training",
+        "location": "Jerson's Exercise Routine",
+        "restDays": ["sunday"],
+        "trainingFocus": "[Your Training Focus Here]",
+        "monthlyGoals": {
+            "primary": "[Main goal for this half-month]",
+            "secondary": [
+                "[Secondary goal 1]",
+                "[Secondary goal 2]",
+                "[Secondary goal 3]"
+            ],
+            "specificTargets": [
+                "[Specific measurable target 1]",
+                "[Specific measurable target 2]",
+                "[Specific measurable target 3]",
+                "[Specific measurable target 4]"
+            ]
+        }
+    },
+    "schedule": {
+        "workoutsPerDay": 1,
+        "workoutTimes": ["morning"],
+        "workoutFocus": "[Type of training focus]",
+        "estimatedDuration": {
+            "morning": "[XX-XX minutes]"
+        }
+    },
+    "weeks": {
+        "week1": {
+            "weekNumber": 1,
+            "weekFocus": "[Week 1 Focus Theme]",
+            "days": {
+                "day1": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "workout",
+                    "dayName": "[Day of Week]",
+                    "specialNote": "[Optional special note]",
+                    "workout": {
+                        "workoutType": "[Workout Type/Theme]",
+                        "exercises": [
+                            {
+                                "name": "[Exercise Name]",
+                                "sets": "[Number]",
+                                "reps": "[Rep Range]",
+                                "notes": "[Exercise-specific notes]"
+                            }
+                        ]
+                    }
+                },
+                "day2": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "workout",
+                    "dayName": "[Day of Week]",
+                    "workout": {
+                        "workoutType": "[Workout Type/Theme]",
+                        "exercises": [
+                            {
+                                "name": "[Exercise Name]",
+                                "sets": "[Number]",
+                                "reps": "[Rep Range]",
+                                "notes": "[Exercise-specific notes]"
+                            }
+                        ]
+                    }
+                },
+                "day3": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "light",
+                    "dayName": "[Day of Week]",
+                    "specialNote": "[Why this is a light day]",
+                    "workout": {
+                        "workoutType": "[Light Workout Type]",
+                        "exercises": [
+                            {
+                                "name": "[Light Exercise]",
+                                "sets": "[Lower Sets]",
+                                "reps": "[Lower Reps/Time]",
+                                "notes": "[Light exercise notes]"
+                            }
+                        ]
+                    }
+                },
+                "day4": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "recovery",
+                    "dayName": "[Day of Week]",
+                    "specialNote": "[Recovery reason]",
+                    "workout": {
+                        "workoutType": "[Recovery Type]",
+                        "exercises": [
+                            {
+                                "name": "[Recovery Exercise]",
+                                "sets": "[Light Sets]",
+                                "reps": "[Light Reps]",
+                                "notes": "[Recovery notes]"
+                            }
+                        ]
+                    }
+                },
+                "day5": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "workout",
+                    "dayName": "[Day of Week]",
+                    "workout": {
+                        "workoutType": "[Workout Type]",
+                        "exercises": [
+                            {
+                                "name": "[Exercise Name]",
+                                "sets": "[Number]",
+                                "reps": "[Rep Range]",
+                                "notes": "[Exercise notes]"
+                            }
+                        ]
+                    }
+                },
+                "day6": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "workout",
+                    "dayName": "[Day of Week]",
+                    "workout": {
+                        "workoutType": "[Workout Type]",
+                        "exercises": [
+                            {
+                                "name": "[Exercise Name]",
+                                "sets": "[Number]",
+                                "reps": "[Rep Range]",
+                                "notes": "[Exercise notes]"
+                            }
+                        ]
+                    }
+                },
+                "day7": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "rest",
+                    "dayName": "Sunday",
+                    "activity": "Complete Rest",
+                    "notes": "[Rest day activities/notes]"
+                }
+            }
+        },
+        "week2": {
+            "weekNumber": 2,
+            "weekFocus": "[Week 2 Focus Theme]",
+            "days": {
+                "day8": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "workout",
+                    "dayName": "[Day of Week]",
+                    "workout": {
+                        "workoutType": "[Workout Type]",
+                        "exercises": [
+                            {
+                                "name": "[Exercise Name]",
+                                "sets": "[Number]",
+                                "reps": "[Rep Range]",
+                                "notes": "[Exercise notes]"
+                            }
+                        ]
+                    }
+                },
+                "day9": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "workout",
+                    "dayName": "[Day of Week]",
+                    "workout": {
+                        "workoutType": "[Workout Type]",
+                        "exercises": [
+                            {
+                                "name": "[Exercise Name]",
+                                "sets": "[Number]",
+                                "reps": "[Rep Range]",
+                                "notes": "[Exercise notes]"
+                            }
+                        ]
+                    }
+                },
+                "day10": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "workout",
+                    "dayName": "[Day of Week]",
+                    "workout": {
+                        "workoutType": "[Workout Type]",
+                        "exercises": [
+                            {
+                                "name": "[Exercise Name]",
+                                "sets": "[Number]",
+                                "reps": "[Rep Range]",
+                                "notes": "[Exercise notes]"
+                            }
+                        ]
+                    }
+                },
+                "day11": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "workout",
+                    "dayName": "[Day of Week]",
+                    "workout": {
+                        "workoutType": "[Workout Type]",
+                        "exercises": [
+                            {
+                                "name": "[Exercise Name]",
+                                "sets": "[Number]",
+                                "reps": "[Rep Range]",
+                                "notes": "[Exercise notes]"
+                            }
+                        ]
+                    }
+                },
+                "day12": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "workout",
+                    "dayName": "[Day of Week]",
+                    "workout": {
+                        "workoutType": "[Workout Type]",
+                        "exercises": [
+                            {
+                                "name": "[Exercise Name]",
+                                "sets": "[Number]",
+                                "reps": "[Rep Range]",
+                                "notes": "[Exercise notes]"
+                            }
+                        ]
+                    }
+                },
+                "day13": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "rest",
+                    "dayName": "Sunday",
+                    "activity": "Complete Rest",
+                    "notes": "[Rest day notes]"
+                },
+                "day14": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "workout",
+                    "dayName": "[Day of Week]",
+                    "workout": {
+                        "workoutType": "[Assessment/Test Workout]",
+                        "exercises": [
+                            {
+                                "name": "[Assessment Exercise]",
+                                "sets": "[Number]",
+                                "reps": "[Rep Range]",
+                                "notes": "[Test progress notes]"
+                            }
+                        ]
+                    }
+                },
+                "day15": {
+                    "date": "YYYY-MM-DD",
+                    "dayType": "transition",
+                    "dayName": "[Day of Week]",
+                    "workout": {
+                        "workoutType": "[Part 1 Completion/Transition]",
+                        "exercises": [
+                            {
+                                "name": "[Transition Exercise]",
+                                "sets": "[Number]",
+                                "reps": "[Rep Range]",
+                                "notes": "[Prepare for Part 2 notes]"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "progressionNotes": {
+        "week1": "[Week 1 progression strategy]",
+        "week2": "[Week 2 progression strategy]"
+    }
+}
+
+/**
+ * USAGE INSTRUCTIONS:
+ * 
+ * 1. Copy this template for each half-month plan
+ * 2. Replace all [bracketed placeholders] with your specific information
+ * 3. Adjust dates (Part 1: 1st-15th, Part 2: 16th-end of month)
+ * 4. Customize dayType options:
+ *    - "workout" = Normal training day
+ *    - "rest" = Complete rest day
+ *    - "light" = Light training (pre-event, recovery, etc.)
+ *    - "recovery" = Active recovery day
+ *    - "transition" = Last day of part, preparing for next
+ * 
+ * 5. trainingFocus examples:
+ *    - "Soccer Performance Preparation"
+ *    - "Fat Loss and Cardio"
+ *    - "Core Strength Development" 
+ *    - "Marathon Training Base Building"
+ *    - "Muscle Mass Gain"
+ *    - "General Fitness Maintenance"
+ * 
+ * 6. File naming: [month]-[year]-part[1or2].json
+ *    Examples: july-2025-part1.json, august-2025-part2.json
+ * 
+ * 7. The website will automatically:
+ *    - Display whatever workout type and exercises you specify
+ *    - Show special notes on light/recovery days
+ *    - Switch from Part 1 to Part 2 on day 16 of the month
+ *    - Track your progress through the exercises
+ * 
+ * FLEXIBILITY:
+ * This template works for ANY training goal. Just change the content
+ * while keeping the same JSON structure!
+ */

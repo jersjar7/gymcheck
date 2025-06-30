@@ -1,101 +1,85 @@
 {
-  "currentDate": "2025-06-25",
-  "currentMonth": "june-2025",
+  "currentDate": "2025-06-30",
+  "currentMonth": "july-2025-part1",
+  "systemType": "half-month",
   "activePlans": {
     "workout": {
-      "fileName": "june-2025.json",
-      "fullPath": "plans/2025/workouts/june-2025.json",
-      "planType": "daily",
-      "startDate": "2025-06-23",
-      "endDate": "2025-06-30",
-      "status": "active",
-      "daysRemaining": 5
+      "fileName": "july-2025-part1.json",
+      "fullPath": "plans/2025/workouts/july-2025-part1.json",
+      "planType": "half-month",
+      "part": 1,
+      "startDate": "2025-07-01",
+      "endDate": "2025-07-15",
+      "status": "scheduled",
+      "daysRemaining": 15
     }
   },
   "upcomingPlans": {
     "workout": {
-      "fileName": "july-2025.json",
-      "fullPath": "plans/2025/workouts/july-2025.json",
-      "planType": "daily",
-      "startDate": "2025-07-01",
+      "fileName": "july-2025-part2.json",
+      "fullPath": "plans/2025/workouts/july-2025-part2.json",
+      "planType": "half-month",
+      "part": 2,
+      "startDate": "2025-07-16",
       "endDate": "2025-07-31",
       "status": "scheduled",
-      "autoActivate": true,
-      "reason": "Continue daily workout routine for full month"
+      "autoActivate": true
     }
   },
   "planHistory": [
     {
-      "month": "may-2025",
-      "workout": "may-2025.json",
-      "status": "completed"
+      "month": "june-2025",
+      "workout": "june-2025.json",
+      "status": "completed",
+      "endDate": "2025-06-30"
     }
   ],
   "planSchedule": {
     "2025": {
-      "june": {
-        "workout": "daily",
-        "notes": "Summer routine introduction - partial month"
-      },
       "july": {
-        "workout": "daily",
-        "notes": "Full summer workout schedule"
+        "part1": {
+          "workout": "half-month",
+          "dates": "July 1-15"
+        },
+        "part2": {
+          "workout": "half-month",
+          "dates": "July 16-31"
+        }
       },
       "august": {
-        "workout": "daily",
-        "notes": "Peak summer conditioning"
+        "part1": {
+          "workout": "half-month",
+          "dates": "August 1-15"
+        },
+        "part2": {
+          "workout": "half-month",
+          "dates": "August 16-31"
+        }
       },
       "september": {
-        "workout": "daily",
-        "notes": "School starts - maintain daily routine"
-      },
-      "october": {
-        "workout": "daily",
-        "notes": "Settled into school routine"
-      },
-      "november": {
-        "workout": "daily",
-        "notes": "Continue daily workouts through semester"
-      },
-      "december": {
-        "workout": "daily",
-        "notes": "Finals period - maintain consistency"
-      }
-    },
-    "2026": {
-      "january": {
-        "workout": "daily",
-        "notes": "New year - focus on strength gains"
-      },
-      "february": {
-        "workout": "daily",
-        "notes": "Continue building phase"
-      },
-      "march": {
-        "workout": "daily",
-        "notes": "Spring training intensification"
-      },
-      "april": {
-        "workout": "daily",
-        "notes": "Consistent training through semester end"
-      },
-      "may": {
-        "workout": "daily",
-        "notes": "Summer break - potential routine adjustment"
+        "part1": {
+          "workout": "half-month",
+          "dates": "September 1-15"
+        },
+        "part2": {
+          "workout": "half-month",
+          "dates": "September 16-30"
+        }
       }
     }
   },
   "autoSwitching": {
     "enabled": true,
+    "type": "half-month",
     "checkDaily": true,
-    "notificationDays": 7,
-    "warningMessage": "New workout plan needed for next month"
+    "switchDate": "2025-07-16",
+    "notificationDays": 3
   },
   "planReminders": {
     "createNewPlans": {
-      "daysBeforeMonth": 7,
-      "enabled": false,
-      "message": "Time to create next month's workout plan"
+      "daysBeforeHalfMonth": 5,
+      "enabled": true,
+      "message": "Time to create next half-month's workout plan"
     },
     "planValidation": {
       "enabled": true,
@@ -103,9 +87,10 @@
     }
   },
   "systemSettings": {
-    "lastUpdated": "2025-06-25",
+    "lastUpdated": "2025-06-30",
     "autoUpdateDaysRemaining": true,
     "timezonePlan": "America/Denver",
-    "planSwitchTime": "00:01"
+    "planSwitchTime": "00:01",
+    "halfMonthSystem": true
   }
 }
