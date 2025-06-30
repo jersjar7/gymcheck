@@ -12,14 +12,13 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <span class="logo-icon">💪</span>
+                    <!-- <span class="logo-icon">💪</span> -->
                     <span class="logo-text">Jerson's Exercise Routine</span>
                 </div>
                 <nav>
                     <ul class="nav-list">
                         <li><a href="#today" class="nav-link active" data-section="today">Today</a></li>
                         <li><a href="#week" class="nav-link" data-section="week">Week View</a></li>
-                        <li><a href="#nutrition" class="nav-link" data-section="nutrition">Nutrition</a></li>
                         <li><a href="#progress" class="nav-link" data-section="progress">Progress</a></li>
                     </ul>
                 </nav>
@@ -39,7 +38,7 @@
                     </div>
                 </div>
 
-                <div class="today-grid">
+                <div class="today-content">
                     <div class="workout-card">
                         <h2 class="card-title">
                             <span class="card-icon">🏋️</span>
@@ -55,23 +54,21 @@
                         </div>
                     </div>
 
-                    <div class="nutrition-card">
+                    <div class="cardio-card">
                         <h2 class="card-title">
-                            <span class="card-icon">🥗</span>
-                            <span>Nutrition Goals</span>
+                            <span class="card-icon">🏃</span>
+                            <span>Daily Cardio</span>
                         </h2>
                         
-                        <div class="nutrition-targets">
-                            <!-- Nutrition data will be populated from JSON -->
-                        </div>
-
-                        <div class="hydration-section">
-                            <div class="hydration-title">💧 Hydration Goal</div>
-                            <div class="hydration-goal">
-                                <span class="hydration-target"></span>
-                                <div class="water-glasses">
-                                    <!-- Water tracking glasses will be generated -->
-                                </div>
+                        <div class="cardio-session">
+                            <div class="cardio-exercise">
+                                <div class="cardio-name">Treadmill Running</div>
+                                <div class="cardio-duration">30-45 minutes</div>
+                                <div class="cardio-intensity">Moderate to High Intensity</div>
+                            </div>
+                            <div class="cardio-checkbox-container">
+                                <input type="checkbox" class="cardio-checkbox" id="dailyCardio">
+                                <label for="dailyCardio" class="cardio-label">Mark Complete</label>
                             </div>
                         </div>
                     </div>
@@ -105,12 +102,12 @@
                             <div class="stat-label">Workouts Completed</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number" id="nutritionAdherence"></div>
-                            <div class="stat-label">Nutrition Goals Met</div>
+                            <div class="stat-number" id="cardioCompleted"></div>
+                            <div class="stat-label">Cardio Sessions</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number" id="avgCalories"></div>
-                            <div class="stat-label">Avg Daily Calories</div>
+                            <div class="stat-number" id="weeklyAdherence"></div>
+                            <div class="stat-label">Weekly Adherence</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number" id="avgSleep"></div>
@@ -121,52 +118,6 @@
 
                 <div class="days-grid">
                     <!-- Daily cards will be populated from JSON -->
-                </div>
-            </section>
-
-            <!-- NUTRITION SECTION -->
-            <section id="nutrition" class="section">
-                <h1 class="section-title">🥗 Nutrition Plan</h1>
-                
-                <div class="plan-header">
-                    <div class="plan-info">
-                        <h2 class="plan-name"></h2>
-                        <div class="plan-details"></div>
-                    </div>
-                    <div class="plan-actions">
-                        <button class="btn btn-secondary">Switch Plan</button>
-                        <button class="btn btn-primary">Edit Plan</button>
-                    </div>
-                </div>
-
-                <div class="nutrition-grid">
-                    <div class="macros-card">
-                        <h2 class="card-title">📊 Daily Macronutrient Targets</h2>
-                        <div class="macro-list">
-                            <!-- Macro targets will be populated from JSON -->
-                        </div>
-                    </div>
-
-                    <div class="meals-card">
-                        <h2 class="card-title">🍽️ Daily Meal Plan</h2>
-                        <div class="meal-list">
-                            <!-- Meals will be populated from JSON -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="supplements-section">
-                    <h3 class="card-title">💊 Daily Supplements</h3>
-                    <div class="supplements-grid">
-                        <!-- Supplements will be populated from JSON -->
-                    </div>
-                </div>
-
-                <div class="nutrition-notes">
-                    <div class="notes-title">📝 Nutrition Notes & Guidelines</div>
-                    <div class="notes-content">
-                        <!-- Guidelines will be populated from JSON -->
-                    </div>
                 </div>
             </section>
 
@@ -192,10 +143,10 @@
                         <div class="stat-label">Workout Adherence</div>
                         <div class="stat-change" id="consistencyChange"></div>
                     </div>
-                    <div class="stat-card nutrition">
-                        <div class="stat-value" id="nutritionGoals"></div>
-                        <div class="stat-label">Nutrition Goals Met</div>
-                        <div class="stat-change" id="nutritionChange"></div>
+                    <div class="stat-card cardio">
+                        <div class="stat-value" id="cardioStreak"></div>
+                        <div class="stat-label">Cardio Streak (days)</div>
+                        <div class="stat-change" id="cardioChange"></div>
                     </div>
                 </div>
 
@@ -296,14 +247,12 @@
             </div>
 
             <div class="upload-section">
-                <div class="upload-title">📁 Upload New Monthly Plan</div>
+                <div class="upload-title">📁 Upload New Monthly Workout Plan</div>
                 
-                <div class="template-section">
-                    <div class="template-title">📋 JSON Templates:</div>
-                    <div class="template-links">
-                        <a href="#" class="template-link" data-template="twice-daily">Download: Twice Daily Template</a>
-                        <a href="#" class="template-link" data-template="once-daily">Download: Once Daily Template</a>
-                        <a href="#" class="template-link" data-template="current">View: Current Plan JSON</a>
+                <div class="template-info">
+                    <div class="template-title">📋 Plan Structure:</div>
+                    <div class="template-description">
+                        Upload JSON files containing daily workout routines. Each day should include exercises with sets, reps, and notes. Cardio is automatically included as daily treadmill running.
                     </div>
                 </div>
 
@@ -315,7 +264,7 @@
                 <div class="tab-content active" id="fileTab">
                     <div class="upload-area" id="uploadArea">
                         <div class="upload-icon">📁</div>
-                        <div class="upload-text">Drop your JSON plan file here or click to browse</div>
+                        <div class="upload-text">Drop your JSON workout plan file here or click to browse</div>
                         <div class="upload-hint">Supports: .json files only</div>
                         <input type="file" id="fileInput" accept=".json" style="display: none;">
                     </div>
@@ -324,7 +273,7 @@
                 <div class="tab-content" id="pasteTab">
                     <textarea 
                         class="json-textarea" 
-                        placeholder="Paste your JSON plan here..."
+                        placeholder="Paste your JSON workout plan here..."
                         id="jsonTextarea"
                     ></textarea>
                 </div>

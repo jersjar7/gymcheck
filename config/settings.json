@@ -9,10 +9,8 @@
     "startWeekOn": "monday",
     "preferredWorkoutTime": "morning",
     "workoutDuration": {
-      "onceDailyMin": 45,
-      "onceDailyMax": 60,
-      "twiceDailyMorning": 45,
-      "twiceDailyAfternoon": 30
+      "targetMin": 45,
+      "targetMax": 75
     },
     "measurementUnits": {
       "weight": "lbs",
@@ -48,20 +46,23 @@
     "warmupDuration": "5 minutes",
     "cooldownDuration": "5 minutes",
     "defaultSets": 3,
-    "defaultReps": "10-12"
+    "defaultReps": "10-12",
+    "cardioType": "treadmill",
+    "cardioDuration": "30-45 minutes",
+    "cardioIntensity": "moderate to high"
   },
-  "nutritionDefaults": {
-    "mealsPerDay": 6,
-    "hydrationGoal": 3.5,
-    "hydrationUnit": "liters",
-    "showMacroPercentages": true,
-    "showCalorieBreakdown": true
+  "cardioSettings": {
+    "dailyCardio": true,
+    "defaultExercise": "Treadmill Running",
+    "defaultDuration": "30-45 minutes",
+    "defaultIntensity": "Moderate to High Intensity",
+    "trackCompletion": true
   },
   "dataSettings": {
     "autoSaveProgress": true,
     "backupFrequency": "weekly",
     "dataRetention": "unlimited"
   },
-  "version": "1.0",
+  "version": "2.0",
   "lastUpdated": "2025-08-22"
 }

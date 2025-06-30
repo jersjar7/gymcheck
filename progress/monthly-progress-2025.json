@@ -5,8 +5,7 @@
     "june": {
       "startDate": "2025-06-23",
       "endDate": "2025-06-30",
-      "workoutPlan": "june-2025-twice-daily.json",
-      "nutritionPlan": "june-2025-lean-gains.json",
+      "workoutPlan": "june-2025-once-daily.json",
       "measurements": {
         "startWeight": 175.2,
         "currentWeight": 174.8,
@@ -44,25 +43,25 @@
         "avgWorkoutDuration": 52,
         "missedWorkouts": 2
       },
-      "nutritionStats": {
-        "adherencePercentage": 78,
-        "avgDailyCalories": 2380,
-        "targetCalories": 2350,
-        "proteinAverage": 175,
-        "hydrationGoalsMet": 5
+      "cardioStats": {
+        "totalCardioSessions": 6,
+        "completedCardioSessions": 5,
+        "cardioAdherence": 83,
+        "avgCardioDuration": 35,
+        "currentStreak": 3
       },
       "goals": [
         {
-          "goal": "Complete all twice-daily sessions",
+          "goal": "Complete all daily workouts",
           "target": 8,
           "current": 4,
           "percentage": 50
         },
         {
-          "goal": "Establish consistent timing",
-          "target": 100,
-          "current": 85,
-          "percentage": 85
+          "goal": "Maintain daily cardio routine",
+          "target": 8,
+          "current": 5,
+          "percentage": 63
         },
         {
           "goal": "Learn proper form on all exercises",
@@ -72,28 +71,27 @@
         }
       ],
       "notes": [
-        "Getting used to twice-daily schedule",
+        "Adapting well to daily workout schedule",
         "Morning workouts feel great",
-        "Need to improve afternoon cardio consistency",
-        "Meal timing still being dialed in"
+        "Cardio consistency improving",
+        "Using MyFitnessPal for nutrition tracking"
       ]
     },
     "july": {
       "startDate": "2025-07-01",
       "endDate": "2025-07-31",
-      "workoutPlan": "july-2025-twice-daily.json",
-      "nutritionPlan": "july-2025-lean-gains.json",
+      "workoutPlan": "july-2025-once-daily.json",
       "status": "upcoming",
       "goals": [
         {
-          "goal": "Complete 26 twice-daily sessions",
-          "target": 26,
+          "goal": "Complete all 31 daily workouts",
+          "target": 31,
           "current": 0,
           "percentage": 0
         },
         {
-          "goal": "Reduce body fat by 3-4%",
-          "target": 4,
+          "goal": "Achieve 100% cardio adherence",
+          "target": 31,
           "current": 0,
           "percentage": 0
         },
@@ -126,9 +124,12 @@
       "shoulderPressGoal": 150
     },
     "consistency": {
-      "targetAdherence": 90,
-      "currentAdherence": 78,
-      "workoutStreak": 3
+      "targetWorkoutAdherence": 90,
+      "currentWorkoutAdherence": 67,
+      "targetCardioAdherence": 85,
+      "currentCardioAdherence": 83,
+      "workoutStreak": 3,
+      "cardioStreak": 3
     }
   },
   "progressPhotos": {
@@ -160,7 +161,8 @@
     "reminderSettings": {
       "weeklyWeighIn": true,
       "monthlyPhotos": true,
-      "strengthTests": true
+      "strengthTests": true,
+      "cardioStreaks": true
     }
   }
 }

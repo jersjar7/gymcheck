@@ -2,7 +2,6 @@
 let currentSettings = {};
 let activePlans = {};
 let currentWorkoutPlan = {};
-let currentNutritionPlan = {};
 let currentSection = 'today';
 let progressData = {};
 
@@ -25,12 +24,9 @@ async function initializeApp() {
         currentSettings = await loadJSON('config/settings.json');
         activePlans = await loadJSON('config/active-plans.json');
         
-        // Load active workout and nutrition plans
+        // Load active workout plan
         if (activePlans.activePlans?.workout?.fullPath) {
             currentWorkoutPlan = await loadJSON(activePlans.activePlans.workout.fullPath);
-        }
-        if (activePlans.activePlans?.nutrition?.fullPath) {
-            currentNutritionPlan = await loadJSON(activePlans.activePlans.nutrition.fullPath);
         }
         
         // Try to load progress data
@@ -44,7 +40,6 @@ async function initializeApp() {
         // Populate all sections with data
         populateTodaySection();
         populateWeekViewSection();
-        populateNutritionSection();
         populateProgressSection();
         populateAdminSection();
         
@@ -165,17 +160,14 @@ function setupEventListeners() {
         fileInput.addEventListener('change', handleFileSelect);
     }
     
-    // Water tracking
-    setupHydrationTracking();
-    
     // Notes saving
     const saveNotesBtn = document.querySelector('.save-notes-btn');
     if (saveNotesBtn) {
         saveNotesBtn.addEventListener('click', saveNotes);
     }
     
-    // Exercise checkboxes
-    setupExerciseTracking();
+    // Exercise and cardio tracking
+    setupWorkoutTracking();
 }
 
 function switchSection(sectionName) {
@@ -213,8 +205,8 @@ function updateCurrentDateTime() {
 // ===== TODAY SECTION =====
 function populateTodaySection() {
     populateTodaysWorkout();
-    populateTodaysNutrition();
     loadTodaysNotes();
+    setupCardioTracking();
 }
 
 function populateTodaysWorkout() {
@@ -237,8 +229,12 @@ function populateTodaysWorkout() {
     if (workoutTypeElement) {
         if (dayData.dayType === 'rest') {
             workoutTypeElement.textContent = 'Rest Day';
-        } else if (dayData.morning?.workoutType) {
-            workoutTypeElement.textContent = dayData.morning.workoutType;
+        } else {
+            // Handle different workout structures
+            const workoutType = dayData.workout?.workoutType || 
+                              dayData.morning?.workoutType || 
+                              'Daily Workout';
+            workoutTypeElement.textContent = workoutType;
         }
     }
     
@@ -247,58 +243,19 @@ function populateTodaysWorkout() {
     if (exerciseList && dayData.dayType === 'workout') {
         exerciseList.innerHTML = '';
         
-        // Morning exercises
-        if (dayData.morning?.exercises) {
-            const morningHeader = document.createElement('div');
-            morningHeader.className = 'exercise-section-header';
-            morningHeader.innerHTML = '<h3>🌅 Morning Session</h3>';
-            exerciseList.appendChild(morningHeader);
-            
-            dayData.morning.exercises.forEach((exercise, index) => {
-                const exerciseElement = createExerciseElement(exercise, `morning-${index}`);
-                exerciseList.appendChild(exerciseElement);
-            });
-        }
-        
-        // Afternoon exercises (for twice-daily)
-        if (dayData.afternoon?.primaryExercise) {
-            const afternoonHeader = document.createElement('div');
-            afternoonHeader.className = 'exercise-section-header';
-            afternoonHeader.innerHTML = '<h3>🌅 Afternoon Session</h3>';
-            exerciseList.appendChild(afternoonHeader);
-            
-            const cardioElement = document.createElement('div');
-            cardioElement.className = 'exercise-item';
-            cardioElement.innerHTML = `
-                <input type="checkbox" class="exercise-checkbox" data-exercise="afternoon-cardio">
-                <div class="exercise-details">
-                    <div class="exercise-name">${dayData.afternoon.primaryExercise}</div>
-                    <div class="exercise-specs">${dayData.afternoon.duration} - ${dayData.afternoon.intensity}</div>
-                </div>
-            `;
-            exerciseList.appendChild(cardioElement);
-        }
-        
-        // Single workout (for once-daily)
+        // Handle single daily workout (new structure)
         if (dayData.workout?.exercises) {
             dayData.workout.exercises.forEach((exercise, index) => {
-                const exerciseElement = createExerciseElement(exercise, `main-${index}`);
+                const exerciseElement = createExerciseElement(exercise, `workout-${index}`);
                 exerciseList.appendChild(exerciseElement);
             });
-            
-            // Add cardio portion if exists
-            if (dayData.workout.cardioPortion) {
-                const cardioElement = document.createElement('div');
-                cardioElement.className = 'exercise-item';
-                cardioElement.innerHTML = `
-                    <input type="checkbox" class="exercise-checkbox" data-exercise="cardio">
-                    <div class="exercise-details">
-                        <div class="exercise-name">${dayData.workout.cardioPortion.type}</div>
-                        <div class="exercise-specs">${dayData.workout.cardioPortion.duration} - ${dayData.workout.cardioPortion.exercise}</div>
-                    </div>
-                `;
-                exerciseList.appendChild(cardioElement);
-            }
+        }
+        // Handle legacy morning exercises (for existing plans)
+        else if (dayData.morning?.exercises) {
+            dayData.morning.exercises.forEach((exercise, index) => {
+                const exerciseElement = createExerciseElement(exercise, `workout-${index}`);
+                exerciseList.appendChild(exerciseElement);
+            });
         }
         
         // Rest day content
@@ -331,96 +288,12 @@ function createExerciseElement(exercise, id) {
     return exerciseElement;
 }
 
-function populateTodaysNutrition() {
-    if (!currentNutritionPlan.dailyTargets) return;
-    
-    const targets = currentNutritionPlan.dailyTargets;
-    const nutritionTargets = document.querySelector('.nutrition-targets');
-    
-    if (nutritionTargets) {
-        nutritionTargets.innerHTML = `
-            <div class="nutrition-item">
-                <div class="nutrition-label">Daily Calories</div>
-                <div class="nutrition-value">${targets.calories?.total || 0} kcal</div>
-            </div>
-            <div class="nutrition-item">
-                <div class="nutrition-label">Protein</div>
-                <div class="nutrition-value">${targets.macronutrients?.protein?.grams || 0}g</div>
-            </div>
-            <div class="nutrition-item">
-                <div class="nutrition-label">Carbohydrates</div>
-                <div class="nutrition-value">${targets.macronutrients?.carbohydrates?.grams || 0}g</div>
-            </div>
-            <div class="nutrition-item">
-                <div class="nutrition-label">Fats</div>
-                <div class="nutrition-value">${targets.macronutrients?.fats?.grams || 0}g</div>
-            </div>
-        `;
+function setupCardioTracking() {
+    const cardioCheckbox = document.getElementById('dailyCardio');
+    if (cardioCheckbox) {
+        cardioCheckbox.addEventListener('change', saveCardioProgress);
+        loadCardioProgress();
     }
-    
-    // Hydration goal
-    const hydrationTarget = document.querySelector('.hydration-target');
-    if (hydrationTarget && targets.hydration?.dailyGoal) {
-        hydrationTarget.textContent = targets.hydration.dailyGoal;
-    }
-    
-    setupHydrationTracking();
-}
-
-function setupHydrationTracking() {
-    const waterGlasses = document.querySelector('.water-glasses');
-    if (!waterGlasses) return;
-    
-    const dailyGoal = parseFloat(currentNutritionPlan.dailyTargets?.hydration?.dailyGoal || 3.5);
-    const glassSize = dailyGoal / 8; // 8 glasses total
-    
-    waterGlasses.innerHTML = '';
-    
-    for (let i = 0; i < 8; i++) {
-        const glass = document.createElement('div');
-        glass.className = 'water-glass';
-        glass.dataset.glassNumber = i;
-        glass.addEventListener('click', toggleWaterGlass);
-        waterGlasses.appendChild(glass);
-    }
-    
-    loadWaterProgress();
-}
-
-function toggleWaterGlass(e) {
-    const glass = e.target;
-    const glassNumber = parseInt(glass.dataset.glassNumber);
-    
-    // Toggle this glass and all previous ones
-    document.querySelectorAll('.water-glass').forEach((g, index) => {
-        if (index <= glassNumber) {
-            g.classList.add('filled');
-        } else {
-            g.classList.remove('filled');
-        }
-    });
-    
-    saveWaterProgress();
-}
-
-function loadWaterProgress() {
-    const today = getCurrentDate();
-    const savedProgress = localStorage.getItem(`water-${today}`);
-    
-    if (savedProgress) {
-        const glassCount = parseInt(savedProgress);
-        document.querySelectorAll('.water-glass').forEach((glass, index) => {
-            if (index < glassCount) {
-                glass.classList.add('filled');
-            }
-        });
-    }
-}
-
-function saveWaterProgress() {
-    const today = getCurrentDate();
-    const filledGlasses = document.querySelectorAll('.water-glass.filled').length;
-    localStorage.setItem(`water-${today}`, filledGlasses.toString());
 }
 
 // ===== WEEK VIEW SECTION =====
@@ -444,8 +317,8 @@ function populateWeekHeader() {
 function populateWeekProgress() {
     // This will be enhanced when we add progress tracking
     document.getElementById('workoutsCompleted').textContent = '4/5';
-    document.getElementById('nutritionAdherence').textContent = '85%';
-    document.getElementById('avgCalories').textContent = '2,250';
+    document.getElementById('cardioCompleted').textContent = '5/5';
+    document.getElementById('weeklyAdherence').textContent = '90%';
     document.getElementById('avgSleep').textContent = '7.2h';
 }
 
@@ -490,7 +363,9 @@ function createDayCard(dayData, dayKey) {
     }
     
     const workoutType = dayData.dayType === 'rest' ? 'Rest Day' : 
-                       (dayData.morning?.workoutType || dayData.workout?.workoutType || 'Workout');
+                       (dayData.workout?.workoutType || 
+                        dayData.morning?.workoutType || 
+                        'Daily Workout');
     
     const card = document.createElement('div');
     card.className = cardClass;
@@ -513,157 +388,23 @@ function createDayCard(dayData, dayKey) {
 
 function createWorkoutSummary(dayData) {
     if (dayData.dayType === 'rest') {
-        return '<em>Focus on recovery and meal prep</em>';
+        return '<em>Focus on recovery and preparation</em>';
     }
     
     let summary = '';
     
-    if (dayData.morning?.exercises) {
-        const exerciseCount = dayData.morning.exercises.length;
-        summary += `Morning: ${exerciseCount} exercises`;
-    }
-    
-    if (dayData.afternoon?.primaryExercise) {
-        if (summary) summary += '<br>';
-        summary += `Afternoon: ${dayData.afternoon.primaryExercise}`;
-    }
-    
+    // Handle single daily workout
     if (dayData.workout?.exercises) {
         const exerciseCount = dayData.workout.exercises.length;
-        summary += `${exerciseCount} exercises`;
-        if (dayData.workout.cardioPortion) {
-            summary += ` + ${dayData.workout.cardioPortion.type}`;
-        }
+        summary = `${exerciseCount} exercises + Cardio`;
+    }
+    // Handle legacy morning exercises
+    else if (dayData.morning?.exercises) {
+        const exerciseCount = dayData.morning.exercises.length;
+        summary = `${exerciseCount} exercises + Cardio`;
     }
     
-    return summary || 'Workout planned';
-}
-
-// ===== NUTRITION SECTION =====
-function populateNutritionSection() {
-    if (!currentNutritionPlan.planInfo) return;
-    
-    populateNutritionHeader();
-    populateNutritionMacros();
-    populateNutritionMeals();
-    populateNutritionSupplements();
-    populateNutritionGuidelines();
-}
-
-function populateNutritionHeader() {
-    const planName = document.querySelector('.plan-name');
-    const planDetails = document.querySelector('.plan-details');
-    
-    if (planName && currentNutritionPlan.planInfo) {
-        planName.textContent = currentNutritionPlan.planInfo.planType;
-    }
-    
-    if (planDetails && currentNutritionPlan.planInfo) {
-        const startDate = formatDate(currentNutritionPlan.planInfo.startDate);
-        const endDate = formatDate(currentNutritionPlan.planInfo.endDate);
-        planDetails.textContent = `Active: ${startDate} - ${endDate}`;
-    }
-}
-
-function populateNutritionMacros() {
-    const macroList = document.querySelector('.macro-list');
-    if (!macroList || !currentNutritionPlan.dailyTargets) return;
-    
-    const targets = currentNutritionPlan.dailyTargets;
-    
-    macroList.innerHTML = `
-        <div class="macro-item">
-            <div class="macro-info">
-                <div class="macro-name">Calories</div>
-                <div class="macro-target">${targets.calories?.total || 0} kcal daily</div>
-            </div>
-        </div>
-        <div class="macro-item">
-            <div class="macro-info">
-                <div class="macro-name">Protein</div>
-                <div class="macro-target">${targets.macronutrients?.protein?.grams || 0}g (${targets.macronutrients?.protein?.percentage || 0}%)</div>
-            </div>
-        </div>
-        <div class="macro-item">
-            <div class="macro-info">
-                <div class="macro-name">Carbohydrates</div>
-                <div class="macro-target">${targets.macronutrients?.carbohydrates?.grams || 0}g (${targets.macronutrients?.carbohydrates?.percentage || 0}%)</div>
-            </div>
-        </div>
-        <div class="macro-item">
-            <div class="macro-info">
-                <div class="macro-name">Fats</div>
-                <div class="macro-target">${targets.macronutrients?.fats?.grams || 0}g (${targets.macronutrients?.fats?.percentage || 0}%)</div>
-            </div>
-        </div>
-        <div class="macro-item">
-            <div class="macro-info">
-                <div class="macro-name">Fiber</div>
-                <div class="macro-target">${targets.micronutrients?.fiber || 'N/A'}</div>
-            </div>
-        </div>
-    `;
-}
-
-function populateNutritionMeals() {
-    const mealList = document.querySelector('.meal-list');
-    if (!mealList || !currentNutritionPlan.mealPlanning) return;
-    
-    mealList.innerHTML = '';
-    
-    // Get the appropriate meal structure
-    const mealStructure = currentNutritionPlan.mealPlanning.twiceDailyStructure || 
-                         currentNutritionPlan.mealPlanning.workoutDayStructure ||
-                         currentNutritionPlan.mealPlanning.refinedStructure;
-    
-    if (!mealStructure) return;
-    
-    Object.entries(mealStructure).forEach(([mealKey, mealData]) => {
-        const mealElement = document.createElement('div');
-        mealElement.className = 'meal-item';
-        mealElement.innerHTML = `
-            <div class="meal-header">
-                <div class="meal-name">${mealData.name}</div>
-                <div class="meal-time">${mealData.time}</div>
-            </div>
-            <div class="meal-description">
-                ${mealData.purpose}
-            </div>
-            <div class="meal-macros">
-                <span>${mealData.calories} kcal</span>
-                <span>${mealData.macros?.protein || 'N/A'} protein</span>
-                <span>${mealData.macros?.carbs || 'N/A'} carbs</span>
-                <span>${mealData.macros?.fats || 'N/A'} fats</span>
-            </div>
-        `;
-        mealList.appendChild(mealElement);
-    });
-}
-
-function populateNutritionSupplements() {
-    const supplementsGrid = document.querySelector('.supplements-grid');
-    if (!supplementsGrid || !currentNutritionPlan.supplements?.daily) return;
-    
-    supplementsGrid.innerHTML = '';
-    
-    currentNutritionPlan.supplements.daily.forEach(supplement => {
-        const supplementElement = document.createElement('div');
-        supplementElement.className = 'supplement-item';
-        supplementElement.innerHTML = `
-            <div class="supplement-name">${supplement.name}</div>
-            <div class="supplement-dose">${supplement.dose}</div>
-            <div class="supplement-time">${supplement.timing}</div>
-        `;
-        supplementsGrid.appendChild(supplementElement);
-    });
-}
-
-function populateNutritionGuidelines() {
-    const notesContent = document.querySelector('.nutrition-notes .notes-content');
-    if (!notesContent || !currentNutritionPlan.nutritionGuidelines) return;
-    
-    const guidelines = currentNutritionPlan.nutritionGuidelines;
-    notesContent.innerHTML = guidelines.map(guideline => `• ${guideline}`).join('<br>');
+    return summary || 'Workout + Cardio planned';
 }
 
 // ===== PROGRESS SECTION =====
@@ -688,9 +429,9 @@ function populateProgressOverview() {
     document.getElementById('consistencyChange').textContent = '+12% vs last month';
     document.getElementById('consistencyChange').className = 'stat-change positive';
     
-    document.getElementById('nutritionGoals').textContent = '83%';
-    document.getElementById('nutritionChange').textContent = 'Steady this month';
-    document.getElementById('nutritionChange').className = 'stat-change neutral';
+    document.getElementById('cardioStreak').textContent = '12';
+    document.getElementById('cardioChange').textContent = '+5 days vs last month';
+    document.getElementById('cardioChange').className = 'stat-change positive';
 }
 
 function populateGoals() {
@@ -802,8 +543,6 @@ function populateAdminSection() {
 
 function updateAdminStatus() {
     // Populate current plan status
-    const currentStatusList = document.querySelector('#unlockedContent .status-card .status-list');
-    // Populate next plan info
     // This will be filled when admin is unlocked
 }
 
@@ -939,9 +678,9 @@ function handleFileUpload(file) {
     }
 }
 
-// ===== EXERCISE AND NOTES TRACKING =====
-function setupExerciseTracking() {
-    // This will be called when exercises are populated
+// ===== WORKOUT AND CARDIO TRACKING =====
+function setupWorkoutTracking() {
+    // Exercise tracking
     document.addEventListener('change', (e) => {
         if (e.target.classList.contains('exercise-checkbox')) {
             updateWorkoutProgress();
@@ -991,6 +730,25 @@ function loadExerciseProgress() {
             }
         });
         updateWorkoutProgress();
+    }
+}
+
+function saveCardioProgress() {
+    const today = getCurrentDate();
+    const cardioCheckbox = document.getElementById('dailyCardio');
+    
+    if (cardioCheckbox) {
+        localStorage.setItem(`cardio-${today}`, cardioCheckbox.checked.toString());
+    }
+}
+
+function loadCardioProgress() {
+    const today = getCurrentDate();
+    const savedProgress = localStorage.getItem(`cardio-${today}`);
+    const cardioCheckbox = document.getElementById('dailyCardio');
+    
+    if (savedProgress && cardioCheckbox) {
+        cardioCheckbox.checked = savedProgress === 'true';
     }
 }
 

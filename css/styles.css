@@ -121,14 +121,14 @@ main {
     margin-left: 1rem;
 }
 
-.today-grid {
+.today-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-bottom: 2rem;
 }
 
-.workout-card, .nutrition-card {
+.workout-card, .cardio-card {
     background: #1e293b;
     padding: 1.5rem;
     border-radius: 0.75rem;
@@ -136,7 +136,7 @@ main {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.nutrition-card {
+.cardio-card {
     border-left-color: #f59e0b;
 }
 
@@ -204,78 +204,53 @@ main {
     transition: width 0.3s ease;
 }
 
-.nutrition-targets {
-    margin-bottom: 1.5rem;
-}
-
-.nutrition-item {
+/* ===== CARDIO SECTION ===== */
+.cardio-session {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #334155;
-}
-
-.nutrition-item:last-child {
-    border-bottom: none;
-}
-
-.nutrition-label {
-    font-weight: 500;
-    color: #f8fafc;
-}
-
-.nutrition-value {
-    color: #94a3b8;
-    font-weight: 500;
-}
-
-.hydration-section {
-    background: #1e3a8a;
     padding: 1rem;
+    background: #334155;
     border-radius: 0.5rem;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
-.hydration-title {
-    font-size: 1rem;
+.cardio-exercise {
+    flex: 1;
+}
+
+.cardio-name {
     font-weight: 600;
-    color: #dbeafe;
-    margin-bottom: 0.75rem;
+    color: #f8fafc;
+    margin-bottom: 0.25rem;
 }
 
-.hydration-goal {
+.cardio-duration {
+    font-size: 0.875rem;
+    color: #f59e0b;
+    margin-bottom: 0.25rem;
+}
+
+.cardio-intensity {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.cardio-checkbox-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
 }
 
-.hydration-target {
-    color: #dbeafe;
+.cardio-checkbox {
+    transform: scale(1.3);
+    accent-color: #f59e0b;
+}
+
+.cardio-label {
+    color: #f8fafc;
     font-weight: 500;
-}
-
-.water-glasses {
-    display: flex;
-    gap: 0.25rem;
-}
-
-.water-glass {
-    width: 24px;
-    height: 32px;
-    border: 2px solid #3b82f6;
-    border-radius: 0 0 6px 6px;
-    background: #1e3a8a;
     cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.water-glass.filled {
-    background: #3b82f6;
-}
-
-.water-glass:hover {
-    transform: scale(1.1);
 }
 
 .notes-section {
@@ -476,215 +451,6 @@ main {
     color: #64748b;
 }
 
-/* ===== NUTRITION SECTION ===== */
-.plan-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: #1e293b;
-    border-radius: 0.75rem;
-    border-left: 4px solid #f59e0b;
-}
-
-.plan-name {
-    color: #f59e0b;
-    font-size: 1.375rem;
-    margin-bottom: 0.5rem;
-}
-
-.plan-details {
-    color: #94a3b8;
-    font-size: 0.875rem;
-}
-
-.plan-actions {
-    display: flex;
-    gap: 1rem;
-}
-
-.btn {
-    padding: 0.75rem 1.25rem;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-.btn-primary {
-    background: #22c55e;
-    color: white;
-}
-
-.btn-primary:hover {
-    background: #16a34a;
-}
-
-.btn-secondary {
-    background: #475569;
-    color: #f8fafc;
-}
-
-.btn-secondary:hover {
-    background: #334155;
-}
-
-.btn-danger {
-    background: #ef4444;
-    color: white;
-}
-
-.btn-danger:hover {
-    background: #dc2626;
-}
-
-.nutrition-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.macros-card, .meals-card {
-    background: #1e293b;
-    padding: 1.5rem;
-    border-radius: 0.75rem;
-    border-left: 4px solid #22c55e;
-}
-
-.meals-card {
-    border-left-color: #f59e0b;
-}
-
-.macro-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #334155;
-}
-
-.macro-item:last-child {
-    border-bottom: none;
-}
-
-.macro-info {
-    flex: 1;
-}
-
-.macro-name {
-    font-weight: 500;
-    color: #f8fafc;
-    margin-bottom: 0.25rem;
-}
-
-.macro-target {
-    color: #94a3b8;
-    font-size: 0.875rem;
-}
-
-.meal-item {
-    padding: 1rem 0;
-    border-bottom: 1px solid #334155;
-}
-
-.meal-item:last-child {
-    border-bottom: none;
-}
-
-.meal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-}
-
-.meal-name {
-    font-weight: 600;
-    color: #f8fafc;
-}
-
-.meal-time {
-    color: #94a3b8;
-    font-size: 0.875rem;
-}
-
-.meal-description {
-    color: #94a3b8;
-    font-size: 0.875rem;
-    margin-bottom: 0.5rem;
-}
-
-.meal-macros {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.75rem;
-    color: #64748b;
-}
-
-.supplements-section {
-    background: #1e293b;
-    padding: 1.5rem;
-    border-radius: 0.75rem;
-    margin-bottom: 2rem;
-    border-left: 4px solid #ef4444;
-}
-
-.supplements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.supplement-item {
-    background: #334155;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    text-align: center;
-}
-
-.supplement-name {
-    font-weight: 600;
-    color: #f59e0b;
-    margin-bottom: 0.5rem;
-}
-
-.supplement-dose {
-    color: #94a3b8;
-    font-size: 0.875rem;
-    margin-bottom: 0.5rem;
-}
-
-.supplement-time {
-    color: #64748b;
-    font-size: 0.75rem;
-}
-
-.nutrition-notes {
-    background: #1e293b;
-    padding: 1.5rem;
-    border-radius: 0.75rem;
-    border-left: 4px solid #64748b;
-}
-
-.notes-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #f8fafc;
-}
-
-.notes-content {
-    background: #334155;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    color: #94a3b8;
-    line-height: 1.7;
-}
-
 /* ===== PROGRESS SECTION ===== */
 .add-data-btn {
     background: #22c55e;
@@ -721,7 +487,7 @@ main {
 .stat-card.weight { border-left-color: #ef4444; }
 .stat-card.strength { border-left-color: #f59e0b; }
 .stat-card.consistency { border-left-color: #22c55e; }
-.stat-card.nutrition { border-left-color: #a855f7; }
+.stat-card.cardio { border-left-color: #a855f7; }
 
 .stat-value {
     font-size: 2.5rem;
@@ -1067,8 +833,6 @@ main {
     margin-bottom: 1rem;
 }
 
-/* .status-list removed: Status items will be populated by JavaScript */
-
 .status-item {
     display: flex;
     justify-content: space-between;
@@ -1112,7 +876,7 @@ main {
     margin-bottom: 1.5rem;
 }
 
-.template-section {
+.template-info {
     background: #374151;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -1125,24 +889,10 @@ main {
     margin-bottom: 0.5rem;
 }
 
-.template-links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.template-link {
-    color: #3b82f6;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    background: #1f2937;
-    border-radius: 0.25rem;
+.template-description {
+    color: #d1d5db;
     font-size: 0.875rem;
-    transition: background 0.2s ease;
-}
-
-.template-link:hover {
-    background: #111827;
+    line-height: 1.6;
 }
 
 .upload-tabs {
@@ -1235,6 +985,42 @@ main {
     margin-top: 1.5rem;
 }
 
+.btn {
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: #22c55e;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #16a34a;
+}
+
+.btn-secondary {
+    background: #475569;
+    color: #f8fafc;
+}
+
+.btn-secondary:hover {
+    background: #334155;
+}
+
+.btn-danger {
+    background: #ef4444;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+}
+
 .admin-footer {
     display: flex;
     justify-content: space-between;
@@ -1287,7 +1073,7 @@ footer {
         font-size: 0.875rem;
     }
 
-    .today-grid {
+    .today-content {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
@@ -1308,17 +1094,6 @@ footer {
 
     .days-grid {
         grid-template-columns: 1fr;
-    }
-
-    .nutrition-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .plan-header {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
     }
 
     .charts-grid {
@@ -1355,10 +1130,6 @@ footer {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
-    }
-
-    .template-links {
-        flex-direction: column;
     }
 
     .container {
