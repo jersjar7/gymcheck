@@ -334,7 +334,7 @@ export class TodayNavigation {
         }
     }
 
-    updateViewingModeBanner(isToday, dayData) {
+    static updateViewingModeBanner(isToday, dayData) {
         const banner = document.getElementById('viewingModeBanner');
         const viewedDate = document.querySelector('.viewed-date');
 
@@ -351,8 +351,10 @@ export class TodayNavigation {
                     day: 'numeric'
                 });
 
-                const planInfo = dayData.planInfo ? ` (${dayData.planInfo.fileName})` : '';
-                viewedDate.innerHTML = `${dayData.dayName}, ${formattedDate}${planInfo}`;
+                const planInfo = dayData && dayData.planInfo ? ` (${dayData.planInfo.fileName})` : '';
+                const dayName = dayData && dayData.dayName ? dayData.dayName : 'Unknown Day';
+
+                viewedDate.innerHTML = `${dayName}, ${formattedDate}${planInfo}`;
                 banner.style.display = 'block';
                 console.log('👁️ Showed viewing mode banner:', viewedDate.innerHTML);
             }
@@ -368,11 +370,27 @@ export class TodayNavigation {
         }
 
         if (dayIndicator) {
-            const dayNumber = this.currentDayIndex + 1;
+            // FIX: Calculate day number within the current plan, not across all plans
+            const dayNumberWithinPlan = this.calculateDayNumberWithinPlan(dayData);
             const planName = dayData.planInfo?.part ? `Part ${dayData.planInfo.part}` :
                 (dayData.planInfo?.fileName?.replace('.json', '') || 'Plan');
-            dayIndicator.textContent = `Day ${dayNumber} • Week ${dayData.weekNumber} • ${planName}`;
+            dayIndicator.textContent = `Day ${dayNumberWithinPlan} • Week ${dayData.weekNumber} • ${planName}`;
         }
+    }
+
+    static calculateDayNumberWithinPlan(dayData) {
+        if (!dayData?.planInfo?.startDate) {
+            // Fallback to global index if no plan info
+            return this.currentDayIndex + 1;
+        }
+
+        // Calculate days since the start of this specific plan
+        const planStartDate = new Date(dayData.planInfo.startDate + 'T00:00:00');
+        const currentViewDate = new Date(this.currentViewDate + 'T00:00:00');
+        const diffTime = currentViewDate - planStartDate;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+        return Math.max(1, diffDays);
     }
 
     static updateWorkoutMeta(dayData) {
