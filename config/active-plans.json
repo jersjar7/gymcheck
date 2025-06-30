@@ -3,8 +3,8 @@
   "currentMonth": "june-2025",
   "activePlans": {
     "workout": {
-      "fileName": "june-2025-once-daily.json",
-      "fullPath": "plans/2025/workouts/june-2025-once-daily.json",
+      "fileName": "june-2025.json",
+      "fullPath": "plans/2025/workouts/june-2025.json",
       "planType": "once-daily",
       "startDate": "2025-06-23",
       "endDate": "2025-06-30",
@@ -14,8 +14,8 @@
   },
   "upcomingPlans": {
     "workout": {
-      "fileName": "july-2025-once-daily.json",
-      "fullPath": "plans/2025/workouts/july-2025-once-daily.json",
+      "fileName": "july-2025.json",
+      "fullPath": "plans/2025/workouts/july-2025.json",
       "planType": "once-daily",
       "startDate": "2025-07-01",
       "endDate": "2025-07-31",
