@@ -7,38 +7,38 @@ export class TodayNavigation {
     static allWorkoutDays = [];
     static currentDayIndex = -1;
     static loadedPlans = new Map(); // Cache for loaded plans
-    
+
     static async init() {
         this.setupEventListeners();
         await this.loadAllWorkoutDays();
         this.setToday();
     }
-    
+
     static setupEventListeners() {
         const prevBtn = document.getElementById('prevWorkoutBtn');
         const nextBtn = document.getElementById('nextWorkoutBtn');
         const returnTodayBtn = document.getElementById('returnTodayBtn');
-        
+
         if (prevBtn) {
             prevBtn.addEventListener('click', () => this.navigateWorkout(-1));
         }
-        
+
         if (nextBtn) {
             nextBtn.addEventListener('click', () => this.navigateWorkout(1));
         }
-        
+
         if (returnTodayBtn) {
             returnTodayBtn.addEventListener('click', () => this.setToday());
         }
     }
-    
+
     static async loadAllWorkoutDays() {
         this.allWorkoutDays = [];
         this.loadedPlans.clear();
-        
+
         // Get all available plans from active plans config
         const availablePlans = this.getAvailablePlans();
-        
+
         // Load days from all available plans
         for (const planInfo of availablePlans) {
             try {
@@ -49,26 +49,26 @@ export class TodayNavigation {
                 console.warn(`Failed to load plan: ${planInfo.fullPath}`, error);
             }
         }
-        
+
         // Sort all days by date
         this.allWorkoutDays.sort((a, b) => new Date(a.date) - new Date(b.date));
-        
+
         console.log(`Loaded ${this.allWorkoutDays.length} workout days from ${availablePlans.length} plans`);
     }
-    
+
     static getAvailablePlans() {
         const plans = [];
-        
+
         // Add current active plan
         if (AppState.activePlans.activePlans?.workout) {
             plans.push(AppState.activePlans.activePlans.workout);
         }
-        
+
         // Add upcoming plan
         if (AppState.activePlans.upcomingPlans?.workout) {
             plans.push(AppState.activePlans.upcomingPlans.workout);
         }
-        
+
         // Add plans from plan history
         if (AppState.activePlans.planHistory) {
             AppState.activePlans.planHistory.forEach(plan => {
@@ -84,12 +84,12 @@ export class TodayNavigation {
                 }
             });
         }
-        
+
         // Add some common plans based on the current date and structure
         const currentDate = getCurrentDate();
         const currentYear = currentDate.split('-')[0];
         const currentMonth = parseInt(currentDate.split('-')[1]);
-        
+
         // Add June plan if we're in late June or early July
         if (currentMonth === 6 || (currentMonth === 7 && parseInt(currentDate.split('-')[2]) <= 5)) {
             const junePlan = {
@@ -103,7 +103,7 @@ export class TodayNavigation {
                 plans.push(junePlan);
             }
         }
-        
+
         // Add July plans
         if (currentMonth === 7 || (currentMonth === 6 && parseInt(currentDate.split('-')[2]) >= 25)) {
             const julyPart1 = {
@@ -122,7 +122,7 @@ export class TodayNavigation {
                 planType: 'half-month',
                 part: 2
             };
-            
+
             if (!plans.some(p => p.fullPath === julyPart1.fullPath)) {
                 plans.push(julyPart1);
             }
@@ -130,16 +130,16 @@ export class TodayNavigation {
                 plans.push(julyPart2);
             }
         }
-        
+
         return plans;
     }
-    
+
     static async loadPlan(fullPath) {
         // Check cache first
         if (this.loadedPlans.has(fullPath)) {
             return this.loadedPlans.get(fullPath);
         }
-        
+
         // Load from file
         try {
             const planData = await loadJSON(fullPath);
@@ -149,10 +149,10 @@ export class TodayNavigation {
             throw error;
         }
     }
-    
+
     static addDaysFromPlan(planData, planInfo) {
         if (!planData.weeks) return;
-        
+
         // Extract days from this plan
         for (const weekKey in planData.weeks) {
             const weekData = planData.weeks[weekKey];
@@ -171,20 +171,20 @@ export class TodayNavigation {
             }
         }
     }
-    
+
     static setToday() {
         const today = getCurrentDate();
         this.currentViewDate = today;
-        
+
         // Find today's index
         this.currentDayIndex = this.allWorkoutDays.findIndex(day => day.date === today);
-        
+
         if (this.currentDayIndex === -1) {
             // If today is not found, find the closest date
             const todayDate = new Date(today);
             let closestIndex = 0;
             let closestDiff = Math.abs(new Date(this.allWorkoutDays[0]?.date || today) - todayDate);
-            
+
             for (let i = 1; i < this.allWorkoutDays.length; i++) {
                 const diff = Math.abs(new Date(this.allWorkoutDays[i].date) - todayDate);
                 if (diff < closestDiff) {
@@ -192,77 +192,77 @@ export class TodayNavigation {
                     closestIndex = i;
                 }
             }
-            
+
             this.currentDayIndex = closestIndex;
             if (this.allWorkoutDays[closestIndex]) {
                 this.currentViewDate = this.allWorkoutDays[closestIndex].date;
             }
         }
-        
+
         this.updateWorkoutView();
         this.updateNavigationState();
     }
-    
+
     static async navigateWorkout(direction) {
         const newIndex = this.currentDayIndex + direction;
-        
+
         if (newIndex >= 0 && newIndex < this.allWorkoutDays.length) {
             this.currentDayIndex = newIndex;
             this.currentViewDate = this.allWorkoutDays[newIndex].date;
-            
+
             // Check if we need to update the active plan in AppState
             const newDay = this.allWorkoutDays[newIndex];
             const currentPlanPath = AppState.currentWorkoutPlan.planInfo?.fileName;
             const newPlanPath = newDay.planInfo?.fileName;
-            
+
             if (currentPlanPath !== newPlanPath) {
                 // Switch to the new plan in AppState
                 AppState.setState('currentWorkoutPlan', newDay.planData);
                 console.log(`Switched to plan: ${newPlanPath}`);
             }
-            
+
             this.updateWorkoutView();
             this.updateNavigationState();
         }
     }
-    
+
     static updateWorkoutView() {
         if (this.currentDayIndex === -1 || !this.allWorkoutDays[this.currentDayIndex]) {
             console.warn('No workout data available for current index:', this.currentDayIndex);
             return;
         }
-        
+
         const dayData = this.allWorkoutDays[this.currentDayIndex];
         const isToday = this.currentViewDate === getCurrentDate();
-        
+
         // Add transition effect
         const workoutCard = document.querySelector('.workout-card');
         if (workoutCard) {
             workoutCard.classList.add('workout-content-transition');
-            
+
             setTimeout(() => {
                 this.populateWorkoutContent(dayData);
                 workoutCard.classList.add('loaded');
-                
+
                 setTimeout(() => {
                     workoutCard.classList.remove('workout-content-transition', 'loaded');
                 }, 300);
             }, 150);
         }
-        
-        // Show/hide viewing mode banner
-        this.updateViewingModeBanner(isToday);
-        
+
+        // Fix: Pass both parameters to updateViewingModeBanner
+        this.updateViewingModeBanner(isToday, dayData);
+
         // Update workout indicator
         this.updateWorkoutIndicator(dayData);
-        
+
         // Update workout metadata
         this.updateWorkoutMeta(dayData);
-        
+
         // Update day type styling
         this.updateDayTypeStyling(dayData);
     }
-    
+
     static populateWorkoutContent(dayData) {
         // Update workout type
         const workoutTypeElement = document.querySelector('.workout-type');
@@ -270,21 +270,21 @@ export class TodayNavigation {
             if (dayData.dayType === 'rest') {
                 workoutTypeElement.textContent = 'Rest Day';
             } else {
-                const workoutType = dayData.workout?.workoutType || 
-                                  dayData.morning?.workoutType || 
-                                  'Daily Workout';
+                const workoutType = dayData.workout?.workoutType ||
+                    dayData.morning?.workoutType ||
+                    'Daily Workout';
                 workoutTypeElement.textContent = workoutType;
             }
         }
-        
+
         // Populate exercises
         this.populateExercises(dayData);
     }
-    
+
     static populateExercises(dayData) {
         const exerciseList = document.querySelector('.exercise-list');
         if (!exerciseList) return;
-        
+
         if (dayData.dayType === 'rest') {
             exerciseList.innerHTML = `
                 <div class="rest-day-content">
@@ -297,10 +297,10 @@ export class TodayNavigation {
             `;
             return;
         }
-        
+
         // Show loading state
         exerciseList.innerHTML = '<div class="loading-exercises">Loading exercises...</div>';
-        
+
         // Handle different workout structures
         let exercises = [];
         if (dayData.workout?.exercises) {
@@ -308,10 +308,10 @@ export class TodayNavigation {
         } else if (dayData.morning?.exercises) {
             exercises = dayData.morning.exercises;
         }
-        
+
         // Clear loading and show content
         exerciseList.innerHTML = '';
-        
+
         if (exercises.length === 0) {
             exerciseList.innerHTML = `
                 <div class="no-exercises">
@@ -321,74 +321,74 @@ export class TodayNavigation {
             `;
             return;
         }
-        
+
         exercises.forEach((exercise, index) => {
             const exerciseElement = createExerciseElement(exercise, `workout-${this.currentViewDate}-${index}`);
             exerciseList.appendChild(exerciseElement);
         });
-        
+
         // Reset progress bar
         const progressFill = document.querySelector('.progress-fill');
         if (progressFill) {
             progressFill.style.width = '0%';
         }
     }
-    
-    updateViewingModeBanner(isToday, dayData) {
-    const banner = document.getElementById('viewingModeBanner');
-    const viewedDate = document.querySelector('.viewed-date');
 
-    if (banner && viewedDate) {
-        if (isToday) {
-            banner.style.display = 'none';
-            console.log('👁️ Hidden viewing mode banner (viewing today)');
-        } else {
-            // Format date without duplicate day name
-            const date = new Date(this.currentViewDate + 'T00:00:00');
-            const formattedDate = date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            
-            const planInfo = dayData.planInfo ? ` (${dayData.planInfo.fileName})` : '';
-            viewedDate.innerHTML = `${dayData.dayName}, ${formattedDate}${planInfo}`;
-            banner.style.display = 'block';
-            console.log('👁️ Showed viewing mode banner:', viewedDate.innerHTML);
+    updateViewingModeBanner(isToday, dayData) {
+        const banner = document.getElementById('viewingModeBanner');
+        const viewedDate = document.querySelector('.viewed-date');
+
+        if (banner && viewedDate) {
+            if (isToday) {
+                banner.style.display = 'none';
+                console.log('👁️ Hidden viewing mode banner (viewing today)');
+            } else {
+                // Format date without duplicate day name
+                const date = new Date(this.currentViewDate + 'T00:00:00');
+                const formattedDate = date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                const planInfo = dayData.planInfo ? ` (${dayData.planInfo.fileName})` : '';
+                viewedDate.innerHTML = `${dayData.dayName}, ${formattedDate}${planInfo}`;
+                banner.style.display = 'block';
+                console.log('👁️ Showed viewing mode banner:', viewedDate.innerHTML);
+            }
         }
     }
-}
-    
+
     static updateWorkoutIndicator(dayData) {
         const dateIndicator = document.querySelector('.workout-date-indicator');
         const dayIndicator = document.querySelector('.workout-day-indicator');
-        
+
         if (dateIndicator) {
             dateIndicator.textContent = formatDate(this.currentViewDate).split(',')[0];
         }
-        
+
         if (dayIndicator) {
             const dayNumber = this.currentDayIndex + 1;
-            const planName = dayData.planInfo?.part ? `Part ${dayData.planInfo.part}` : 
-                           (dayData.planInfo?.fileName?.replace('.json', '') || 'Plan');
+            const planName = dayData.planInfo?.part ? `Part ${dayData.planInfo.part}` :
+                (dayData.planInfo?.fileName?.replace('.json', '') || 'Plan');
             dayIndicator.textContent = `Day ${dayNumber} • Week ${dayData.weekNumber} • ${planName}`;
         }
     }
-    
+
     static updateWorkoutMeta(dayData) {
         const dayNumberEl = document.getElementById('workoutDayNumber');
         const weekNumberEl = document.getElementById('workoutWeekNumber');
         const specialNoteEl = document.getElementById('workoutSpecialNote');
         const specialNoteText = document.getElementById('specialNoteText');
-        
+
         if (dayNumberEl) {
             dayNumberEl.textContent = `${this.currentDayIndex + 1}`;
         }
-        
+
         if (weekNumberEl) {
             weekNumberEl.textContent = `${dayData.weekNumber}`;
         }
-        
+
         if (specialNoteEl && specialNoteText) {
             if (dayData.specialNote) {
                 specialNoteText.textContent = dayData.specialNote;
@@ -398,24 +398,24 @@ export class TodayNavigation {
             }
         }
     }
-    
+
     static updateDayTypeStyling(dayData) {
         const workoutCard = document.querySelector('.workout-card');
         if (workoutCard) {
             // Remove all day type classes
             workoutCard.classList.remove('day-type-rest', 'day-type-light', 'day-type-recovery', 'day-type-transition');
-            
+
             // Add current day type class
             if (dayData.dayType) {
                 workoutCard.classList.add(`day-type-${dayData.dayType}`);
             }
         }
     }
-    
+
     static updateNavigationState() {
         const prevBtn = document.getElementById('prevWorkoutBtn');
         const nextBtn = document.getElementById('nextWorkoutBtn');
-        
+
         if (prevBtn) {
             prevBtn.disabled = this.currentDayIndex <= 0;
             if (this.currentDayIndex > 0) {
@@ -423,7 +423,7 @@ export class TodayNavigation {
                 prevBtn.title = `Previous: ${prevDay.dayName} (${prevDay.date})`;
             }
         }
-        
+
         if (nextBtn) {
             nextBtn.disabled = this.currentDayIndex >= this.allWorkoutDays.length - 1;
             if (this.currentDayIndex < this.allWorkoutDays.length - 1) {
@@ -432,15 +432,15 @@ export class TodayNavigation {
             }
         }
     }
-    
+
     static getCurrentViewingDay() {
         return this.allWorkoutDays[this.currentDayIndex] || null;
     }
-    
+
     static isViewingToday() {
         return this.currentViewDate === getCurrentDate();
     }
-    
+
     // Method to refresh all plans (useful for admin panel)
     static async refreshPlans() {
         await this.loadAllWorkoutDays();
