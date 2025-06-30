@@ -9,6 +9,7 @@ import { WeekView } from './modules/week-view.js';
 import { ProgressView } from './modules/progress-view.js';
 import { AdminPanel } from './modules/admin-panel.js';
 import { HalfMonthSystem } from './systems/half-month-system.js';
+import { TodayNavigation } from './modules/today-navigation.js';
 
 class WorkoutApp {
     constructor() {
@@ -24,6 +25,7 @@ class WorkoutApp {
             
             // Initialize modules
             Navigation.init();
+            TodayNavigation.init();
             WorkoutTracker.init();
             TodayView.init();
             WeekView.init();

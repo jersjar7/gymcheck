@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jerson's Exercise Routine</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>">
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -28,23 +31,70 @@
 
     <main>
         <div class="container">
-            <!-- TODAY SECTION -->
+            <!-- ===== UPDATED HTML FOR TODAY SECTION ===== -->
             <section id="today" class="section active">
                 <div class="today-header">
-                    <h1 class="section-title">Today's Plan</h1>
-                    <div class="date-display">
-                        <span class="current-date"></span>
-                        <span class="week-info"></span>
+                    <div class="today-title-section">
+                        <h1 class="section-title">Today's Plan</h1>
+                        <div class="date-display">
+                            <span class="current-date"></span>
+                            <span class="week-info"></span>
+                        </div>
+                    </div>
+
+                    <!-- NEW: Workout Navigation Controls -->
+                    <div class="workout-navigation">
+                        <button class="nav-workout-btn" id="prevWorkoutBtn" title="Previous Workout">
+                            <span class="nav-icon">←</span>
+                            <span class="nav-text">Previous</span>
+                        </button>
+
+                        <div class="current-workout-indicator">
+                            <span class="workout-date-indicator"></span>
+                            <span class="workout-day-indicator"></span>
+                        </div>
+
+                        <button class="nav-workout-btn" id="nextWorkoutBtn" title="Next Workout">
+                            <span class="nav-text">Next</span>
+                            <span class="nav-icon">→</span>
+                        </button>
                     </div>
                 </div>
 
                 <div class="today-content">
+                    <!-- NEW: Viewing Mode Indicator -->
+                    <div class="viewing-mode-banner" id="viewingModeBanner" style="display: none;">
+                        <div class="banner-content">
+                            <span class="banner-icon">👀</span>
+                            <span class="banner-text">Viewing workout for <strong class="viewed-date"></strong></span>
+                            <button class="return-today-btn" id="returnTodayBtn">
+                                Return to Today
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="workout-card">
                         <h2 class="card-title">
                             <span class="card-icon">🏋️</span>
                             <span class="workout-type"></span>
                         </h2>
-                        
+
+                        <!-- NEW: Workout Meta Info -->
+                        <div class="workout-meta" id="workoutMeta">
+                            <div class="meta-item">
+                                <span class="meta-label">Day:</span>
+                                <span class="meta-value" id="workoutDayNumber"></span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Week:</span>
+                                <span class="meta-value" id="workoutWeekNumber"></span>
+                            </div>
+                            <div class="meta-item" id="workoutSpecialNote" style="display: none;">
+                                <span class="meta-label">Note:</span>
+                                <span class="meta-value" id="specialNoteText"></span>
+                            </div>
+                        </div>
+
                         <div class="exercise-list">
                             <!-- Exercises will be populated from JSON -->
                         </div>
@@ -59,7 +109,7 @@
                             <span class="card-icon">🏃</span>
                             <span>Daily Cardio</span>
                         </h2>
-                        
+
                         <div class="cardio-session">
                             <div class="cardio-exercise">
                                 <div class="cardio-name">Treadmill Running</div>
@@ -118,7 +168,7 @@
             <!-- PROGRESS SECTION -->
             <section id="progress" class="section">
                 <h1 class="section-title">📈 Progress Tracking</h1>
-                
+
                 <button class="add-data-btn">+ Add Today's Data</button>
 
                 <div class="progress-overview">
@@ -200,22 +250,17 @@
 
     <!-- ADMIN SECTION -->
     <div class="admin-divider"></div>
-    
+
     <section class="admin-section">
         <div class="admin-header">
             🔧 PLAN MANAGEMENT - JERSON'S EXERCISE ROUTINE
         </div>
-        
+
         <div class="locked-content" id="lockedContent">
             <form class="password-form" id="passwordForm">
                 <h3>Enter password to manage workout plans</h3>
-                <input 
-                    type="password" 
-                    class="password-input" 
-                    placeholder="Enter password..."
-                    id="passwordInput"
-                    autocomplete="off"
-                >
+                <input type="password" class="password-input" placeholder="Enter password..." id="passwordInput"
+                    autocomplete="off">
                 <button type="submit" class="unlock-btn">🔓 Unlock Admin Panel</button>
                 <div class="password-hint">
                     Password protects plan management functions
@@ -242,11 +287,12 @@
 
             <div class="upload-section">
                 <div class="upload-title">📁 Upload New Monthly Workout Plan</div>
-                
+
                 <div class="template-info">
                     <div class="template-title">📋 Plan Structure:</div>
                     <div class="template-description">
-                        Upload JSON files containing daily workout routines. Each day should include exercises with sets, reps, and notes. Cardio is automatically included as daily treadmill running.
+                        Upload JSON files containing daily workout routines. Each day should include exercises with
+                        sets, reps, and notes. Cardio is automatically included as daily treadmill running.
                     </div>
                 </div>
 
@@ -265,11 +311,8 @@
                 </div>
 
                 <div class="tab-content" id="pasteTab">
-                    <textarea 
-                        class="json-textarea" 
-                        placeholder="Paste your JSON workout plan here..."
-                        id="jsonTextarea"
-                    ></textarea>
+                    <textarea class="json-textarea" placeholder="Paste your JSON workout plan here..."
+                        id="jsonTextarea"></textarea>
                 </div>
 
                 <div class="action-buttons">
@@ -299,4 +342,5 @@
 
     <script src="js/app.js"></script>
 </body>
+
 </html>
