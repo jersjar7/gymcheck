@@ -15,14 +15,14 @@ class WorkoutApp {
     constructor() {
         this.isInitialized = false;
     }
-    
+
     async init() {
         try {
             console.log('Initializing Workout App...');
-            
+
             // Initialize data first
             await DataManager.initializeData();
-            
+
             // Initialize basic modules
             Navigation.init();
             WorkoutTracker.init();
@@ -30,58 +30,50 @@ class WorkoutApp {
             WeekView.init();
             ProgressView.init();
             AdminPanel.init();
-            
+
             // Initialize TodayNavigation after data is loaded
             await TodayNavigation.init();
-            
+
             // Initialize half-month system if enabled
             if (AppState.isHalfMonthSystem) {
                 await HalfMonthSystem.init();
                 // Check for plan switching daily
                 setInterval(() => HalfMonthSystem.checkHalfMonthSwitch(), 24 * 60 * 60 * 1000);
             }
-            
+
             // Start UI updates
             this.updateCurrentDateTime();
             setInterval(() => this.updateCurrentDateTime(), 60000);
-            
+
             this.isInitialized = true;
             console.log('Workout App initialized successfully!');
-            
+
         } catch (error) {
             console.error('Failed to initialize app:', error);
             showErrorMessage('Failed to load application data. Please refresh the page.');
         }
     }
-    
+
     updateCurrentDateTime() {
-        const now = new Date();
-        const dateElement = document.querySelector('.current-date');
-        const weekInfoElement = document.querySelector('.week-info');
-        
-        if (dateElement) {
-            dateElement.textContent = now.toLocaleDateString('en-US', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-        }
-        
-        if (weekInfoElement && AppState.currentWorkoutPlan.planInfo) {
-            // Get current viewing day info from TodayNavigation
-            const currentDay = TodayNavigation.getCurrentViewingDay();
-            if (currentDay) {
-                const partInfo = AppState.isHalfMonthSystem ? 
-                    ` (Part ${currentDay.planInfo?.part || 1})` : '';
-                weekInfoElement.textContent = `Week ${currentDay.weekNumber}, Day ${TodayNavigation.currentDayIndex + 1}${partInfo}`;
-            } else {
-                const partInfo = AppState.isHalfMonthSystem ? 
-                    ` (Part ${AppState.activePlans.activePlans?.workout?.part || 1})` : '';
-                weekInfoElement.textContent = `Week 1, Day 1${partInfo}`;
-            }
-        }
+    const now = new Date();
+    const dateElement = document.querySelector('.current-date');
+    const weekInfoElement = document.querySelector('.week-info');
+    
+    if (dateElement) {
+        dateElement.textContent = now.toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
     }
+    
+    if (weekInfoElement) {
+        // REMOVE the redundant info since we already show the full date above
+        // and the useful Day/Week/Part info is in the navigation area
+        weekInfoElement.style.display = 'none';
+    }
+}
 }
 
 // Initialize app when DOM is ready

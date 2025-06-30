@@ -1593,3 +1593,125 @@ footer {
     content: "⚠️ ";
     font-size: 1.2rem;
 }
+
+/* Add these responsive improvements to css/styles.css */
+
+/* ===== MOBILE UI IMPROVEMENTS ===== */
+
+/* Make today header stack on mobile */
+@media (max-width: 768px) {
+    .today-header {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .today-title-section {
+        order: 1; /* Title section first */
+    }
+    
+    .workout-navigation {
+        order: 2; /* Navigation below title */
+        align-self: stretch; /* Full width */
+    }
+    
+    /* Simplify navigation on mobile */
+    .current-workout-indicator {
+        min-width: auto;
+        padding: 0 0.5rem;
+    }
+    
+    .workout-day-indicator {
+        font-size: 0.7rem; /* Smaller text */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    /* Simplify date display - remove redundant info */
+    .week-info {
+        display: none; /* Hide the redundant "Week 1, Day 8 (Part 1)" */
+    }
+    
+    /* Make navigation buttons smaller on mobile */
+    .nav-workout-btn {
+        padding: 0.5rem 0.75rem;
+        min-width: 80px;
+        font-size: 0.875rem;
+    }
+    
+    .nav-text {
+        display: none; /* Hide "Previous"/"Next" text, keep only arrows */
+    }
+    
+    .nav-icon {
+        font-size: 1.2rem;
+    }
+}
+
+/* ===== SIMPLIFY WORKOUT INDICATOR CONTENT ===== */
+
+/* Show only essential info in navigation indicator */
+@media (max-width: 768px) {
+    .workout-date-indicator {
+        font-size: 0.8rem;
+    }
+    
+    .workout-day-indicator {
+        /* Simplify to just show the plan name */
+        font-size: 0.65rem;
+    }
+}
+
+/* ===== IMPROVE DATE DISPLAY SECTION ===== */
+
+@media (max-width: 768px) {
+    .date-display {
+        padding: 0.75rem;
+        margin-top: 0.75rem;
+    }
+    
+    .current-date {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+    
+    /* Hide redundant week info completely on mobile */
+    .week-info {
+        display: none !important;
+    }
+}
+
+/* ===== SIMPLIFY WORKOUT CARDS ON MOBILE ===== */
+
+@media (max-width: 768px) {
+    .today-content {
+        gap: 1rem;
+    }
+    
+    .workout-card,
+    .cardio-card {
+        padding: 1rem;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Make workout meta more compact */
+    .workout-meta {
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .meta-item {
+        gap: 0.375rem;
+    }
+    
+    .meta-label,
+    .meta-value {
+        font-size: 0.8rem;
+    }
+}

@@ -362,21 +362,24 @@ export class TodayNavigation {
     }
 
     static updateWorkoutIndicator(dayData) {
-        const dateIndicator = document.querySelector('.workout-date-indicator');
-        const dayIndicator = document.querySelector('.workout-day-indicator');
-
-        if (dateIndicator) {
-            dateIndicator.textContent = formatDate(this.currentViewDate).split(',')[0];
-        }
-
-        if (dayIndicator) {
-            // FIX: Calculate day number within the current plan, not across all plans
-            const dayNumberWithinPlan = this.calculateDayNumberWithinPlan(dayData);
-            const planName = dayData.planInfo?.part ? `Part ${dayData.planInfo.part}` :
-                (dayData.planInfo?.fileName?.replace('.json', '') || 'Plan');
-            dayIndicator.textContent = `Day ${dayNumberWithinPlan} • Week ${dayData.weekNumber} • ${planName}`;
-        }
+    const dateIndicator = document.querySelector('.workout-date-indicator');
+    const dayIndicator = document.querySelector('.workout-day-indicator');
+    
+    if (dateIndicator) {
+        // Show day of week only (e.g., "Tuesday")
+        const date = new Date(this.currentViewDate + 'T00:00:00');
+        const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' });
+        dateIndicator.textContent = dayOfWeek;
     }
+    
+    if (dayIndicator) {
+        // KEEP the full useful info: Day X • Week Y • Part Z
+        const dayNumberWithinPlan = this.calculateDayNumberWithinPlan(dayData);
+        const planName = dayData.planInfo?.part ? `Part ${dayData.planInfo.part}` : 
+                       (dayData.planInfo?.fileName?.replace('.json', '') || 'Plan');
+        dayIndicator.textContent = `Day ${dayNumberWithinPlan} • Week ${dayData.weekNumber} • ${planName}`;
+    }
+}
 
     static calculateDayNumberWithinPlan(dayData) {
         if (!dayData?.planInfo?.startDate) {
