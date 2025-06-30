@@ -20,17 +20,19 @@ class WorkoutApp {
         try {
             console.log('Initializing Workout App...');
             
-            // Initialize data
+            // Initialize data first
             await DataManager.initializeData();
             
-            // Initialize modules
+            // Initialize basic modules
             Navigation.init();
-            TodayNavigation.init();
             WorkoutTracker.init();
             TodayView.init();
             WeekView.init();
             ProgressView.init();
             AdminPanel.init();
+            
+            // Initialize TodayNavigation after data is loaded
+            await TodayNavigation.init();
             
             // Initialize half-month system if enabled
             if (AppState.isHalfMonthSystem) {
@@ -67,10 +69,17 @@ class WorkoutApp {
         }
         
         if (weekInfoElement && AppState.currentWorkoutPlan.planInfo) {
-            // This would use utility functions to get week info
-            const partInfo = AppState.isHalfMonthSystem ? 
-                ` (Part ${AppState.activePlans.activePlans?.workout?.part || 1})` : '';
-            weekInfoElement.textContent = `Week 1, Day 1${partInfo}`;
+            // Get current viewing day info from TodayNavigation
+            const currentDay = TodayNavigation.getCurrentViewingDay();
+            if (currentDay) {
+                const partInfo = AppState.isHalfMonthSystem ? 
+                    ` (Part ${currentDay.planInfo?.part || 1})` : '';
+                weekInfoElement.textContent = `Week ${currentDay.weekNumber}, Day ${TodayNavigation.currentDayIndex + 1}${partInfo}`;
+            } else {
+                const partInfo = AppState.isHalfMonthSystem ? 
+                    ` (Part ${AppState.activePlans.activePlans?.workout?.part || 1})` : '';
+                weekInfoElement.textContent = `Week 1, Day 1${partInfo}`;
+            }
         }
     }
 }
