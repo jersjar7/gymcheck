@@ -5,7 +5,7 @@
     "workout": {
       "fileName": "june-2025.json",
       "fullPath": "plans/2025/workouts/june-2025.json",
-      "planType": "once-daily",
+      "planType": "daily",
       "startDate": "2025-06-23",
       "endDate": "2025-06-30",
       "status": "active",
@@ -16,7 +16,7 @@
     "workout": {
       "fileName": "july-2025.json",
       "fullPath": "plans/2025/workouts/july-2025.json",
-      "planType": "once-daily",
+      "planType": "daily",
       "startDate": "2025-07-01",
       "endDate": "2025-07-31",
       "status": "scheduled",
@@ -27,60 +27,60 @@
   "planHistory": [
     {
       "month": "may-2025",
-      "workout": "may-2025-transition.json",
+      "workout": "may-2025.json",
       "status": "completed"
     }
   ],
   "planSchedule": {
     "2025": {
       "june": {
-        "workout": "once-daily",
+        "workout": "daily",
         "notes": "Summer routine introduction - partial month"
       },
       "july": {
-        "workout": "once-daily",
+        "workout": "daily",
         "notes": "Full summer workout schedule"
       },
       "august": {
-        "workout": "once-daily",
+        "workout": "daily",
         "notes": "Peak summer conditioning"
       },
       "september": {
-        "workout": "once-daily",
+        "workout": "daily",
         "notes": "School starts - maintain daily routine"
       },
       "october": {
-        "workout": "once-daily",
+        "workout": "daily",
         "notes": "Settled into school routine"
       },
       "november": {
-        "workout": "once-daily",
+        "workout": "daily",
         "notes": "Continue daily workouts through semester"
       },
       "december": {
-        "workout": "once-daily",
+        "workout": "daily",
         "notes": "Finals period - maintain consistency"
       }
     },
     "2026": {
       "january": {
-        "workout": "once-daily",
+        "workout": "daily",
         "notes": "New year - focus on strength gains"
       },
       "february": {
-        "workout": "once-daily",
+        "workout": "daily",
         "notes": "Continue building phase"
       },
       "march": {
-        "workout": "once-daily",
+        "workout": "daily",
         "notes": "Spring training intensification"
       },
       "april": {
-        "workout": "once-daily",
+        "workout": "daily",
         "notes": "Consistent training through semester end"
       },
       "may": {
-        "workout": "once-daily",
+        "workout": "daily",
         "notes": "Summer break - potential routine adjustment"
       }
     }

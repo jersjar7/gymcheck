@@ -5,7 +5,7 @@
     "june": {
       "startDate": "2025-06-23",
       "endDate": "2025-06-30",
-      "workoutPlan": "june-2025-once-daily.json",
+      "workoutPlan": "june-2025.json",
       "measurements": {
         "startWeight": 175.2,
         "currentWeight": 174.8,
@@ -80,7 +80,7 @@
     "july": {
       "startDate": "2025-07-01",
       "endDate": "2025-07-31",
-      "workoutPlan": "july-2025-once-daily.json",
+      "workoutPlan": "july-2025.json",
       "status": "upcoming",
       "goals": [
         {

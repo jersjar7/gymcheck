@@ -91,6 +91,33 @@ function getTodaysDayNumber() {
     return Math.max(1, diffDays);
 }
 
+// NEW: Function to find day data by searching through actual JSON structure
+function findTodaysDayData() {
+    const today = getCurrentDate();
+    
+    if (!currentWorkoutPlan.weeks) return null;
+    
+    // Search through all weeks and days to find today's date
+    for (const weekKey in currentWorkoutPlan.weeks) {
+        const weekData = currentWorkoutPlan.weeks[weekKey];
+        if (weekData.days) {
+            for (const dayKey in weekData.days) {
+                const dayData = weekData.days[dayKey];
+                if (dayData.date === today) {
+                    return {
+                        dayData: dayData,
+                        weekKey: weekKey,
+                        dayKey: dayKey,
+                        weekNumber: weekData.weekNumber || parseInt(weekKey.replace('week', ''))
+                    };
+                }
+            }
+        }
+    }
+    
+    return null;
+}
+
 function getWeekAndDay(dayNumber) {
     const weekNumber = Math.ceil(dayNumber / 7);
     const dayInWeek = ((dayNumber - 1) % 7) + 1;
@@ -160,12 +187,6 @@ function setupEventListeners() {
         fileInput.addEventListener('change', handleFileSelect);
     }
     
-    // Notes saving
-    const saveNotesBtn = document.querySelector('.save-notes-btn');
-    if (saveNotesBtn) {
-        saveNotesBtn.addEventListener('click', saveNotes);
-    }
-    
     // Exercise and cardio tracking
     setupWorkoutTracking();
 }
@@ -196,33 +217,33 @@ function updateCurrentDateTime() {
     }
     
     if (weekInfoElement && currentWorkoutPlan.planInfo) {
-        const dayNumber = getTodaysDayNumber();
-        const { week, day } = getWeekAndDay(dayNumber);
-        weekInfoElement.textContent = `Week ${week}, Day ${day}`;
+        const todayData = findTodaysDayData();
+        if (todayData) {
+            const dayNumber = getTodaysDayNumber();
+            const { week, day } = getWeekAndDay(dayNumber);
+            weekInfoElement.textContent = `Week ${todayData.weekNumber}, Day ${dayNumber}`;
+        }
     }
 }
 
 // ===== TODAY SECTION =====
 function populateTodaySection() {
     populateTodaysWorkout();
-    loadTodaysNotes();
     setupCardioTracking();
 }
 
 function populateTodaysWorkout() {
     if (!currentWorkoutPlan.weeks) return;
     
-    const dayNumber = getTodaysDayNumber();
-    const { week, day } = getWeekAndDay(dayNumber);
+    // Use the new function to find today's data
+    const todayData = findTodaysDayData();
     
-    // Find today's workout
-    const weekKey = `week${week}`;
-    const dayKey = `day${dayNumber}`;
+    if (!todayData) {
+        console.log('No workout data found for today');
+        return;
+    }
     
-    const weekData = currentWorkoutPlan.weeks[weekKey];
-    const dayData = weekData?.days?.[dayKey];
-    
-    if (!dayData) return;
+    const dayData = todayData.dayData;
     
     // Update workout type
     const workoutTypeElement = document.querySelector('.workout-type');
@@ -257,9 +278,12 @@ function populateTodaysWorkout() {
                 exerciseList.appendChild(exerciseElement);
             });
         }
+    }
         
-        // Rest day content
-        if (dayData.dayType === 'rest') {
+    // Rest day content
+    if (dayData.dayType === 'rest') {
+        const exerciseList = document.querySelector('.exercise-list');
+        if (exerciseList) {
             exerciseList.innerHTML = `
                 <div class="rest-day-content">
                     <div class="rest-message">
@@ -328,7 +352,9 @@ function populateWeekDays() {
     
     daysGrid.innerHTML = '';
     
-    const currentWeek = Math.ceil(getTodaysDayNumber() / 7);
+    // Find current week based on today's data
+    const todayData = findTodaysDayData();
+    const currentWeek = todayData ? todayData.weekNumber : 1;
     const weekKey = `week${currentWeek}`;
     const weekData = currentWorkoutPlan.weeks[weekKey];
     
@@ -749,27 +775,6 @@ function loadCardioProgress() {
     
     if (savedProgress && cardioCheckbox) {
         cardioCheckbox.checked = savedProgress === 'true';
-    }
-}
-
-function saveNotes() {
-    const notesInput = document.querySelector('.notes-input');
-    if (!notesInput) return;
-    
-    const today = getCurrentDate();
-    const notes = notesInput.value;
-    
-    localStorage.setItem(`notes-${today}`, notes);
-    showSuccessMessage('Notes saved successfully!');
-}
-
-function loadTodaysNotes() {
-    const today = getCurrentDate();
-    const savedNotes = localStorage.getItem(`notes-${today}`);
-    const notesInput = document.querySelector('.notes-input');
-    
-    if (savedNotes && notesInput) {
-        notesInput.value = savedNotes;
     }
 }
 
