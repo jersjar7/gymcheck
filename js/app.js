@@ -233,57 +233,93 @@ function populateTodaySection() {
 }
 
 function populateTodaysWorkout() {
-    if (!currentWorkoutPlan.weeks) return;
+    if (!currentWorkoutPlan.weeks) {
+        console.log('No workout plan weeks available');
+        return;
+    }
     
     // Use the new function to find today's data
     const todayData = findTodaysDayData();
     
     if (!todayData) {
         console.log('No workout data found for today');
+        // Show a message in the workout area
+        const workoutTypeElement = document.querySelector('.workout-type');
+        const exerciseList = document.querySelector('.exercise-list');
+        if (workoutTypeElement) workoutTypeElement.textContent = 'No workout scheduled';
+        if (exerciseList) exerciseList.innerHTML = '<div style="text-align: center; color: #94a3b8; padding: 2rem;">No workout found for this date</div>';
         return;
     }
     
     const dayData = todayData.dayData;
+    console.log('Processing day data:', dayData); // Debug log
     
-    // Update workout type
+    // Update workout type - FIXED: Make sure the element exists and gets updated
     const workoutTypeElement = document.querySelector('.workout-type');
     if (workoutTypeElement) {
         if (dayData.dayType === 'rest') {
             workoutTypeElement.textContent = 'Rest Day';
+            console.log('Set workout type to: Rest Day');
         } else {
-            // Handle different workout structures
+            // Handle different workout structures - FIXED: Added more fallbacks
             const workoutType = dayData.workout?.workoutType || 
                               dayData.morning?.workoutType || 
                               'Daily Workout';
             workoutTypeElement.textContent = workoutType;
+            console.log('Set workout type to:', workoutType);
         }
+    } else {
+        console.error('Could not find .workout-type element');
     }
     
-    // Populate exercises
+    // Populate exercises - FIXED: Better error handling and structure detection
     const exerciseList = document.querySelector('.exercise-list');
-    if (exerciseList && dayData.dayType === 'workout') {
-        exerciseList.innerHTML = '';
-        
-        // Handle single daily workout (new structure)
-        if (dayData.workout?.exercises) {
-            dayData.workout.exercises.forEach((exercise, index) => {
-                const exerciseElement = createExerciseElement(exercise, `workout-${index}`);
-                exerciseList.appendChild(exerciseElement);
-            });
-        }
-        // Handle legacy morning exercises (for existing plans)
-        else if (dayData.morning?.exercises) {
-            dayData.morning.exercises.forEach((exercise, index) => {
-                const exerciseElement = createExerciseElement(exercise, `workout-${index}`);
-                exerciseList.appendChild(exerciseElement);
-            });
-        }
-    }
-        
-    // Rest day content
-    if (dayData.dayType === 'rest') {
-        const exerciseList = document.querySelector('.exercise-list');
-        if (exerciseList) {
+    if (exerciseList) {
+        if (dayData.dayType === 'workout') {
+            exerciseList.innerHTML = ''; // Clear existing content
+            let exercisesAdded = 0;
+            
+            // FIXED: Try multiple data structures in order of preference
+            let exercises = null;
+            let source = '';
+            
+            // Try new single workout structure first
+            if (dayData.workout?.exercises && Array.isArray(dayData.workout.exercises)) {
+                exercises = dayData.workout.exercises;
+                source = 'workout';
+            }
+            // Try legacy morning structure
+            else if (dayData.morning?.exercises && Array.isArray(dayData.morning.exercises)) {
+                exercises = dayData.morning.exercises;
+                source = 'morning';
+            }
+            // Try afternoon structure as fallback
+            else if (dayData.afternoon?.exercises && Array.isArray(dayData.afternoon.exercises)) {
+                exercises = dayData.afternoon.exercises;
+                source = 'afternoon';
+            }
+            
+            console.log(`Found exercises in '${source}' structure:`, exercises);
+            
+            if (exercises && exercises.length > 0) {
+                exercises.forEach((exercise, index) => {
+                    const exerciseElement = createExerciseElement(exercise, `${source}-${index}`);
+                    exerciseList.appendChild(exerciseElement);
+                    exercisesAdded++;
+                });
+                console.log(`Added ${exercisesAdded} exercises to the list`);
+            } else {
+                // No exercises found - show a message
+                exerciseList.innerHTML = `
+                    <div style="text-align: center; color: #94a3b8; padding: 2rem;">
+                        <p>Workout scheduled but no exercises found.</p>
+                        <p style="font-size: 0.875rem; margin-top: 0.5rem;">Check the JSON structure for this date.</p>
+                    </div>
+                `;
+                console.warn('No exercises found in any structure for this workout day');
+            }
+        } else {
+            // Rest day content
             exerciseList.innerHTML = `
                 <div class="rest-day-content">
                     <div class="rest-message">
@@ -293,23 +329,69 @@ function populateTodaysWorkout() {
                     </div>
                 </div>
             `;
+            console.log('Displayed rest day content');
         }
+    } else {
+        console.error('Could not find .exercise-list element');
     }
     
+    // Always update progress after populating
     updateWorkoutProgress();
 }
 
+// Enhanced createExerciseElement function with better error handling
 function createExerciseElement(exercise, id) {
+    if (!exercise || !exercise.name) {
+        console.warn('Invalid exercise data:', exercise);
+        return document.createElement('div'); // Return empty div to prevent errors
+    }
+    
     const exerciseElement = document.createElement('div');
     exerciseElement.className = 'exercise-item';
+    
+    // Handle missing sets/reps gracefully
+    const sets = exercise.sets || '3';
+    const reps = exercise.reps || '10-12';
+    const notes = exercise.notes ? ` - ${exercise.notes}` : '';
+    
     exerciseElement.innerHTML = `
         <input type="checkbox" class="exercise-checkbox" data-exercise="${id}">
         <div class="exercise-details">
             <div class="exercise-name">${exercise.name}</div>
-            <div class="exercise-specs">${exercise.sets} sets × ${exercise.reps}</div>
+            <div class="exercise-specs">${sets} sets × ${reps}${notes}</div>
         </div>
     `;
+    
+    console.log(`Created exercise element: ${exercise.name}`);
     return exerciseElement;
+}
+
+// Also add this debug function to help troubleshoot
+function debugTodaysWorkout() {
+    console.log('=== DEBUG TODAY\'S WORKOUT ===');
+    
+    const todayData = findTodaysDayData();
+    if (!todayData) {
+        console.log('❌ No data found for today');
+        return;
+    }
+    
+    console.log('✅ Found today\'s data:', todayData);
+    
+    const dayData = todayData.dayData;
+    console.log('Day type:', dayData.dayType);
+    console.log('Day name:', dayData.dayName);
+    
+    // Check all possible exercise locations
+    console.log('Checking exercise structures:');
+    console.log('  dayData.workout?.exercises:', dayData.workout?.exercises?.length || 'not found');
+    console.log('  dayData.morning?.exercises:', dayData.morning?.exercises?.length || 'not found');
+    console.log('  dayData.afternoon?.exercises:', dayData.afternoon?.exercises?.length || 'not found');
+    
+    // Check DOM elements
+    console.log('DOM elements:');
+    console.log('  .workout-type element:', document.querySelector('.workout-type') ? 'found' : 'NOT FOUND');
+    console.log('  .exercise-list element:', document.querySelector('.exercise-list') ? 'found' : 'NOT FOUND');
 }
 
 function setupCardioTracking() {
